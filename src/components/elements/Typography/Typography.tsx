@@ -50,7 +50,7 @@ const StyledParagraph = styled.p<TextType>`
 `;
 
 const StyledText = styled.span<TextType>`
-  ${({ color = 'black', size = 'sm', weight = 'normal', theme }) =>
+  ${({ color = 'white', size = 'sm', weight = 'normal', theme }) =>
     getTextStyles(color, size, weight, theme)}
 `;
 

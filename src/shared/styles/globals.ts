@@ -3,6 +3,7 @@
 import { css, SerializedStyles } from '@emotion/react';
 import { ls } from '@/core/utils/localStorage';
 import { settings } from '@/shared/styles/Settings';
+import {string} from "zod";
 
 export type Size = 'sm' | 'md' | 'lg' | 'xlg' | 'xxlg';
 export type ColorEffect = 'solid' | 'linear';
@@ -61,12 +62,13 @@ export const getIsDark = (): boolean => {
 export const getSize = (
   size?: Size,
   width?: string,
-  borderRadius?: string
+  borderRadius?: string,
+  height?:string
 ): SerializedStyles => {
     if (size === 'sm') {
         return css`
       width: ${width ? width : 'auto'};
-      height: ${settings.elementHeight_sm};
+      height: ${height ? height : settings.elementHeight_sm};
       font-size: ${typographySizeOptions.sm};
       border-radius: ${borderRadius};
     `;

@@ -1,3 +1,4 @@
+import '@/shared/styles/global.css';
 import '@/shared/styles/globals';
 import type { Metadata } from 'next';
 import { addClass } from '@/core/utils/classNames';

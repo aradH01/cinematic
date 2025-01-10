@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslation } from 'next-i18next';
+import {Button} from "@/components/elements/Button";
 
 export default function HomePage() {
     const { t, i18n } = useTranslation(); // Use default namespace or specify if required
@@ -17,14 +18,19 @@ export default function HomePage() {
     };
 
     return (
-        <div>
-            <h1>{t('welcome')}</h1>
-            <p>{t('description')}</p>
-            <p>{t('test')}</p>
+        <div className="mx-auto p-16">
+            <h1 className="text-black">{t('welcome')}</h1>
+            <p className="text-black">{t('description')}</p>
+            <p className="text-black">{t('test')}</p>
 
-            <button onClick={() => handleLanguageChange('en')}>English</button>
-            <button onClick={() => handleLanguageChange('az')}>Azerbaijani</button>
-            <button onClick={() => handleLanguageChange('ru')}>Russian</button>
+          <div className="flex gap-8 items-center">
+              <Button height="24px" onClick={() => handleLanguageChange('en')} title="English"/>
+              <Button height="28px" onClick={() => handleLanguageChange('az')} title="Azerbaijani"/>
+              <Button ghost onClick={() => handleLanguageChange('ru')} title="Russian"/>
+              <Button opacity title="Opacity test"/>
+              <Button outlined title="Outlined Test"/>
+              <Button height="55px" width="200px" title="border Test"/>
+          </div>
         </div>
     );
 }

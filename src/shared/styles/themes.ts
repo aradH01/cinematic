@@ -8,9 +8,11 @@ const light = {
     name: 'light',
     background: '#181A20',
     components: {
-        white: '#fff',
-        black: '#000',
-
+        fillButton:'#000',
+        nonActive: '#92929D',
+        opacityButton: 'rgba(233, 233, 233, 0.60)',
+        outlinedButton: 'rgba(255, 255, 255, 0.60)',
+        outlinedButtonBorder: 'rgba(0, 0, 0, 0.20)'
     },
     font: {
         white: '#fff',
@@ -22,8 +24,11 @@ const dark: AppTheme = {
     name: 'dark',
     background: '#FCFCFC',
     components: {
-        white: '#fff',
-        black: '#000',
+        fillButton:'#fff',
+        nonActive: '#92929D',
+        opacityButton: 'rgba(233, 233, 233, 0.60)',
+        outlinedButton: 'rgba(255, 255, 255, 0.60)',
+        outlinedButtonBorder: 'rgba(0, 0, 0, 0.20)'
     },
     font: {
         white: '#fff',
