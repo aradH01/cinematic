@@ -30,6 +30,9 @@ const StyledTextarea = styled.textarea`
     overflow-y: auto; 
     caret-color: ${({theme}) => theme.components.green300};
     padding: 8px 16px;
+    &::-webkit-scrollbar {
+      display: none;
+    }
 `;
 
 const SendButton = styled.button`

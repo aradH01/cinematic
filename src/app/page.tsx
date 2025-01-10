@@ -4,6 +4,8 @@ import { useTranslation } from 'next-i18next';
 import {Button} from "@/components/elements/Button";
 import {Input} from "@/components/elements/Input";
 import {SendBox} from "@/components/elements/Sendbox";
+import {useState} from "react";
+import {CategoriesButton} from "@/components/elements/CategoriesButton/CategoriesButton";
 
 export default function HomePage() {
     const { t, i18n } = useTranslation(); // Use default namespace or specify if required
@@ -18,6 +20,11 @@ export default function HomePage() {
             console.error('i18n.changeLanguage is not a function');
         }
     };
+    const [categories, setCategories] = useState<{ value: number, label: string, selected: boolean }[]>([
+        {label: "Action", value: 0, selected: true},
+        {label: "Anime", value: 0, selected: false},
+        {label: "Black stories", value: 0, selected: false},
+    ]);
 
     return (
         <div className="mx-auto p-16">
@@ -42,6 +49,9 @@ export default function HomePage() {
                 <SendBox />
                 <SendBox />
                 <SendBox />
+          </div>
+            <div className="flex gap-8 items-center">
+                <CategoriesButton label="Category" className="mt-[40.5px]" categories={categories} onClick={() => {}}/>
           </div>
         </div>
     );
