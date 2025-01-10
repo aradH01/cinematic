@@ -2,6 +2,7 @@ import type { Config } from "tailwindcss";
 import {fontFamily} from 'tailwindcss/defaultTheme';
 
 const config: Config = {
+  darkMode: 'selector',
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -14,9 +15,9 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
       fontFamily: {
-        lecturis: ['"FH Lecturis"', ...fontFamily.sans],
-        lecturisRounded: ['"FH Lecturis Rounded"', ...fontFamily.sans],
-        urbanist: ['Urbanist', ...fontFamily.sans],
+        lecturis: ['"FH Lecturis"'],
+        lecturisRounded: ['"FH Lecturis Rounded"'],
+        urbanist: ['Urbanist'],
       },
     },
   },
