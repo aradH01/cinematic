@@ -15,6 +15,7 @@ const light = {
         outlinedButtonBorder: 'rgba(0, 0, 0, 0.20)',
         inputBackground: 'rgba(0, 0, 0, 0.08)',
         green300: '#52C41A',
+        blue100: '#D6E4FF'
     },
     font: {
         white: '#fff',
@@ -35,6 +36,7 @@ const dark: AppTheme = {
         outlinedButtonBorder: 'rgba(0, 0, 0, 0.20)',
         inputBackground: 'rgba(0, 0, 0, 0.08)',
         green300: '#52C41A',
+        blue100: '#D6E4FF'
     },
     font: {
         white: '#fff',
