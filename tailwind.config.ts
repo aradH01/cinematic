@@ -15,9 +15,9 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
       fontFamily: {
-        lecturis: ['"FH Lecturis"', ...fontFamily.sans],
-        lecturisRounded: ['"FH Lecturis Rounded"', ...fontFamily.sans],
-        urbanist: ['Urbanist', ...fontFamily.sans],
+        lecturis: ['"FH Lecturis"'],
+        lecturisRounded: ['"FH Lecturis Rounded"'],
+        urbanist: ['Urbanist'],
       },
     },
   },

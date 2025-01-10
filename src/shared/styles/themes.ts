@@ -12,11 +12,15 @@ const light = {
         nonActive: '#92929D',
         opacityButton: 'rgba(233, 233, 233, 0.60)',
         outlinedButton: 'rgba(255, 255, 255, 0.60)',
-        outlinedButtonBorder: 'rgba(0, 0, 0, 0.20)'
+        outlinedButtonBorder: 'rgba(0, 0, 0, 0.20)',
+        inputBackground: 'rgba(0, 0, 0, 0.08)',
+        green300: '#52C41A'
     },
     font: {
         white: '#fff',
         black: '#000',
+        red300: '#FA541C',
+        errorText: '#F5222D'
     },
 };
 
@@ -28,11 +32,15 @@ const dark: AppTheme = {
         nonActive: '#92929D',
         opacityButton: 'rgba(233, 233, 233, 0.60)',
         outlinedButton: 'rgba(255, 255, 255, 0.60)',
-        outlinedButtonBorder: 'rgba(0, 0, 0, 0.20)'
+        outlinedButtonBorder: 'rgba(0, 0, 0, 0.20)',
+        inputBackground: 'rgba(0, 0, 0, 0.08)',
+        green300: '#52C41A'
     },
     font: {
         white: '#fff',
         black: '#000',
+        red300: '#FA541C',
+        errorText: '#F5222D'
     },
 };
 

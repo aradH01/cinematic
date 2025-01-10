@@ -2,6 +2,7 @@
 
 import { useTranslation } from 'next-i18next';
 import {Button} from "@/components/elements/Button";
+import {Input} from "@/components/elements/Input";
 
 export default function HomePage() {
     const { t, i18n } = useTranslation(); // Use default namespace or specify if required
@@ -30,6 +31,11 @@ export default function HomePage() {
               <Button opacity title="Opacity test"/>
               <Button outlined title="Outlined Test"/>
               <Button height="55px" width="200px" title="border Test"/>
+          </div>
+            <div className="flex gap-8 items-center">
+                    <Input icon="Loading" label="Label" placeHolder="Type something"/>
+                    <Input label="Label" placeHolder="Type something"/>
+                    <Input error="Assistive text" label="Label" placeHolder="Type something"/>
           </div>
         </div>
     );
