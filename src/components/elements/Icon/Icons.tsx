@@ -30,10 +30,17 @@ const Close = (props: React.SVGProps<SVGSVGElement>) => (
               fill="black" fill-opacity="0.5"/>
     </svg>
 );
+const UpArrow = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" {...props}>
+        <path d="M12 20L12 4M12 4L18 10M12 4L6 10" stroke="white" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round"/>
+    </svg>
+);
 
 const Empty = (props: React.SVGProps<SVGSVGElement>) => null;
 export const Icons = {
     Loading,
     Empty,
-    Close
+    Close,
+    UpArrow
 } as const;

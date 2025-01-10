@@ -100,10 +100,11 @@ export const StyledButton = styled.button<StyledButtonType>`
   }
 
   &:disabled {
+      background-color: ${({ theme }) => theme.components.nonActive};
     border: none !important;
     cursor: not-allowed !important;
     filter: blur(2px);
-
+      box-shadow: none;
     svg {
       animation: none;
     }

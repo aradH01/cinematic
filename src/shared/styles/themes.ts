@@ -14,7 +14,7 @@ const light = {
         outlinedButton: 'rgba(255, 255, 255, 0.60)',
         outlinedButtonBorder: 'rgba(0, 0, 0, 0.20)',
         inputBackground: 'rgba(0, 0, 0, 0.08)',
-        green300: '#52C41A'
+        green300: '#52C41A',
     },
     font: {
         white: '#fff',
@@ -34,7 +34,7 @@ const dark: AppTheme = {
         outlinedButton: 'rgba(255, 255, 255, 0.60)',
         outlinedButtonBorder: 'rgba(0, 0, 0, 0.20)',
         inputBackground: 'rgba(0, 0, 0, 0.08)',
-        green300: '#52C41A'
+        green300: '#52C41A',
     },
     font: {
         white: '#fff',

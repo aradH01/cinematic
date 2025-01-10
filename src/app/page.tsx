@@ -3,6 +3,7 @@
 import { useTranslation } from 'next-i18next';
 import {Button} from "@/components/elements/Button";
 import {Input} from "@/components/elements/Input";
+import {SendBox} from "@/components/elements/Sendbox";
 
 export default function HomePage() {
     const { t, i18n } = useTranslation(); // Use default namespace or specify if required
@@ -36,6 +37,11 @@ export default function HomePage() {
                     <Input icon="Loading" label="Label" placeHolder="Type something"/>
                     <Input label="Label" placeHolder="Type something"/>
                     <Input error="Assistive text" label="Label" placeHolder="Type something"/>
+          </div>
+            <div className="flex gap-8 items-center">
+                <SendBox />
+                <SendBox />
+                <SendBox />
           </div>
         </div>
     );
