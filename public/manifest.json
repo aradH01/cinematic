@@ -1,0 +1,20 @@
+{
+  "name": "Cinewo App",
+  "short_name": "Cinewo",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0070f3",
+  "icons": [
+    {
+      "src": "",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
