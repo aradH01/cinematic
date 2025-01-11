@@ -15,7 +15,10 @@ const light = {
         outlinedButtonBorder: 'rgba(0, 0, 0, 0.20)',
         inputBackground: 'rgba(0, 0, 0, 0.08)',
         green300: '#52C41A',
-        blue100: '#D6E4FF'
+        blue100: '#D6E4FF',
+        gray700: '#D9D9D9',
+        gray500: '#8C8C8C',
+        green100: '#D9F7BE'
     },
     font: {
         white: '#fff',
@@ -36,7 +39,10 @@ const dark: AppTheme = {
         outlinedButtonBorder: 'rgba(0, 0, 0, 0.20)',
         inputBackground: 'rgba(0, 0, 0, 0.08)',
         green300: '#52C41A',
-        blue100: '#D6E4FF'
+        blue100: '#D6E4FF',
+        gray700: '#D9D9D9',
+        gray500: '#8C8C8C',
+        green100: '#D9F7BE'
     },
     font: {
         white: '#fff',
