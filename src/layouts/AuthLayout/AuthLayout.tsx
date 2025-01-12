@@ -2,15 +2,14 @@
 
 import type {PropsWithChildren} from 'react';
 import '@mantine/core/styles.css';
-import { Toast } from '@/components/providers/Toast';
+
 
 
 const AuthLayout = ({children}: PropsWithChildren) => {
     return (
         <>
-            <div className="">
+            <div className="h-[100vh] h-[100dvh]">
                 {children}
-                <Toast/>
             </div>
         </>
     );

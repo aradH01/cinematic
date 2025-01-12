@@ -17,6 +17,7 @@ export const typographySizeOptions = {
     sm: '16px',
     md: '18px',
     lg: '24px',
+    lt: '32px',
     xlg: '28px',
     xxlg: '48px',
     xxxlg: '82px',
@@ -48,6 +49,7 @@ export const GlobalStyles = css`
     padding: 0;
     margin: 0;
     font-family: ${settings.fontFamily};
+      height: 100vh;
   }
 `;
 

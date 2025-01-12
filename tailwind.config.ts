@@ -10,14 +10,27 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'get-start-bg': "url('/images/getStartBg.svg')",
+
+      },
+      boxShadowColor:{
+        signInNext : '0px 14px 28px 0px rgba(0, 0, 0, 0.30)'
+      },
+      backgroundColor:{
+        signInBg: '#171717'
+      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+          border100: 'rgba(255, 255, 255, 0.10)',
+        white800: '#EDF0F3',
+        black300:'#262626',
+        black900:'#0F0F10',
+        white500 : 'rgba(255, 255, 255, 0.5)'
       },
       fontFamily: {
-        lecturis: ['"FH Lecturis"'],
-        lecturisRounded: ['"FH Lecturis Rounded"'],
-        urbanist: ['Urbanist'],
+        urbanist: ['Urbanist', 'sans-serif'],
+        lecturis: ['FH Lecturis', 'serif'],
+        'lecturis-rounded': ['FH Lecturis Rounded', 'serif'],
       },
     },
   },

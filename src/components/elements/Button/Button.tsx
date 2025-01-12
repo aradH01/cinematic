@@ -21,6 +21,7 @@ export interface ButtonProps {
   height?:string,
   ghost?: boolean,
   icon?: AvailableIcons,
+    iconClass?:string,
   onClick?: MouseEventHandler<HTMLButtonElement>
 }
 
@@ -135,6 +136,7 @@ export const Button: React.FC<ButtonProps> = ({
                                                 title,
                                                 type,
                                                   opacity,
+    iconClass,
                                                 ...props
                                               }) => {
   return (
@@ -155,10 +157,10 @@ export const Button: React.FC<ButtonProps> = ({
           size="md"
         /> : ''}
       <div className="flex items-center gap-[10px]">
-        <Icon name={icon || 'Empty'}/>
-        <span className={addClass((outlined || ghost) ? "text-black dark:text-white" : "text-white dark:text-black" , "font-medium text-[16px]")}
+        <Icon name={icon || 'Empty'} className={iconClass}/>
+        <span className={addClass((outlined || ghost) ? "text-black dark:text-white font-urbanist" : "text-white dark:text-black font-urbanist" , "font-medium text-[16px] font-urbanist")}
                          >{loading ? "Loading" : title}</span>
-        <Icon name={icon || 'Empty'}/>
+
       </div>
     </StyledButton>
   )

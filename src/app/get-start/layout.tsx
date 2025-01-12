@@ -2,9 +2,9 @@ import '@/shared/styles/global.css';
 import '@/shared/styles/globals';
 import type { Metadata } from 'next';
 import { addClass } from '@/core/utils/classNames';
-import MainLayout from '@/layouts/DashboardLayout/DashboardLayout';
 import React from "react";
 import {AppProvider} from "@/components/providers/AppProvider";
+import AuthLayout from "@/layouts/AuthLayout/AuthLayout";
 
 export const metadata: Metadata = {
     title: '',
@@ -15,12 +15,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 
     return (
-        <html lang="en" className="dark">
+        <html lang="en">
         <body>
         <AppProvider> {/* Wrap the entire app */}
-
-                <MainLayout>{children}</MainLayout>
-
+            <main className={addClass('w-full min-h-screen px-[24px] h-[100vh] h-[100dvh] bg-get-start-bg bg-cover bg-center')}>
+                        {children}
+            </main>
         </AppProvider>
         </body>
         </html>
