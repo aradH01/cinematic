@@ -21,11 +21,13 @@ const config: Config = {
         signInBg: '#171717'
       },
       colors: {
-          border100: 'rgba(255, 255, 255, 0.10)',
+        border100: 'rgba(255, 255, 255, 0.10)',
+        border200: 'rgba(255, 255, 255, 0.20)',
         white800: '#EDF0F3',
         black300:'#262626',
         black900:'#0F0F10',
-        white500 : 'rgba(255, 255, 255, 0.5)'
+        white500 : 'rgba(255, 255, 255, 0.5)',
+        red200: '#CF1322'
       },
       fontFamily: {
         urbanist: ['Urbanist', 'sans-serif'],

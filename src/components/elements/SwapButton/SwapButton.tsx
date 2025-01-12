@@ -3,8 +3,8 @@
 import styled from '@emotion/styled';
 
 interface SwapButtonProps {
-    checked: boolean;
-    onCheckedChange: (checked: boolean) => void;
+    checked?: boolean;
+    onCheckedChange?: (checked: boolean) => void;
     disabled?: boolean;
 }
 
@@ -14,7 +14,7 @@ const ToggleWrapper = styled.div`
     justify-content: center;
 `;
 
-const ToggleButton = styled.button<{ checked: boolean; disabled: boolean }>`
+const ToggleButton = styled.button<{ checked?: boolean; disabled?: boolean }>`
     width: 44px; 
     height: 24px; 
     border-radius: 9999px;
@@ -34,7 +34,7 @@ const ToggleButton = styled.button<{ checked: boolean; disabled: boolean }>`
    
 `;
 
-const ToggleCircle = styled.span<{ checked: boolean; disabled: boolean }>`
+const ToggleCircle = styled.span<{ checked?: boolean; disabled?: boolean }>`
     width: 16px; 
     height: 16px;
     background-color: ${({ checked, theme }) =>
@@ -58,7 +58,9 @@ export const SwapButton = ({
                            }: SwapButtonProps) => {
     const handleClick = () => {
         if (!disabled) {
-            onCheckedChange(!checked); // Call the parent callback with the new state
+            if (onCheckedChange) {
+                onCheckedChange(!checked);
+            } // Call the parent callback with the new state
         }
     };
 

@@ -54,3 +54,8 @@ export const ShowImages=[
   "/images/show1.jpg","/images/show2.jpg","/images/show3.jpg","/images/show4.jpg","/images/show5.jpg",
 
 ];
+export const WhoWatching=[
+  {image: "/images/MenAvatar.svg" , name:"Arad" , active:true},
+  {image: "/images/FemaleAvatar.svg" , name:"Mia"},
+
+];

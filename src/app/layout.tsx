@@ -15,11 +15,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 
     return (
-        <html lang="en" className="dark">
-        <body>
+        <html lang="en">
+        <body className="bg-signInBg">
         <AppProvider> {/* Wrap the entire app */}
 
-                <MainLayout>{children}</MainLayout>
+                <MainLayout>
+
+                    {children}
+
+                </MainLayout>
 
         </AppProvider>
         </body>

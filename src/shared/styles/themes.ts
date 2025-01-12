@@ -22,10 +22,14 @@ const light = {
         green100: '#D9F7BE',
         black200:'#171717',
         black400:'rgba(43, 43, 43, 0.80)',
+        black500:'rgba(43, 43, 43, 0.90)',
         checkboxShadow: '#B1ADA9',
         checkboxActiveBorder: '#FFA39E',
         black300:'#262626',
-        red300: '#FF4D4F'
+        red300: '#FF4D4F',
+        gray300: 'rgba(31, 31, 31, 0.60)',
+        black800:'rgba(0, 0, 0, 0.80)',
+        white500: 'rgba(255, 255, 255, 0.50)'
     },
     font: {
         white: '#fff',
@@ -56,10 +60,14 @@ const dark: AppTheme = {
         green100: '#D9F7BE',
         black200:'#171717',
         black400:'rgba(43, 43, 43, 0.80)',
+        black500:'rgba(43, 43, 43, 0.90)',
         checkboxShadow: '#B1ADA9',
         checkboxActiveBorder: '#FFA39E',
         black300:'#262626',
-        red300: '#FF4D4F'
+        red300: '#FF4D4F',
+        gray300: 'rgba(31, 31, 31, 0.60)',
+        black800:'rgba(0, 0, 0, 0.80)',
+        white500: 'rgba(255, 255, 255, 0.50)'
     },
     font: {
         white: '#fff',
