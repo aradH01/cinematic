@@ -24,7 +24,8 @@ const light = {
         black400:'rgba(43, 43, 43, 0.80)',
         checkboxShadow: '#B1ADA9',
         checkboxActiveBorder: '#FFA39E',
-        black300:'#262626'
+        black300:'#262626',
+        red300: '#FF4D4F'
     },
     font: {
         white: '#fff',
@@ -57,7 +58,8 @@ const dark: AppTheme = {
         black400:'rgba(43, 43, 43, 0.80)',
         checkboxShadow: '#B1ADA9',
         checkboxActiveBorder: '#FFA39E',
-        black300:'#262626'
+        black300:'#262626',
+        red300: '#FF4D4F'
     },
     font: {
         white: '#fff',

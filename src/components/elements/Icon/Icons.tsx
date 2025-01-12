@@ -168,6 +168,25 @@ const SignInNextArrow = (props: React.SVGProps<SVGSVGElement>) => (
               stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
 );
+const CircleTick = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" {...props}>
+        <g clip-path="url(#clip0_12485_319)">
+            <path
+                d="M16.0013 30.3334C23.9174 30.3334 30.3346 23.9162 30.3346 16.0001C30.3346 8.084 23.9174 1.66675 16.0013 1.66675C8.08522 1.66675 1.66797 8.084 1.66797 16.0001C1.66797 23.9162 8.08522 30.3334 16.0013 30.3334Z"
+                fill="#FF4D4F" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </g>
+        <defs>
+            <clipPath id="clip0_12485_319">
+                <rect width="32" height="32" fill="white"/>
+            </clipPath>
+        </defs>
+    </svg>
+);const Tick = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" {...props}>
+        <path d="M7 12.9L10.1429 16.5L18 7.5" stroke="white" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"/>
+    </svg>
+);
 
 const Empty = (props: React.SVGProps<SVGSVGElement>) => null;
 export const Icons = {
@@ -183,5 +202,7 @@ export const Icons = {
     UsFlag,
     DropdownArrow,
     SignInBackArrow,
-    SignInNextArrow
+    SignInNextArrow,
+    CircleTick,
+    Tick
 } as const;

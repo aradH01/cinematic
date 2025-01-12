@@ -46,3 +46,11 @@ export const InterestsTypes = [
   { title: "Giallo", id: '19' },
   { title: "Actuality", id: '20' },
 ];
+
+export const ShowImages=[
+  "/images/show1.jpg","/images/show2.jpg","/images/show3.jpg","/images/show4.jpg","/images/show5.jpg",
+  "/images/show1.jpg","/images/show2.jpg","/images/show3.jpg","/images/show4.jpg","/images/show5.jpg",
+  "/images/show1.jpg","/images/show2.jpg","/images/show3.jpg","/images/show4.jpg","/images/show5.jpg",
+  "/images/show1.jpg","/images/show2.jpg","/images/show3.jpg","/images/show4.jpg","/images/show5.jpg",
+
+];
