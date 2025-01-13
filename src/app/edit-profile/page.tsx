@@ -1,0 +1,62 @@
+'use client'
+import {Icon} from "@/components/elements/Icon";
+import React, {useState} from "react";
+import {addClass} from "@/core/utils/classNames";
+import Image from "next/image";
+import Avatar from '@/public/images/MenAvatar.svg'
+import {PhoneInput} from "@/components/elements/Input";
+import {Button, SettingButton} from "@/components/elements/Button";
+import styled from "@emotion/styled";
+
+const StyledButton=styled(Button)`
+    background: transparent;
+    border: 1px solid ${({theme})=>theme.components.border100};
+    padding: 8px 24px;
+    margin: 1rem auto 0;
+`
+
+export default function EditProfilePage() {
+    const [autoPlay, setAutoPlay] = useState(false)
+    const [repeatAutoPlay, setRepeatAutoPlay] = useState(false)
+    const handleAutoPlayChange = (newState: boolean) => {
+        console.log('Toggle State:', newState);
+        setAutoPlay(newState); // Update local state
+    };
+    const handleRepeatPlayChange = (newState: boolean) => {
+        console.log('Toggle State:', newState);
+        setRepeatAutoPlay(newState); // Update local state
+    };
+    return (
+        <div className="pt-[60px] px-[12px]">
+            <div className="mb-[32px] flex items-center justify-between">
+                <div
+                    className="border-border100  border-solid border w-[48px] h-[48px] p-[10px] flex items-center justify-center rounded-full bg-transparent">
+                    <Icon name="SignInBackArrow" className="w-[28px] h-[28px]"/>
+                </div>
+                <div
+                    className="border-border100  border-solid border w-[48px] h-[48px] p-[10px] flex items-center justify-center rounded-full bg-transparent">
+                    <Icon name="Delete" className="w-[28px] h-[28px]"/>
+                </div>
+
+            </div>
+            <Image
+                src={Avatar}
+                alt="avatar-image"
+                height="120"
+                width="120"
+                className="mx-auto"
+            />
+            <div className="flex flex-col gap-[12px] items-center mt-4 mb-[36px] w-full">
+                <PhoneInput placeHolder="ID name" className="w-full max-w-[309px]"/>
+                <PhoneInput placeHolder="Email address" className="w-full max-w-[309px]"/>
+            </div>
+            <div className="flex flex-col items-center justify-center gap-[2px] w-full">
+                <SettingButton icon="Global" title="Display language" description="English"/>
+                <SettingButton icon="Subtitle" title="Audio & Subtitles" description="English and English (United Kingdom)"/>
+                <SettingButton swapButtonChecked={autoPlay} swapButtonOnCheckedChange={handleAutoPlayChange} swapButton icon="Clock" title="Autoplay next episode"/>
+                <SettingButton swapButtonChecked={repeatAutoPlay} swapButtonOnCheckedChange={handleRepeatPlayChange} swapButton icon="Repeat" title="Autoplay previews"/>
+            </div>
+            <StyledButton title="Log out" className="[&>div>span]:!font-lecturis-rounded"/>
+        </div>
+    )
+}

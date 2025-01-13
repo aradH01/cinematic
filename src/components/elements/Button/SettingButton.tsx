@@ -1,0 +1,137 @@
+import styled from "@emotion/styled";
+import React, {MouseEventHandler} from 'react';
+import {AvailableIcons, Icon} from '@/components/elements/Icon';
+import {addClass} from '@/core/utils/classNames';
+import {getSize, Size} from '@/shared/styles/globals';
+import {SwapButton} from "@/components/elements/SwapButton";
+
+
+export interface SettingButtonProps {
+    className?: string,
+    title: string,
+    disabled?: boolean,
+    size?: Size,
+    type?: "button" | "submit" | "reset" | undefined,
+    width?: string,
+    height?: string,
+    icon?: AvailableIcons,
+    outline?: boolean,
+    iconClass?: string,
+    redIcon?: boolean,
+    onClick?: MouseEventHandler<HTMLButtonElement>
+    description?: string
+    swapButton?: boolean
+    swapButtonChecked?: boolean;
+    swapButtonOnCheckedChange?: (checked: boolean) => void;
+    swapButtonDisabled?: boolean;
+}
+
+export const StyledSettingButton = styled.button<StyledButtonType>`
+    border-radius: 500px;
+    background: ${({theme}) => theme.components.black500};
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: 700ms ease all;
+    padding: 12px;
+    ${({size, width, height}) => getSize(size, width, height)}
+    width: ${({width}) => width || 'fit-content'};
+    height: ${({height}) => height || '64px'};
+
+
+
+    &.outline {
+        border: 1px ${({theme}) => theme.components.outlinedButtonBorder} solid !important;
+        color: ${({theme}) => theme.font.black} !important;
+        background-color: ${({theme}) => theme.components.opacityButton} !important;
+
+        ${({theme}) => theme.name === 'dark' && `
+      background-color: rgb(38,38,38) !important;
+      color: #fff !important;
+      `}
+        &:hover {
+            box-shadow: 0px 0px 15px 1px rgba(209, 209, 209, 0.75) inset;
+        }
+    }
+
+    &:disabled {
+        background-color: ${({theme}) => theme.components.nonActive};
+        border: none !important;
+        cursor: not-allowed !important;
+        filter: blur(2px);
+        box-shadow: none;
+
+        svg {
+            animation: none;
+        }
+
+        &:hover {
+            box-shadow: none !important;
+        }
+    }
+`
+
+type StyledButtonType = Pick<
+    SettingButtonProps,
+    | 'size'
+    | 'width'
+    | 'height'
+>;
+export const SettingButton: React.FC<SettingButtonProps> = ({
+                                                                onClick,
+                                                                icon,
+                                                                size,
+                                                                width = '100%',
+                                                                height = '64px',
+                                                                disabled,
+                                                                className,
+                                                                title,
+                                                                type,
+                                                                outline,
+                                                                redIcon,
+                                                                description,
+                                                                swapButton,
+                                                                swapButtonOnCheckedChange,
+                                                                swapButtonDisabled,
+                                                                swapButtonChecked,
+                                                                iconClass,
+                                                                ...props
+                                                            }) => {
+    return (
+        <StyledSettingButton
+            className={addClass("", `app-button ${className ?? ''}    ${outline ? "outline" : ''}`)}
+            disabled={disabled}
+            size={size}
+            width={width}
+            height={height}
+            type={type}
+            onClick={onClick}
+            {...props}
+        >
+
+            <div className="flex items-center gap-[12px]">
+                <div
+                    className={addClass(redIcon ? 'bg-red200' : 'bg-border100', 'p-2 flex items-center justify-center rounded-full w-[40px] h-[40px]')}>
+                    <Icon name={icon || 'Empty'} className={addClass(iconClass, 'w-6 h-6')}/>
+                </div>
+                <div className="flex flex-col items-start">
+                    <span className={addClass("font-urbanist font-normal text-[16px] leading-[24px] text-white")}
+                    >{title}</span>
+                    {
+                        description &&
+                        <span className={addClass("font-urbanist font-normal text-[14px] leading-[20px] text-white500")}
+                        >{description}</span>
+                    }
+
+                </div>
+            </div>
+            {
+                swapButton ?
+                    <SwapButton checked={swapButtonChecked} disabled={swapButtonDisabled} onCheckedChange={swapButtonOnCheckedChange}/>
+                    :
+                    <Icon name="RightUpArrow" className="w-6 h-6"/>
+            }
+
+        </StyledSettingButton>
+    )
+}

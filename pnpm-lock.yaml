@@ -21,6 +21,9 @@ importers:
       '@emotion/styled':
         specifier: ^11.14.0
         version: 11.14.0(@emotion/react@11.14.0(@types/react@18.3.18)(react@18.2.0))(@types/react@18.3.18)(react@18.2.0)
+      '@mantine/carousel':
+        specifier: ^7.15.3
+        version: 7.15.3(@mantine/core@7.15.3(@mantine/hooks@7.15.3(react@18.2.0))(@types/react@18.3.18)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@mantine/hooks@7.15.3(react@18.2.0))(embla-carousel-react@7.1.0(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@mantine/core':
         specifier: ^7.15.3
         version: 7.15.3(@mantine/hooks@7.15.3(react@18.2.0))(@types/react@18.3.18)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -33,6 +36,9 @@ importers:
       axios:
         specifier: ^1.7.9
         version: 1.7.9
+      embla-carousel-react:
+        specifier: ^7.1.0
+        version: 7.1.0(react@18.2.0)
       i18next:
         specifier: ^24.2.1
         version: 24.2.1(typescript@5.7.3)
@@ -726,6 +732,15 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
+
+  '@mantine/carousel@7.15.3':
+    resolution: {integrity: sha512-JBt4Yja1Kqznz/rX7xfQxy+/J5WQLIN/p9QiwIEbSZdAzkZfVBXF5mmlTUHixYvTcw0RqdfrS/kZxuQYddf8KA==}
+    peerDependencies:
+      '@mantine/core': 7.15.3
+      '@mantine/hooks': 7.15.3
+      embla-carousel-react: '>=7.0.0'
+      react: 18.2.0
+      react-dom: 18.2.0
 
   '@mantine/core@7.15.3':
     resolution: {integrity: sha512-8IMTq5xDJDjByDUYkDNKImikASStzrnPtVumKsrEnyEY0zhAWkAe/z/+PjTUMcN44ncJ/PrXQkJ6qMaVWzSZwA==}
@@ -1425,6 +1440,14 @@ packages:
 
   electron-to-chromium@1.5.79:
     resolution: {integrity: sha512-nYOxJNxQ9Om4EC88BE4pPoNI8xwSFf8pU/BAeOl4Hh/b/i6V4biTAzwV7pXi3ARKeoYO5JZKMIXTryXSVer5RA==}
+
+  embla-carousel-react@7.1.0:
+    resolution: {integrity: sha512-tbYRPRZSDNd2QLNqYDcArAakGIxtUbhS7tkP0dGXktXHGgcX+3ji3VrOUTOftBiujZrMV8kRxtrRUe/1soloIQ==}
+    peerDependencies:
+      react: 18.2.0
+
+  embla-carousel@7.1.0:
+    resolution: {integrity: sha512-Bh8Pa8NWzgugLkf8sAGexQlBCNDFaej5BXiKgQdRJ1mUC9NWBrw9Z23YVPVGkguWoz5LMjZXXFVGCobl3UPt/Q==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -4062,6 +4085,14 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
+  '@mantine/carousel@7.15.3(@mantine/core@7.15.3(@mantine/hooks@7.15.3(react@18.2.0))(@types/react@18.3.18)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@mantine/hooks@7.15.3(react@18.2.0))(embla-carousel-react@7.1.0(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      '@mantine/core': 7.15.3(@mantine/hooks@7.15.3(react@18.2.0))(@types/react@18.3.18)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@mantine/hooks': 7.15.3(react@18.2.0)
+      embla-carousel-react: 7.1.0(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+
   '@mantine/core@7.15.3(@mantine/hooks@7.15.3(react@18.2.0))(@types/react@18.3.18)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@floating-ui/react': 0.26.28(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -4818,6 +4849,13 @@ snapshots:
       jake: 10.9.2
 
   electron-to-chromium@1.5.79: {}
+
+  embla-carousel-react@7.1.0(react@18.2.0):
+    dependencies:
+      embla-carousel: 7.1.0
+      react: 18.2.0
+
+  embla-carousel@7.1.0: {}
 
   emoji-regex@8.0.0: {}
 

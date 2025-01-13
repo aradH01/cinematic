@@ -7,6 +7,7 @@ import {SendBox} from "@/components/elements/Sendbox";
 import {useState} from "react";
 import {CategoriesButton} from "@/components/elements/CategoriesButton/CategoriesButton";
 import {RadioButton} from "@/components/elements/RadioButton";
+import {SwapButton} from "@/components/elements/SwapButton";
 
 export default function HomePage() {
     const { t, i18n } = useTranslation(); // Use default namespace or specify if required
@@ -27,6 +28,12 @@ export default function HomePage() {
         {label: "Black stories", value: 0, selected: false},
     ]);
     const [selected, setSelected] = useState('');
+    const [isToggled, setIsToggled] = useState(false);
+
+    const handleToggleChange = (newState: boolean) => {
+        console.log('Toggle State:', newState);
+        setIsToggled(newState); // Update local state
+    };
     return (
         <div className="mx-auto p-16">
             <h1 className="text-black">{t('welcome')}</h1>
@@ -70,6 +77,12 @@ export default function HomePage() {
                     checked={selected === 'option2'}
                     onChange={(e) => setSelected(e.target.value)}
                 />
+            </div>
+            <div>
+                <SwapButton checked={isToggled} onCheckedChange={handleToggleChange} />
+                <SwapButton disabled checked={false} onCheckedChange={handleToggleChange} />
+                <SwapButton disabled checked={true} onCheckedChange={handleToggleChange} />
+                <SwapButton checked={isToggled} onCheckedChange={handleToggleChange} />
             </div>
         </div>
     );

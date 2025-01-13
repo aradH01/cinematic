@@ -2,22 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+html, body {
+  @apply h-full bg-signInBg;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  color: var(--foreground);
-  background: #fcfcfc;
-  font-family: Arial, Helvetica, sans-serif;
+#root, #__next {
+  @apply h-full;
 }
 
 @layer utilities {
@@ -31,9 +22,9 @@ body {
 
 @font-face {
   font-family: 'Urbanist';
-  src: url('/public/fonts/urbanist/Urbanist-Black.woff2') format('woff2'),
-  url('/public/fonts/urbanist/Urbanist-Black.woff') format('woff'),
-  url('/public/fonts/urbanist/Urbanist-Black.ttf') format('truetype');
+  src: url('/fonts/urbanist/Urbanist-Black.woff2') format('woff2'),
+  url('/fonts/urbanist/Urbanist-Black.woff') format('woff'),
+  url('/fonts/urbanist/Urbanist-Black.ttf') format('truetype');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -41,9 +32,9 @@ body {
 
 @font-face {
   font-family: 'Urbanist';
-  src: url('/public/fonts/urbanist/Urbanist-BlackItalic.woff2') format('woff2'),
-  url('/public/fonts/urbanist/Urbanist-BlackItalic.woff') format('woff'),
-  url('/public/fonts/urbanist/Urbanist-BlackItalic.ttf') format('truetype');
+  src: url('/fonts/urbanist/Urbanist-BlackItalic.woff2') format('woff2'),
+  url('/fonts/urbanist/Urbanist-BlackItalic.woff') format('woff'),
+  url('/fonts/urbanist/Urbanist-BlackItalic.ttf') format('truetype');
   font-weight: 900;
   font-style: italic;
   font-display: swap;
@@ -51,9 +42,9 @@ body {
 
 @font-face {
   font-family: 'Urbanist';
-  src: url('/public/fonts/urbanist/Urbanist-Bold.woff2') format('woff2'),
-  url('/public/fonts/urbanist/Urbanist-Bold.woff') format('woff'),
-  url('/public/fonts/urbanist/Urbanist-Bold.ttf') format('truetype');
+  src: url('/fonts/urbanist/Urbanist-Bold.woff2') format('woff2'),
+  url('/fonts/urbanist/Urbanist-Bold.woff') format('woff'),
+  url('/fonts/urbanist/Urbanist-Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -61,9 +52,9 @@ body {
 
 @font-face {
   font-family: 'Urbanist';
-  src: url('/public/fonts/urbanist/Urbanist-BoldItalic.woff2') format('woff2'),
-  url('/public/fonts/urbanist/Urbanist-BoldItalic.woff') format('woff'),
-  url('/public/fonts/urbanist/Urbanist-BoldItalic.ttf') format('truetype');
+  src: url('/fonts/urbanist/Urbanist-BoldItalic.woff2') format('woff2'),
+  url('/fonts/urbanist/Urbanist-BoldItalic.woff') format('woff'),
+  url('/fonts/urbanist/Urbanist-BoldItalic.ttf') format('truetype');
   font-weight: bold;
   font-style: italic;
   font-display: swap;
@@ -71,9 +62,9 @@ body {
 
 @font-face {
   font-family: 'Urbanist';
-  src: url('/public/fonts/urbanist/Urbanist-ExtraBold.woff2') format('woff2'),
-  url('/public/fonts/urbanist/Urbanist-ExtraBold.woff') format('woff'),
-  url('/public/fonts/urbanist/Urbanist-ExtraBold.ttf') format('truetype');
+  src: url('/fonts/urbanist/Urbanist-ExtraBold.woff2') format('woff2'),
+  url('/fonts/urbanist/Urbanist-ExtraBold.woff') format('woff'),
+  url('/fonts/urbanist/Urbanist-ExtraBold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -81,9 +72,9 @@ body {
 
 @font-face {
   font-family: 'Urbanist';
-  src: url('/public/fonts/urbanist/Urbanist-ExtraBoldItalic.woff2') format('woff2'),
-  url('/public/fonts/urbanist/Urbanist-ExtraBoldItalic.woff') format('woff'),
-  url('/public/fonts/urbanist/Urbanist-ExtraBoldItalic.ttf') format('truetype');
+  src: url('/fonts/urbanist/Urbanist-ExtraBoldItalic.woff2') format('woff2'),
+  url('/fonts/urbanist/Urbanist-ExtraBoldItalic.woff') format('woff'),
+  url('/fonts/urbanist/Urbanist-ExtraBoldItalic.ttf') format('truetype');
   font-weight: bold;
   font-style: italic;
   font-display: swap;
@@ -91,9 +82,9 @@ body {
 
 @font-face {
   font-family: 'Urbanist';
-  src: url('/public/fonts/urbanist/Urbanist-ExtraLight.woff2') format('woff2'),
-  url('/public/fonts/urbanist/Urbanist-ExtraLight.woff') format('woff'),
-  url('/public/fonts/urbanist/Urbanist-ExtraLight.ttf') format('truetype');
+  src: url('/fonts/urbanist/Urbanist-ExtraLight.woff2') format('woff2'),
+  url('/fonts/urbanist/Urbanist-ExtraLight.woff') format('woff'),
+  url('/fonts/urbanist/Urbanist-ExtraLight.ttf') format('truetype');
   font-weight: 200;
   font-style: normal;
   font-display: swap;
@@ -101,9 +92,9 @@ body {
 
 @font-face {
   font-family: 'Urbanist';
-  src: url('/public/fonts/urbanist/Urbanist-ExtraLightItalic.woff2') format('woff2'),
-  url('/public/fonts/urbanist/Urbanist-ExtraLightItalic.woff') format('woff'),
-  url('/public/fonts/urbanist/Urbanist-ExtraLightItalic.ttf') format('truetype');
+  src: url('/fonts/urbanist/Urbanist-ExtraLightItalic.woff2') format('woff2'),
+  url('/fonts/urbanist/Urbanist-ExtraLightItalic.woff') format('woff'),
+  url('/fonts/urbanist/Urbanist-ExtraLightItalic.ttf') format('truetype');
   font-weight: 200;
   font-style: italic;
   font-display: swap;
@@ -111,9 +102,9 @@ body {
 
 @font-face {
   font-family: 'Urbanist';
-  src: url('/public/fonts/urbanist/Urbanist-Italic.woff2') format('woff2'),
-  url('/public/fonts/urbanist/Urbanist-Italic.woff') format('woff'),
-  url('/public/fonts/urbanist/Urbanist-Italic.ttf') format('truetype');
+  src: url('/fonts/urbanist/Urbanist-Italic.woff2') format('woff2'),
+  url('/fonts/urbanist/Urbanist-Italic.woff') format('woff'),
+  url('/fonts/urbanist/Urbanist-Italic.ttf') format('truetype');
   font-weight: normal;
   font-style: italic;
   font-display: swap;
@@ -121,9 +112,9 @@ body {
 
 @font-face {
   font-family: 'Urbanist';
-  src: url('/public/fonts/urbanist/Urbanist-Light.woff2') format('woff2'),
-  url('/public/fonts/urbanist/Urbanist-Light.woff') format('woff'),
-  url('/public/fonts/urbanist/Urbanist-Light.ttf') format('truetype');
+  src: url('/fonts/urbanist/Urbanist-Light.woff2') format('woff2'),
+  url('/fonts/urbanist/Urbanist-Light.woff') format('woff'),
+  url('/fonts/urbanist/Urbanist-Light.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -131,9 +122,9 @@ body {
 
 @font-face {
   font-family: 'Urbanist';
-  src: url('/public/fonts/urbanist/Urbanist-LightItalic.woff2') format('woff2'),
-  url('/public/fonts/urbanist/Urbanist-LightItalic.woff') format('woff'),
-  url('/public/fonts/urbanist/Urbanist-LightItalic.ttf') format('truetype');
+  src: url('/fonts/urbanist/Urbanist-LightItalic.woff2') format('woff2'),
+  url('/fonts/urbanist/Urbanist-LightItalic.woff') format('woff'),
+  url('/fonts/urbanist/Urbanist-LightItalic.ttf') format('truetype');
   font-weight: 300;
   font-style: italic;
   font-display: swap;
@@ -141,9 +132,9 @@ body {
 
 @font-face {
   font-family: 'Urbanist';
-  src: url('/public/fonts/urbanist/Urbanist-Medium.woff2') format('woff2'),
-  url('/public/fonts/urbanist/Urbanist-Medium.woff') format('woff'),
-  url('/public/fonts/urbanist/Urbanist-Medium.ttf') format('truetype');
+  src: url('/fonts/urbanist/Urbanist-Medium.woff2') format('woff2'),
+  url('/fonts/urbanist/Urbanist-Medium.woff') format('woff'),
+  url('/fonts/urbanist/Urbanist-Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -151,9 +142,9 @@ body {
 
 @font-face {
   font-family: 'Urbanist';
-  src: url('/public/fonts/urbanist/Urbanist-MediumItalic.woff2') format('woff2'),
-  url('/public/fonts/urbanist/Urbanist-MediumItalic.woff') format('woff'),
-  url('/public/fonts/urbanist/Urbanist-MediumItalic.ttf') format('truetype');
+  src: url('/fonts/urbanist/Urbanist-MediumItalic.woff2') format('woff2'),
+  url('/fonts/urbanist/Urbanist-MediumItalic.woff') format('woff'),
+  url('/fonts/urbanist/Urbanist-MediumItalic.ttf') format('truetype');
   font-weight: 500;
   font-style: italic;
   font-display: swap;
@@ -161,9 +152,9 @@ body {
 
 @font-face {
   font-family: 'Urbanist';
-  src: url('/public/fonts/urbanist/Urbanist-Regular.woff2') format('woff2'),
-  url('/public/fonts/urbanist/Urbanist-Regular.woff') format('woff'),
-  url('/public/fonts/urbanist/Urbanist-Regular.ttf') format('truetype');
+  src: url('/fonts/urbanist/Urbanist-Regular.woff2') format('woff2'),
+  url('/fonts/urbanist/Urbanist-Regular.woff') format('woff'),
+  url('/fonts/urbanist/Urbanist-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -171,9 +162,9 @@ body {
 
 @font-face {
   font-family: 'Urbanist';
-  src: url('/public/fonts/urbanist/Urbanist-SemiBold.woff2') format('woff2'),
-  url('/public/fonts/urbanist/Urbanist-SemiBold.woff') format('woff'),
-  url('/public/fonts/urbanist/Urbanist-SemiBold.ttf') format('truetype');
+  src: url('/fonts/urbanist/Urbanist-SemiBold.woff2') format('woff2'),
+  url('/fonts/urbanist/Urbanist-SemiBold.woff') format('woff'),
+  url('/fonts/urbanist/Urbanist-SemiBold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -181,9 +172,9 @@ body {
 
 @font-face {
   font-family: 'Urbanist';
-  src: url('/public/fonts/urbanist/Urbanist-SemiBoldItalic.woff2') format('woff2'),
-  url('/public/fonts/urbanist/Urbanist-SemiBoldItalic.woff') format('woff'),
-  url('/public/fonts/urbanist/Urbanist-SemiBoldItalic.ttf') format('truetype');
+  src: url('/fonts/urbanist/Urbanist-SemiBoldItalic.woff2') format('woff2'),
+  url('/fonts/urbanist/Urbanist-SemiBoldItalic.woff') format('woff'),
+  url('/fonts/urbanist/Urbanist-SemiBoldItalic.ttf') format('truetype');
   font-weight: 600;
   font-style: italic;
   font-display: swap;
@@ -191,9 +182,9 @@ body {
 
 @font-face {
   font-family: 'Urbanist';
-  src: url('/public/fonts/urbanist/Urbanist-Thin.woff2') format('woff2'),
-  url('/public/fonts/urbanist/Urbanist-Thin.woff') format('woff'),
-  url('/public/fonts/urbanist/Urbanist-Thin.ttf') format('truetype');
+  src: url('/fonts/urbanist/Urbanist-Thin.woff2') format('woff2'),
+  url('/fonts/urbanist/Urbanist-Thin.woff') format('woff'),
+  url('/fonts/urbanist/Urbanist-Thin.ttf') format('truetype');
   font-weight: 100;
   font-style: normal;
   font-display: swap;
@@ -201,9 +192,9 @@ body {
 
 @font-face {
   font-family: 'Urbanist';
-  src: url('/public/fonts/urbanist/Urbanist-ThinItalic.woff2') format('woff2'),
-  url('/public/fonts/urbanist/Urbanist-ThinItalic.woff') format('woff'),
-  url('/public/fonts/urbanist/Urbanist-ThinItalic.ttf') format('truetype');
+  src: url('/fonts/urbanist/Urbanist-ThinItalic.woff2') format('woff2'),
+  url('/fonts/urbanist/Urbanist-ThinItalic.woff') format('woff'),
+  url('/fonts/urbanist/Urbanist-ThinItalic.ttf') format('truetype');
   font-weight: 100;
   font-style: italic;
   font-display: swap;
@@ -211,9 +202,9 @@ body {
 
 @font-face {
   font-family: 'FH Lecturis Rounded';
-  src: url('/public/fonts/lecturis/FHLecturisRounded-Light.woff2') format('woff2'),
-  url('/public/fonts/lecturis/FHLecturisRounded-Light.woff') format('woff'),
-  url('/public/fonts/lecturis/FHLecturisRounded-Light.ttf') format('truetype');
+  src: url('/fonts/lecturis/FHLecturisRounded-Light.woff2') format('woff2'),
+  url('/fonts/lecturis/FHLecturisRounded-Light.woff') format('woff'),
+  url('/fonts/lecturis/FHLecturisRounded-Light.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -221,9 +212,9 @@ body {
 
 @font-face {
   font-family: 'FH Lecturis Rounded';
-  src: url('/public/fonts/lecturis/FHLecturisRounded-Light_1.woff2') format('woff2'),
-  url('/public/fonts/lecturis/FHLecturisRounded-Light_1.woff') format('woff'),
-  url('/public/fonts/lecturis/FHLecturisRounded-Light_1.ttf') format('truetype');
+  src: url('/fonts/lecturis/FHLecturisRounded-Light_1.woff2') format('woff2'),
+  url('/fonts/lecturis/FHLecturisRounded-Light_1.woff') format('woff'),
+  url('/fonts/lecturis/FHLecturisRounded-Light_1.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -231,9 +222,9 @@ body {
 
 @font-face {
   font-family: 'FH Lecturis Rounded';
-  src: url('/public/fonts/lecturis/FHLecturisRounded-Light_2.woff2') format('woff2'),
-  url('/public/fonts/lecturis/FHLecturisRounded-Light_2.woff') format('woff'),
-  url('/public/fonts/lecturis/FHLecturisRounded-Light_2.ttf') format('truetype');
+  src: url('/fonts/lecturis/FHLecturisRounded-Light_2.woff2') format('woff2'),
+  url('/fonts/lecturis/FHLecturisRounded-Light_2.woff') format('woff'),
+  url('/fonts/lecturis/FHLecturisRounded-Light_2.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -241,9 +232,9 @@ body {
 
 @font-face {
   font-family: 'FH Lecturis Rounded';
-  src: url('/public/fonts/lecturis/FHLecturisRounded-Regular.woff2') format('woff2'),
-  url('/public/fonts/lecturis/FHLecturisRounded-Regular.woff') format('woff'),
-  url('/public/fonts/lecturis/FHLecturisRounded-Regular.ttf') format('truetype');
+  src: url('/fonts/lecturis/FHLecturisRounded-Regular.woff2') format('woff2'),
+  url('/fonts/lecturis/FHLecturisRounded-Regular.woff') format('woff'),
+  url('/fonts/lecturis/FHLecturisRounded-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -251,9 +242,9 @@ body {
 
 @font-face {
   font-family: 'FH Lecturis Rounded';
-  src: url('/public/fonts/lecturis/FHLecturisRounded-Regular_1.woff2') format('woff2'),
-  url('/public/fonts/lecturis/FHLecturisRounded-Regular_1.woff') format('woff'),
-  url('/public/fonts/lecturis/FHLecturisRounded-Regular_1.ttf') format('truetype');
+  src: url('/fonts/lecturis/FHLecturisRounded-Regular_1.woff2') format('woff2'),
+  url('/fonts/lecturis/FHLecturisRounded-Regular_1.woff') format('woff'),
+  url('/fonts/lecturis/FHLecturisRounded-Regular_1.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -261,9 +252,9 @@ body {
 
 @font-face {
   font-family: 'FH Lecturis Rounded';
-  src: url('/public/fonts/lecturis/FHLecturisRounded-Regular_2.woff2') format('woff2'),
-  url('/public/fonts/lecturis/FHLecturisRounded-Regular_2.woff') format('woff'),
-  url('/public/fonts/lecturis/FHLecturisRounded-Regular_2.ttf') format('truetype');
+  src: url('/fonts/lecturis/FHLecturisRounded-Regular_2.woff2') format('woff2'),
+  url('/fonts/lecturis/FHLecturisRounded-Regular_2.woff') format('woff'),
+  url('/fonts/lecturis/FHLecturisRounded-Regular_2.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -271,9 +262,9 @@ body {
 
 @font-face {
   font-family: 'FH Lecturis';
-  src: url('/public/fonts/lecturis/FHLecturis-Bold.woff2') format('woff2'),
-  url('/public/fonts/lecturis/FHLecturis-Bold.woff') format('woff'),
-  url('/public/fonts/lecturis/FHLecturis-Bold.ttf') format('truetype');
+  src: url('/fonts/lecturis/FHLecturis-Bold.woff2') format('woff2'),
+  url('/fonts/lecturis/FHLecturis-Bold.woff') format('woff'),
+  url('/fonts/lecturis/FHLecturis-Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -281,9 +272,9 @@ body {
 
 @font-face {
   font-family: 'FH Lecturis';
-  src: url('/public/fonts/lecturis/FHLecturis-Bold_1.woff2') format('woff2'),
-  url('/public/fonts/lecturis/FHLecturis-Bold_1.woff') format('woff'),
-  url('/public/fonts/lecturis/FHLecturis-Bold_1.ttf') format('truetype');
+  src: url('/fonts/lecturis/FHLecturis-Bold_1.woff2') format('woff2'),
+  url('/fonts/lecturis/FHLecturis-Bold_1.woff') format('woff'),
+  url('/fonts/lecturis/FHLecturis-Bold_1.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -291,9 +282,9 @@ body {
 
 @font-face {
   font-family: 'FH Lecturis';
-  src: url('/public/fonts/lecturis/FHLecturis-Bold_2.woff2') format('woff2'),
-  url('/public/fonts/lecturis/FHLecturis-Bold_2.woff') format('woff'),
-  url('/public/fonts/lecturis/FHLecturis-Bold_2.ttf') format('truetype');
+  src: url('/fonts/lecturis/FHLecturis-Bold_2.woff2') format('woff2'),
+  url('/fonts/lecturis/FHLecturis-Bold_2.woff') format('woff'),
+  url('/fonts/lecturis/FHLecturis-Bold_2.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -301,9 +292,9 @@ body {
 
 @font-face {
   font-family: 'FH Lecturis';
-  src: url('/public/fonts/lecturis/FHLecturis-Light.woff2') format('woff2'),
-  url('/public/fonts/lecturis/FHLecturis-Light.woff') format('woff'),
-  url('/public/fonts/lecturis/FHLecturis-Light.ttf') format('truetype');
+  src: url('/fonts/lecturis/FHLecturis-Light.woff2') format('woff2'),
+  url('/fonts/lecturis/FHLecturis-Light.woff') format('woff'),
+  url('/fonts/lecturis/FHLecturis-Light.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -311,9 +302,9 @@ body {
 
 @font-face {
   font-family: 'FH Lecturis';
-  src: url('/public/fonts/lecturis/FHLecturis-Light_1.woff2') format('woff2'),
-  url('/public/fonts/lecturis/FHLecturis-Light_1.woff') format('woff'),
-  url('/public/fonts/lecturis/FHLecturis-Light_1.ttf') format('truetype');
+  src: url('/fonts/lecturis/FHLecturis-Light_1.woff2') format('woff2'),
+  url('/fonts/lecturis/FHLecturis-Light_1.woff') format('woff'),
+  url('/fonts/lecturis/FHLecturis-Light_1.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -321,9 +312,9 @@ body {
 
 @font-face {
   font-family: 'FH Lecturis';
-  src: url('/public/fonts/lecturis/FHLecturis-Light_2.woff2') format('woff2'),
-  url('/public/fonts/lecturis/FHLecturis-Light_2.woff') format('woff'),
-  url('/public/fonts/lecturis/FHLecturis-Light_2.ttf') format('truetype');
+  src: url('/fonts/lecturis/FHLecturis-Light_2.woff2') format('woff2'),
+  url('/fonts/lecturis/FHLecturis-Light_2.woff') format('woff'),
+  url('/fonts/lecturis/FHLecturis-Light_2.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -331,9 +322,9 @@ body {
 
 @font-face {
   font-family: 'FH Lecturis';
-  src: url('/public/fonts/lecturis/FHLecturis-Regular.woff2') format('woff2'),
-  url('/public/fonts/lecturis/FHLecturis-Regular.woff') format('woff'),
-  url('/public/fonts/lecturis/FHLecturis-Regular.ttf') format('truetype');
+  src: url('/fonts/lecturis/FHLecturis-Regular.woff2') format('woff2'),
+  url('/fonts/lecturis/FHLecturis-Regular.woff') format('woff'),
+  url('/fonts/lecturis/FHLecturis-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -341,9 +332,9 @@ body {
 
 @font-face {
   font-family: 'FH Lecturis';
-  src: url('/public/fonts/lecturis/FHLecturis-Regular_1.woff2') format('woff2'),
-  url('/public/fonts/lecturis/FHLecturis-Regular_1.woff') format('woff'),
-  url('/public/fonts/lecturis/FHLecturis-Regular_1.ttf') format('truetype');
+  src: url('/fonts/lecturis/FHLecturis-Regular_1.woff2') format('woff2'),
+  url('/fonts/lecturis/FHLecturis-Regular_1.woff') format('woff'),
+  url('/fonts/lecturis/FHLecturis-Regular_1.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -351,9 +342,9 @@ body {
 
 @font-face {
   font-family: 'FH Lecturis';
-  src: url('/public/fonts/lecturis/FHLecturis-Regular_2.woff2') format('woff2'),
-  url('/public/fonts/lecturis/FHLecturis-Regular_2.woff') format('woff'),
-  url('/public/fonts/lecturis/FHLecturis-Regular_2.ttf') format('truetype');
+  src: url('/fonts/lecturis/FHLecturis-Regular_2.woff2') format('woff2'),
+  url('/fonts/lecturis/FHLecturis-Regular_2.woff') format('woff'),
+  url('/fonts/lecturis/FHLecturis-Regular_2.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -361,9 +352,9 @@ body {
 
 @font-face {
   font-family: 'FH Lecturis Rounded';
-  src: url('/public/fonts/lecturis/FHLecturisRounded-Bold.woff2') format('woff2'),
-  url('/public/fonts/lecturis/FHLecturisRounded-Bold.woff') format('woff'),
-  url('/public/fonts/lecturis/FHLecturisRounded-Bold.ttf') format('truetype');
+  src: url('/fonts/lecturis/FHLecturisRounded-Bold.woff2') format('woff2'),
+  url('/fonts/lecturis/FHLecturisRounded-Bold.woff') format('woff'),
+  url('/fonts/lecturis/FHLecturisRounded-Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -371,9 +362,9 @@ body {
 
 @font-face {
   font-family: 'FH Lecturis Rounded';
-  src: url('/public/fonts/lecturis/FHLecturisRounded-Bold_1.woff2') format('woff2'),
-  url('/public/fonts/lecturis/FHLecturisRounded-Bold_1.woff') format('woff'),
-  url('/public/fonts/lecturis/FHLecturisRounded-Bold_1.ttf') format('truetype');
+  src: url('/fonts/lecturis/FHLecturisRounded-Bold_1.woff2') format('woff2'),
+  url('/fonts/lecturis/FHLecturisRounded-Bold_1.woff') format('woff'),
+  url('/fonts/lecturis/FHLecturisRounded-Bold_1.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -381,9 +372,9 @@ body {
 
 @font-face {
   font-family: 'FH Lecturis Rounded';
-  src: url('/public/fonts/lecturis/FHLecturisRounded-Bold_2.woff2') format('woff2'),
-  url('/public/fonts/lecturis/FHLecturisRounded-Bold_2.woff') format('woff'),
-  url('/public/fonts/lecturis/FHLecturisRounded-Bold_2.ttf') format('truetype');
+  src: url('/fonts/lecturis/FHLecturisRounded-Bold_2.woff2') format('woff2'),
+  url('/fonts/lecturis/FHLecturisRounded-Bold_2.woff') format('woff'),
+  url('/fonts/lecturis/FHLecturisRounded-Bold_2.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
