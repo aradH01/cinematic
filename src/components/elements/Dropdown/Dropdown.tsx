@@ -50,7 +50,6 @@ const DropdownItem = styled.li`
     font-size: 14px;
     font-weight: 600;
     &:hover {
-       brig
     }
 `;
 
@@ -65,24 +64,16 @@ interface DropdownProps {
     options: { value: string; id?: string | number; icon?: AvailableIcons; label: string }[];
     icon?: boolean;
     className?: string;
+    selectedOption: { value: string; label: string; icon?: AvailableIcons } | null;
+    onSelect: (option: { value: string; label: string; icon?: AvailableIcons }) => void;
 }
 
-export const Dropdown = ({ options, icon, className }: DropdownProps) => {
+export const Dropdown = ({ options, icon, className, selectedOption, onSelect }: DropdownProps) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState<{
-        value: string;
-        label: string;
-        icon?: AvailableIcons;
-    } | null>({
-        value: 'en',
-        label: 'English',
-        icon: 'UsFlag',
-    });
-
     const dropdownRef = useRef<HTMLDivElement | null>(null);
 
-    const handleOptionSelect = (option: { value: string; label: string; icon?: AvailableIcons; id?: number | string }) => {
-        setSelectedOption(option);
+    const handleOptionSelect = (option: { value: string; label: string; icon?: AvailableIcons }) => {
+        onSelect(option);
         setIsOpen(false);
     };
 

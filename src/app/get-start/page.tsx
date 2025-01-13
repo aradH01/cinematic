@@ -6,6 +6,8 @@ import {Button} from "@/components/elements/Button";
 import {AvailableIcons, Icon} from "@/components/elements/Icon";
 import {Dropdown} from "@/components/elements/Dropdown";
 import {LanguagesList} from "@/core/constants/enums";
+import {useEffect, useState} from "react";
+import {useGeolocation} from "@/shared/hooks/useGeolocation";
 const ProjectName= styled.h1`
     color: ${({theme})=> theme.font.white};
     text-align: center;
@@ -46,7 +48,23 @@ const GoogleButton = styled(Button)`
     }
 `
 export default function GetStartPage() {
+    const language = useGeolocation();
+    const [selectedOption, setSelectedOption] = useState<{ value: string; label: string; icon?: AvailableIcons }>({value: 'en', label: 'English', icon: 'UsFlag',});
 
+    useEffect(() => {
+        if (language==='en'){
+            setSelectedOption({value: 'en', label: 'English', icon: 'UsFlag'})
+        } if (language==='az'){
+            setSelectedOption({value: 'az', label: 'Turkish', icon: 'AzarbaijanFlag'})
+        }if (language==='ru'){
+            setSelectedOption({value: 'ru', label: 'Russian', icon: 'RussianFlag'})
+        }
+    }, [language]);
+
+
+    const handleSelect = (option: { value: string; label: string; icon?: AvailableIcons }) => {
+        setSelectedOption(option);
+    };
     return(
         <div className="flex-col flex items-center">
             <div className="flex flex-col items-center justify-center pt-[160px]">
@@ -72,7 +90,7 @@ export default function GetStartPage() {
                 </div>
             </div>
             <div className="mt-[51px]">
-                <Dropdown icon options={LanguagesList} className="max-w-[146px]"/>
+                <Dropdown selectedOption={selectedOption} onSelect={handleSelect} icon options={LanguagesList} className="max-w-[146px]"/>
             </div>
             <Typography.Paragraph className="mt-[18px] w-[240px] text-center !text-[14px] !font-lecturis-rounded leading-[20px]" color="black" weight="normal">
                 By tapping Continue, you agree to our {" "}

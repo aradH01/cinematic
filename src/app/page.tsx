@@ -83,7 +83,6 @@ export default function HomePage() {
                 <SwapButton disabled checked={false} onCheckedChange={handleToggleChange} />
                 <SwapButton disabled checked={true} onCheckedChange={handleToggleChange} />
                 <SwapButton checked={isToggled} onCheckedChange={handleToggleChange} />
-
             </div>
         </div>
     );
