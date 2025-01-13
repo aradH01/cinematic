@@ -35,7 +35,7 @@ export default function InterestsPage(){
         <div className="flex flex-col items-center px-[8px]">
             <div className="flex flex-col items-center">
                 <Typography.Title size="lt" className="leading-[40px] !font-lecturis-rounded text-center" color="white"
-                                  weight="normal" level="h1">
+                                  weight="bold" level="h1">
                     Choose your interests
                 </Typography.Title>
                 <Typography.Text size="md"

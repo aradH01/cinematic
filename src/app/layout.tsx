@@ -5,7 +5,7 @@ import { addClass } from '@/core/utils/classNames';
 import MainLayout from '@/layouts/DashboardLayout/DashboardLayout';
 import React from "react";
 import {AppProvider} from "@/components/providers/AppProvider";
-
+import '@mantine/carousel/styles.css';
 export const metadata: Metadata = {
     title: '',
     description: '',
