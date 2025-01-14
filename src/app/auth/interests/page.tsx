@@ -5,7 +5,66 @@ import {LabelRadioButton} from "@/components/elements/LabelRadioButton";
 import {useState} from "react";
 import {InterestsCat, InterestsTypes, ShowImages} from "@/core/constants/enums";
 import {InterestsCheckbox, ShowsImageCheckbox} from "@/components/elements/Checkbox";
-import dsd from '../../../../public/images/show2.svg'
+import styled from "@emotion/styled";
+
+
+const Wrapper = styled.div<{ length: number }>`
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    gap: 6px;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(8, 1fr)); /* Responsive grid for larger screens */
+
+    /* Apply 4 columns for screens smaller than 768px */
+    @media (max-width: 768px) {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 columns layout */
+    }
+    
+    & > :nth-child(1) {
+        div {
+            img {
+                @media (max-width: 768px) {
+                    border-radius: 24px 8px 8px 8px;
+                }
+            }
+        }
+    }
+
+    & > :nth-child(4) {
+        div {
+            img {
+                @media (max-width: 768px) {
+                    border-radius: 8px 24px 8px 8px;
+                }
+            }
+        }
+    }
+
+    & > :nth-last-child(1) {
+        div {
+            img {
+                @media (max-width: 768px) {
+                    border-radius: 8px 8px 24px 8px;
+                }
+            }
+        }
+    }
+
+    & > :nth-child(${({ length }) => length - 3}) {
+        div {
+            img {
+                @media (max-width: 768px) {
+                    border-radius: 8px 8px 8px 24px;
+                }
+            }
+        }
+    }
+`;
+
+
 export default function InterestsPage(){
     const [selectedOption, setSelectedOption] = useState<string | null>('genres');
     const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
@@ -56,7 +115,7 @@ export default function InterestsPage(){
                         />
                     ))
                     :
-                    <div className="flex flex-wrap gap-[6px]">
+                    <Wrapper length={ShowImages.length} className="max-w-full md:max-w-[1340px]">
                         {ShowImages.map((image , index) => (
                             <ShowsImageCheckbox
                                 key={index}
@@ -65,7 +124,7 @@ export default function InterestsPage(){
                                 onChange={() => handleCheckboxToggle(image)}
                             />
                         ))}
-                    </div>
+                    </Wrapper>
                 }
             </div>
         </div>
