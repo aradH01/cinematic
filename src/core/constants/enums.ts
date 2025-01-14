@@ -1,7 +1,14 @@
 import {AvailableIcons} from "@/components/elements/Icon";
 
 export enum Path {
-  SignIn = '/auth/sign-in',
+  SignIn = '/get-start',
+  OTPCode = '/auth/otp-code',
+  CreateProfile = '/auth/create-profile',
+  Interests = '/auth/interests',
+  AddPhone = '/auth/add-phone',
+  Settings = '/setting',
+  ManageProfile= '/manage-profile',
+  EditProfile = '/edit-profile',
 }
 
 export const LanguagesList = [

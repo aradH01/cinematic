@@ -4,7 +4,8 @@ import type { PropsWithChildren } from 'react';
 import { ThemeProvider } from "@emotion/react";
 import { Themes } from '@/shared/styles/themes';
 import { I18nextProvider } from 'react-i18next';
-import i18n from "../../../i18"; // Import I18nextProvider
+import i18n from "../../../i18";
+import {GoogleOAuthProvider} from "@react-oauth/google";
 
 
 export function AppProvider({ children }: PropsWithChildren) {
@@ -12,6 +13,7 @@ export function AppProvider({ children }: PropsWithChildren) {
         return <div>Loading...</div>;
     }
     return (
+        <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || ''}>
         <I18nextProvider i18n={i18n}>
             <ThemeProvider theme={Themes.light}>
                 <MantineProvider>
@@ -19,5 +21,6 @@ export function AppProvider({ children }: PropsWithChildren) {
                 </MantineProvider>
             </ThemeProvider>
         </I18nextProvider>
+        </GoogleOAuthProvider>
     );
 }

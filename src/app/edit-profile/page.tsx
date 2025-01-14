@@ -7,6 +7,8 @@ import Avatar from '@/public/images/MenAvatar.svg'
 import {PhoneInput} from "@/components/elements/Input";
 import {Button, SettingButton} from "@/components/elements/Button";
 import styled from "@emotion/styled";
+import {Path} from "@/core/constants/enums";
+import {useRouter} from "next/navigation";
 
 const StyledButton=styled(Button)`
     background: transparent;
@@ -16,6 +18,7 @@ const StyledButton=styled(Button)`
 `
 
 export default function EditProfilePage() {
+    const router = useRouter();
     const [autoPlay, setAutoPlay] = useState(false)
     const [repeatAutoPlay, setRepeatAutoPlay] = useState(false)
     const handleAutoPlayChange = (newState: boolean) => {
@@ -54,7 +57,7 @@ export default function EditProfilePage() {
                 <SettingButton swapButtonChecked={autoPlay} swapButtonOnCheckedChange={handleAutoPlayChange} swapButton icon="Clock" title="Autoplay next episode"/>
                 <SettingButton swapButtonChecked={repeatAutoPlay} swapButtonOnCheckedChange={handleRepeatPlayChange} swapButton icon="Repeat" title="Autoplay previews"/>
             </div>
-            <StyledButton title="Log out" className="[&>div>span]:!font-lecturis-rounded"/>
+            <StyledButton onClick={()=>router.push(Path.SignIn)} title="Log out" className="[&>div>span]:!font-lecturis-rounded"/>
         </div>
     )
 }

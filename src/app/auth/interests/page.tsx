@@ -3,9 +3,11 @@ import {Typography} from "@/components/elements/Typography";
 import {RadioButton} from "@/components/elements/RadioButton";
 import {LabelRadioButton} from "@/components/elements/LabelRadioButton";
 import {useState} from "react";
-import {InterestsCat, InterestsTypes, ShowImages} from "@/core/constants/enums";
+import {InterestsCat, InterestsTypes, Path, ShowImages} from "@/core/constants/enums";
 import {InterestsCheckbox, ShowsImageCheckbox} from "@/components/elements/Checkbox";
 import styled from "@emotion/styled";
+import {Icon} from "@/components/elements/Icon";
+import {useRouter} from "next/navigation";
 
 
 const Wrapper = styled.div<{ length: number }>`
@@ -69,7 +71,10 @@ export default function InterestsPage(){
     const [selectedOption, setSelectedOption] = useState<string | null>('genres');
     const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
     const [selectedImages, setSelectedImages] = useState<string[]>([]);
-
+    const router = useRouter();
+    const handleNext=()=>{
+        router.push(Path.Settings);
+    }
     const handleTypeChange = (value: string) => {
         setSelectedOption(value);
 
@@ -103,11 +108,12 @@ export default function InterestsPage(){
                     Get better video recommendations
                 </Typography.Text>
             </div>
-                <div className="mt-4 mb-[35px]">
-                    <LabelRadioButton className="max-w-[78px] h-[32px] rounded-[12px] flex items-center justify-center" options={InterestsCat} checked={selectedOption} onChange={handleTypeChange} />
-                </div>
+            <div className="mt-4 mb-[35px]">
+                <LabelRadioButton className="max-w-[78px] h-[32px] rounded-[12px] flex items-center justify-center"
+                                  options={InterestsCat} checked={selectedOption} onChange={handleTypeChange}/>
+            </div>
             <div className="flex flex-wrap gap-[6px]">
-                { selectedOption==='genres' ?
+                {selectedOption === 'genres' ?
                     InterestsTypes.map((interest) => (
                         <InterestsCheckbox
                             title={interest.title} key={interest.id}
@@ -116,7 +122,7 @@ export default function InterestsPage(){
                     ))
                     :
                     <Wrapper length={ShowImages.length} className="max-w-full md:max-w-[1340px]">
-                        {ShowImages.map((image , index) => (
+                        {ShowImages.map((image, index) => (
                             <ShowsImageCheckbox
                                 key={index}
                                 image={image}
@@ -127,6 +133,10 @@ export default function InterestsPage(){
                     </Wrapper>
                 }
             </div>
+            <button onClick={handleNext}
+                    className="fixed z-[15] bottom-[3rem] left-1/2 transform -translate-x-1/2 mx-auto border-border100 shadow-signInNext  border-solid border p-[20px] w-[72px] h-[72px] flex items-center justify-center rounded-full bg-white800">
+                <Icon name="SignInNextArrow" className="w-[24x] h-[24px]"/>
+            </button>
         </div>
     )
 }

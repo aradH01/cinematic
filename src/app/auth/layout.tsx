@@ -16,10 +16,7 @@ export default function SignInLayout({ children }: { children: React.ReactNode }
                 </div>
 
                 {children}
-                <div
-                    className="fixed bottom-[3rem] left-1/2 transform -translate-x-1/2 mx-auto border-border100 shadow-signInNext  border-solid border p-[20px] w-[72px] h-[72px] flex items-center justify-center rounded-full bg-white800">
-                    <Icon name="SignInNextArrow" className="w-[24x] h-[24px]"/>
-                </div>
+
             </main>
         </AppProvider>
     );

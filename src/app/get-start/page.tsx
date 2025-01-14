@@ -5,9 +5,13 @@ import styled from "@emotion/styled";
 import {Button} from "@/components/elements/Button";
 import {AvailableIcons, Icon} from "@/components/elements/Icon";
 import {Dropdown} from "@/components/elements/Dropdown";
-import {LanguagesList} from "@/core/constants/enums";
+import {LanguagesList, Path} from "@/core/constants/enums";
 import {useEffect, useState} from "react";
 import {useGeolocation} from "@/shared/hooks/useGeolocation";
+import {useRouter} from "next/navigation";
+import {GoogleLogin} from "@react-oauth/google";
+import {verifyGoogleToken} from "@/core/utils/googleAuth";
+import {GoogleButton} from "@/components/elements/Button/GoogleButton";
 const ProjectName= styled.h1`
     color: ${({theme})=> theme.font.white};
     text-align: center;
@@ -33,24 +37,11 @@ const StyledButton = styled(Button)`
         line-height: 28px; 
     }
 `
-const GoogleButton = styled(Button)`
-    background: ${({theme})=> theme.font.white};
-    border-radius: 999px;
-    backdrop-filter: blur(15px);
-    width: 100%;
-    span{
-        font-family: Urbanist;
-        font-size: 16px;
-        color: ${({theme})=> theme.font.black};
-        font-style: normal;
-        font-weight: 600;
-        line-height: 24px; 
-    }
-`
+
 export default function GetStartPage() {
     const language = useGeolocation();
     const [selectedOption, setSelectedOption] = useState<{ value: string; label: string; icon?: AvailableIcons }>({value: 'en', label: 'English', icon: 'UsFlag',});
-
+    const router=useRouter()
     useEffect(() => {
         if (language==='en'){
             setSelectedOption({value: 'en', label: 'English', icon: 'UsFlag'})
@@ -65,6 +56,7 @@ export default function GetStartPage() {
     const handleSelect = (option: { value: string; label: string; icon?: AvailableIcons }) => {
         setSelectedOption(option);
     };
+
     return(
         <div className="flex-col flex items-center">
             <div className="flex flex-col items-center justify-center pt-[160px]">
@@ -75,8 +67,9 @@ export default function GetStartPage() {
             </div>
             <div className="flex flex-col gap-[14px] items-center justify-center w-full max-w-[350px]">
                 <div className="mt-[91px] w-full">
-                    <StyledButton height="56px" title="Continue with Phone"/>
-
+                    <StyledButton onClick={()=>{
+                        router.push(Path.AddPhone)
+                    }} height="56px" title="Continue with Phone"/>
                 </div>
                 <div className="flex items-center justify-center gap-[8px]">
                     <Icon name="ThreeDots" className="w-6 h-6"/>
@@ -85,7 +78,7 @@ export default function GetStartPage() {
                     <Icon name="ThreeDots" className="w-6 h-6"/>
                 </div>
                 <div className="w-full flex flex-col items-center gap-[12px]">
-                    <GoogleButton iconClass="w-[20px] h-[20px]" icon="Google" height="56px" title="Continue with Email"/>
+                    <GoogleButton/>
                     <Button className="!w-full" height="56px" title="Continue with Apple" iconClass="w-[20px] h-[20px]" icon="Apple"/>
                 </div>
             </div>
