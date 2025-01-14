@@ -19,12 +19,10 @@ export default function EditProfilePage() {
     const [autoPlay, setAutoPlay] = useState(false)
     const [repeatAutoPlay, setRepeatAutoPlay] = useState(false)
     const handleAutoPlayChange = (newState: boolean) => {
-        console.log('Toggle State:', newState);
-        setAutoPlay(newState); // Update local state
+        setAutoPlay(newState);
     };
     const handleRepeatPlayChange = (newState: boolean) => {
-        console.log('Toggle State:', newState);
-        setRepeatAutoPlay(newState); // Update local state
+        setRepeatAutoPlay(newState);
     };
     return (
         <div className="pt-[60px] px-[12px]">

@@ -5,7 +5,6 @@ import {useState} from "react";
 
 export default function SignInPage() {
     const [code, setCode] = useState('');
-    console.log(code)
     return(
         <div className="flex flex-col items-center">
           <div className="flex flex-col items-center">

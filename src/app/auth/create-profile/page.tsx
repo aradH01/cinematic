@@ -8,7 +8,6 @@ import {AvatarSlider} from "@/components/elements/AvatarSlider";
 export default function createProfilePage() {
 
     const handleActiveChange = (url: string) => {
-        console.log("Active Image URL:", url);
     };
     return(
         <div>

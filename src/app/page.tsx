@@ -8,16 +8,16 @@ import {useState} from "react";
 import {CategoriesButton} from "@/components/elements/CategoriesButton/CategoriesButton";
 import {RadioButton} from "@/components/elements/RadioButton";
 import {SwapButton} from "@/components/elements/SwapButton";
+import {toast} from "@/core/utils/toast";
 
 export default function HomePage() {
     const { t, i18n } = useTranslation(); // Use default namespace or specify if required
 
     const handleLanguageChange = (lang: string) => {
-        console.log(`Changing language to: ${lang}`);
         if (i18n?.changeLanguage) {
             i18n.changeLanguage(lang)
-                .then(() => console.log(`Language changed to: ${lang}`))
-                .catch((err) => console.error('Error changing language:', err));
+                .then(() => {})
+                .catch((err) => toast.error(err));
         } else {
             console.error('i18n.changeLanguage is not a function');
         }
@@ -31,7 +31,6 @@ export default function HomePage() {
     const [isToggled, setIsToggled] = useState(false);
 
     const handleToggleChange = (newState: boolean) => {
-        console.log('Toggle State:', newState);
         setIsToggled(newState); // Update local state
     };
     return (

@@ -1,6 +1,14 @@
+'use client'
 import {Typography} from "@/components/elements/Typography";
+import {PhoneNumberInput} from "@/components/elements/Input";
+import {useState} from "react";
 
 export default function AddPhonePage() {
+    const [phoneNumber, setPhoneNumber] = useState<string | undefined>("");
+
+    const handlePhoneChange = (value: string | undefined) => {
+        setPhoneNumber(value);
+    };
     return(
         <div>
             <div className="flex flex-col items-center">
@@ -13,6 +21,9 @@ export default function AddPhonePage() {
                                  color="gray400" weight="normal">
                     We need your number to send verification code.
                 </Typography.Text>
+            </div>
+            <div className="mt-[54px]">
+                <PhoneNumberInput value={phoneNumber} onChange={handlePhoneChange} />
             </div>
         </div>
     )

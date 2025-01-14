@@ -8,9 +8,7 @@ import i18n from "../../../i18"; // Import I18nextProvider
 
 
 export function AppProvider({ children }: PropsWithChildren) {
-    console.log('AppProvider rendering:', { children, i18n });
     if (!i18n.isInitialized) {
-        console.error('i18n is not initialized.');
         return <div>Loading...</div>;
     }
     return (
