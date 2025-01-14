@@ -81,7 +81,6 @@ export const SendBox = () => {
 
     const handleSend = () => {
         if (message.trim()) {
-            console.log("Message sent:", message);
             setMessage("");
             if (textareaRef.current) {
                 textareaRef.current.style.height = "40px"; // Reset to initial height

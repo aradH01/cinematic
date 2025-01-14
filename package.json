@@ -16,6 +16,7 @@
     "@mantine/core": "^7.15.3",
     "@mantine/hooks": "^7.15.3",
     "@mantine/notifications": "^7.15.3",
+    "@react-oauth/google": "^0.12.1",
     "axios": "^1.7.9",
     "embla-carousel-react": "^7.1.0",
     "i18next": "^24.2.1",
@@ -25,6 +26,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-i18next": "^15.4.0",
+    "react-phone-number-input": "^3.4.11",
     "zod": "^3.24.1",
     "zustand": "^5.0.3"
   },

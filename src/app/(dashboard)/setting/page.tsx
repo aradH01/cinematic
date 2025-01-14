@@ -6,6 +6,7 @@ import FemaleAvatar from '@/public/images/FemaleAvatar.svg'
 import {Button} from "@/components/elements/Button";
 import {SettingButton} from "@/components/elements/Button";
 import {useRouter} from "next/navigation";
+import {Path} from "@/core/constants/enums";
 export default function SettingPage() {
     const router= useRouter()
     return (
@@ -34,7 +35,7 @@ export default function SettingPage() {
                     />
                 </div>
             </div>
-            <Button onClick={()=>router.push('/manage-profile')} title="Manage Profiles" className="[&>div>span]:!font-lecturis-rounded [&>div>span]:!font-normal !px-4 mt-[12px] mb-8 mx-auto"/>
+            <Button onClick={()=>router.push(Path.ManageProfile)} title="Manage Profiles" className="!bg-transparent !border !border-solid !border-border100 [&>div>span]:!font-lecturis-rounded [&>div>span]:!font-normal !px-4 mt-[12px] mb-8 mx-auto"/>
             <div className="flex flex-col items-center justify-center gap-4 w-full">
               <div className="flex flex-col items-center justify-center gap-[2px] w-full">
                   <SettingButton redIcon icon="Setting" title="App Setting"/>

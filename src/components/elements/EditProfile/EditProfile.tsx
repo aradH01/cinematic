@@ -6,6 +6,7 @@ import styled from "@emotion/styled";
 import {Typography} from "@/components/elements/Typography";
 import {addClass} from "@/core/utils/classNames";
 import Link from "next/link";
+import {Path} from "@/core/constants/enums";
 
 interface EditProfileProps {
     image: string | StaticImageData
@@ -39,7 +40,7 @@ export const EditProfile=({image,name , active}: EditProfileProps)=>{
                         width="120"
                         className={addClass(active ? "" : "filter grayscale")}
                     />
-                    <Link href="/edit-profile">
+                    <Link href={Path.EditProfile}>
                         <IconWrapper>
                             <Icon name="EditPencil" className="w-6 h-6"/>
                         </IconWrapper>

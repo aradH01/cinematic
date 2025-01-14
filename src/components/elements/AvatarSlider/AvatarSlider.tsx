@@ -49,7 +49,6 @@ const Arrow = css`
     top: 50%;
     transform: translateY(-50%);
     z-index: 3;
-
     @media (max-width: 768px) {
         display: none;
     }
@@ -87,12 +86,10 @@ export const AvatarSlider = ({ onActiveSlideChange }: SliderProps) => {
     const SLIDE_GAP = 24;
     const offset = -((activeIndex - Math.floor(data.length / 2)) * (SLIDE_WIDTH - SLIDE_GAP));
 
-    // Dragging state
     const [dragStart, setDragStart] = useState(0);
     const [dragging, setDragging] = useState(false);
     const dragOffset = useRef(0);
 
-    // Notify parent of active slide change
     useEffect(() => {
         if (onActiveSlideChange) {
             onActiveSlideChange(data[activeIndex].image);
