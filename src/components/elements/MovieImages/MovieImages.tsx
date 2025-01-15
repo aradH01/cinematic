@@ -1,8 +1,7 @@
-import Image from "next/image";
-import MovieImage from '@/public/images/show5.jpg'
+import Image, {StaticImageData} from "next/image";
 
 interface MovieImageProps {
-    image: string
+    image: string | StaticImageData
 }
 
 export function MovieImages({image} : MovieImageProps){

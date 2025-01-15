@@ -3,7 +3,6 @@
 import { css, SerializedStyles } from '@emotion/react';
 import { ls } from '@/core/utils/localStorage';
 import { settings } from '@/shared/styles/Settings';
-import {string} from "zod";
 
 export type Size = 'sm' | 'md' | 'lg' | 'xlg' | 'xxlg';
 export type ColorEffect = 'solid' | 'linear';

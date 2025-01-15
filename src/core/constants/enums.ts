@@ -72,3 +72,21 @@ export const MoviesCards=[
   {image: "/images/show2.jpg" , title: "Goodfellas" , description: 'A sci-fi action adventure and the definitive origin story of Buzz Lightyear, the hero who inspired the toy, “Lightyear” follows the legendary Space Ranger after he’s marooned on a hostile planet 4.2 million light-years from Earth alongside his commander and their crew. As Buzz tries to find a way back home through space and time, he’s joined by a group of ambitious recruits and his charming robot companion cat, Sox. Complicating matters and threatening the mission is the arrival of Zurg, an imposing presence with an army of ruthless robots and a mysterious agenda.'},
   {image: "/images/show3.jpg" , title: "Jojo Rabbit" , description: 'A sci-fi action adventure and the definitive origin story of Buzz Lightyear, the hero who inspired the toy, “Lightyear” follows the legendary Space Ranger after he’s marooned on a hostile planet 4.2 million light-years from Earth alongside his commander and their crew. As Buzz tries to find a way back home through space and time, he’s joined by a group of ambitious recruits and his charming robot companion cat, Sox. Complicating matters and threatening the mission is the arrival of Zurg, an imposing presence with an army of ruthless robots and a mysterious agenda.'},
 ]
+export const PlayLists=[
+  {title: ' Pilot Part 1 & 2' , duration: '1h 21m'},
+  {title: ' Pilot Part 1 & 2' , duration: '1h 21m'},
+  {title: ' Pilot Part 1 & 2' , duration: '1h 21m'},
+  {title: ' Pilot Part 1 & 2' , duration: '1h 21m'},
+  {title: ' Pilot Part 1 & 2' , duration: '1h 21m'},
+]
+export const AvatarSliderMockData = [
+  { id: 1, image: "/images/MenAvatar.svg" },
+  { id: 2, image: "/images/FemaleAvatar.svg" },
+  { id: 3, image: "/images/MenAvatar.svg" },
+  { id: 4, image: "/images/FemaleAvatar.svg" },
+  { id: 5, image: "/images/MenAvatar.svg" },
+  { id: 6, image: "/images/FemaleAvatar.svg" },
+  { id: 7, image: "/images/MenAvatar.svg" },
+  { id: 8, image: "/images/FemaleAvatar.svg" },
+  { id: 9, image: "/images/MenAvatar.svg" },
+];

@@ -4,7 +4,6 @@ import {Typography} from "@/components/elements/Typography";
 import {CategoriesButton} from "@/components/elements/CategoriesButton";
 import {useState} from "react";
 import CarouselSlider from "@/components/elements/HomePageSlider/SwiperSlider";
-import {MovieImages} from "@/components/elements/MovieImages";
 import {MoviesCards} from "@/core/constants/enums";
 import {MovieCard} from "@/components/elements/MovieCard";
 import {Icon} from "@/components/elements/Icon";
@@ -21,7 +20,7 @@ export default function HomePage(){
         {label: "Black stories", value: 0, selected: false},
     ]);
     return(
-        <div>
+        <div className="px-[12px]">
             <div className="mb-[20px]">
                 <PhoneHomePageHeader/>
             </div>
@@ -83,7 +82,7 @@ export default function HomePage(){
                         <Typography.Text color="white100" className="leading-6 font-urbanist" weight="semiBold"
                                          size="sm">Coming Soon</Typography.Text>
                         <Typography.Text color="white500" className="leading-[20px] font-urbanist" weight="normal"
-                                         size="xsm">Upcoming releases you won't want to miss</Typography.Text>
+                                         size="xsm">Upcoming releases you won&apos;t want to miss</Typography.Text>
                     </div>
                     <Icon name="IconBox" className="w-[28px] h-[28px]"/>
                 </div>

@@ -21,18 +21,18 @@ const SlidesContainer = (offset: number) => css`
     will-change: transform;
 `;
 
-const Slide = (isActive: boolean, isOverlap: boolean) => css`
+const Slide = (isActive: boolean, isOverlap: boolean , studioMode?:boolean) => css`
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
     transition: width 0.3s ease-in-out, height 0.3s ease-in-out, margin 0.3s ease-in-out;
-    width: ${isActive ? "140px" : "88px"};
-    height: ${isActive ? "140px" : "88px"};
+    width: ${(studioMode && isActive) ? "112px" :   isActive  ? "140px" : "88px"};
+    height: ${(studioMode&&isActive) ? "112px" : isActive ? '140px' : "88px"};
     overflow: hidden;
     position: relative;
     z-index: ${isActive ? "10" : "1"};
-    margin-left: ${isOverlap ? "-24px" : "0"};
+    margin-left: ${(studioMode&& isOverlap) ? "-16px" : isOverlap ? '-24px' : "0"};
 `;
 
 const AvatarImage = css`
@@ -66,20 +66,12 @@ const ArrowRight = css`
 
 interface SliderProps {
     onActiveSlideChange?: (url: string) => void;
+    data:  { id: number, image: string }[];
+    studioMode?:boolean
 }
 
-export const AvatarSlider = ({ onActiveSlideChange }: SliderProps) => {
-    const data = [
-        { id: 1, image: "/images/MenAvatar.svg" },
-        { id: 2, image: "/images/FemaleAvatar.svg" },
-        { id: 3, image: "/images/MenAvatar.svg" },
-        { id: 4, image: "/images/FemaleAvatar.svg" },
-        { id: 5, image: "/images/MenAvatar.svg" },
-        { id: 6, image: "/images/FemaleAvatar.svg" },
-        { id: 7, image: "/images/MenAvatar.svg" },
-        { id: 8, image: "/images/FemaleAvatar.svg" },
-        { id: 9, image: "/images/MenAvatar.svg" },
-    ];
+export const AvatarSlider = ({ onActiveSlideChange , data , studioMode }: SliderProps) => {
+
 
     const [activeIndex, setActiveIndex] = useState(Math.floor(data.length / 2));
     const SLIDE_WIDTH = 140;
@@ -141,14 +133,13 @@ export const AvatarSlider = ({ onActiveSlideChange }: SliderProps) => {
             <div css={SlidesContainer(offset)}>
                 {data.map((item, index) => {
                     const isActive = index === activeIndex;
-                    const isOverlap =
-                        ![activeIndex + 1].includes(index) &&
+                    const isOverlap = studioMode ? true : ![activeIndex + 1].includes(index) &&
                         !(index > activeIndex + 2) &&
                         !(index < activeIndex - 1) &&
                         index !== activeIndex;
 
                     return (
-                        <div key={item.id} css={Slide(isActive, isOverlap)}>
+                        <div key={item.id} css={Slide(isActive, isOverlap , studioMode)}>
                             <img src={item.image} alt={`Avatar ${item.id}`} css={AvatarImage} />
                         </div>
                     );

@@ -4,7 +4,7 @@ import {PhoneInput} from "@/components/elements/Input";
 import React from "react";
 import {AvatarSlider} from "@/components/elements/AvatarSlider";
 import {useRouter} from "next/navigation";
-import {Path} from "@/core/constants/enums";
+import {AvatarSliderMockData, Path} from "@/core/constants/enums";
 import {Icon} from "@/components/elements/Icon";
 
 
@@ -31,7 +31,7 @@ export default function CreateProfilePage() {
                 </Typography.Text>
             </div>
             <div>
-                <AvatarSlider onActiveSlideChange={handleActiveChange}/>
+                <AvatarSlider data={AvatarSliderMockData} onActiveSlideChange={handleActiveChange}/>
             </div>
             <div className="flex flex-col gap-[12px] items-center mt-4 mb-[36px] w-full">
                 <PhoneInput placeHolder="ID name" className="w-full max-w-[309px]"/>
