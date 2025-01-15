@@ -2,6 +2,7 @@
 import React, {useEffect, useState} from "react";
 import { Typography } from "../Typography";
 import {Button} from "@/components/elements/Button";
+import {addClass} from "@/core/utils/classNames";
 
 
 
@@ -43,9 +44,9 @@ export const CategoriesButton: React.FC<CatButtonsProps> = ({label, className, c
     return (
         <div className={className}>
             <Typography.Text color="white" weight="normal" size="sm"> {label}</Typography.Text>
-            <div className="flex mt-4 mb-[60px] gap-[12px]">
+            <div className="flex gap-[12px]">
                 {category.map((cat, index) => {
-                    return <Button className="p-[1rem] !w-max" key={cat.label} title={cat.label}
+                    return <Button className={addClass("p-[1rem] !w-max [&>div>span]:!text-black" , !cat.selected ? '[&>div>span]:!text-white500' : '!bg-white [&>div>span]:!text-black')} key={cat.label} title={cat.label}
                                    ghost={!cat.selected} onClick={() => {
                         handleClick(index)
 

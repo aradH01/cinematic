@@ -11,7 +11,7 @@ export default function SettingPage() {
     const router= useRouter()
     return (
         <div>
-            <div>
+            <div className="mt-[80px]">
                 <Typography.Title className="!text-[40px] leading-[48px] !font-lecturis-rounded text-left" color="white"
                                   weight="bold" level="h1">
                     Settings

@@ -32,8 +32,12 @@ const IconWrapper = styled.div<{ isActive: boolean }>`
     .navbar-icon {
     width: 24px;
     height: 24px;
-    stroke: ${({ isActive, theme }) => (isActive ? theme.font.white : theme.font.white)};
     transition: fill 0.3s ease;
+        
+        path,circle,g{
+            stroke: ${({ isActive, theme }) => (isActive ? theme.font.white : theme.font.black400)} !important;
+            opacity: ${({ isActive, theme }) => (isActive ? 1 : '')} !important;
+        }
   }
 `;
 

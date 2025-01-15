@@ -37,7 +37,9 @@ const light = {
         red300: '#FA541C',
         errorText: '#F5222D',
         black400 :'#595959',
-        gray400 : 'rgba(255, 255, 255, 0.50)'
+        gray400 : 'rgba(255, 255, 255, 0.50)',
+        white100: '#EDF0F3',
+        white500:'#8C8C8C'
 
     },
 };
@@ -75,7 +77,9 @@ const dark: AppTheme = {
         red300: '#FA541C',
         errorText: '#F5222D',
         black400 :'#595959',
-        gray400 : 'rgba(255, 255, 255, 0.50)'
+        gray400 : 'rgba(255, 255, 255, 0.50)',
+        white100: '#EDF0F3',
+        white500:'#8C8C8C'
     },
 };
 

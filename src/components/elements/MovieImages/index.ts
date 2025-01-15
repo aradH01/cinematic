@@ -1,0 +1,1 @@
+export {MovieImages} from './MovieImages'
