@@ -1,11 +1,11 @@
 'use client'
 
 import styled from "@emotion/styled";
-import {MovieImages} from "@/components/elements/MovieImages";
+import {MovieImages} from "../MovieImages";
 import {Typography} from "@/components/elements/Typography";
 import {StaticImageData} from "next/image";
 import {PlayLists} from "@/core/constants/enums";
-import {PlayCard} from "@/components/elements/PlayCard";
+import {PlayCard} from "@/components/blocks/PlayCard";
 
 
 interface EpisodeCardProps {

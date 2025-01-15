@@ -2,7 +2,7 @@
 import {PhoneHomePageHeader} from "@/components/sections/PhoneHomePageHeader";
 import React, {useState} from "react";
 import {CategoriesButton} from "@/components/elements/CategoriesButton";
-import {EpisodeCard} from "@/components/elements/EpisodeCard";
+import {EpisodeCard} from "../../../components/blocks/EpisodeCard";
 import Image from "@/public/images/show1.jpg"
 import {Typography} from "@/components/elements/Typography";
 import {AvatarSlider} from "@/components/elements/AvatarSlider";
@@ -37,7 +37,7 @@ export default function EpisodePage(){
                 <Typography.Paragraph color="gray400" weight="semiBold" size="xsm"
                                       className="leading-[24px] font-urbanist px-[12px]">Studio</Typography.Paragraph>
                 <div>
-                    <AvatarSlider studioMode data={AvatarSliderMockData} onActiveSlideChange={handleActiveChange}/>
+                    <AvatarSlider className="!h-[112px]" studioMode data={AvatarSliderMockData} onActiveSlideChange={handleActiveChange}/>
                 </div>
             </div>
         </div>

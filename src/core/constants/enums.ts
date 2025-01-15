@@ -64,7 +64,6 @@ export const ShowImages=[
 export const WhoWatching=[
   {image: "/images/MenAvatar.svg" , name:"Arad" , active:true},
   {image: "/images/FemaleAvatar.svg" , name:"Mia"},
-
 ];
 
 export const MoviesCards=[
@@ -89,4 +88,16 @@ export const AvatarSliderMockData = [
   { id: 7, image: "/images/MenAvatar.svg" },
   { id: 8, image: "/images/FemaleAvatar.svg" },
   { id: 9, image: "/images/MenAvatar.svg" },
+];
+export const Factors=[
+  {title:'Genres' , detail:'Drama, Romance'},
+  {title:'Audio tracks' , detail:'English, French'},
+  {title:'Subtitles' , detail:'English'},
+  {title:'Director' , detail:'Joaquim Dos Santos'},
+]
+export const CastsAvatar=[
+  {image: "/images/ovalWomenAvatar.svg" , name:"Todd Phillips"},
+  {image: "/images/ovalWomenAvatar.svg" , name:"Joaquin Phoenix"},
+  {image: "/images/ovalmenAvatar.svg" , name:"Zazie Beetz" },
+  {image: "/images/ovalmenAvatar.svg" , name:"Zazie Beetz" },
 ];

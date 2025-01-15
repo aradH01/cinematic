@@ -41,7 +41,6 @@ const getTextStyles = (
   font-size: ${typographySizeOptions[size]};
   font-weight: ${typographyWeightOptions[weight]};
   color: ${theme.font[color]};
-  font-family: ${settings.fontFamily};
 `;
 
 const StyledParagraph = styled.p<TextType>`

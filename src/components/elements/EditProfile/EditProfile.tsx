@@ -1,6 +1,4 @@
 import Image, {StaticImageData} from "next/image";
-import MenAvatar from "@/public/images/MenAvatar.svg";
-import FemaleAvatar from "@/public/images/FemaleAvatar.svg";
 import {Icon} from "@/components/elements/Icon";
 import styled from "@emotion/styled";
 import {Typography} from "@/components/elements/Typography";

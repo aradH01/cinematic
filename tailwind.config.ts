@@ -19,7 +19,8 @@ const config: Config = {
         boxShadow1 : '0px 5px 5px 0px rgba(0, 0, 0, 0.25)'
       },
       backgroundColor:{
-        signInBg: '#171717'
+        signInBg: '#171717',
+        gray900: 'rgba(43, 43, 43, 0.90)'
       },
       colors: {
         border100: 'rgba(255, 255, 255, 0.10)',
@@ -38,6 +39,15 @@ const config: Config = {
         urbanist: ['Urbanist', 'sans-serif'],
         lecturis: ['FH Lecturis', 'serif'],
         'lecturis-rounded': ['FH Lecturis Rounded', 'serif'],
+      },
+      keyframes: {
+        progress: {
+          '0%': { boxShadow: '0 0 0 4px transparent' },
+          '100%': { boxShadow: '0 0 0 4px red' },
+        },
+      },
+      animation: {
+        progress: 'progress 2s linear infinite',
       },
     },
   },

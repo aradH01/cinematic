@@ -61,10 +61,11 @@ export const StyledButton = styled.button<StyledButtonType>`
   }
 
   &.opacity {
-    background: ${({theme}) => theme.components.opacityButton};
-
+    background: ${({theme}) => theme.font.white};
+    border: 1px solid  ${({theme}) => theme.components.border100};
     span {
       color: ${({theme}) => theme.font.black} !important;
+        
       font-size: 16px;
       font-weight: 500;
     }

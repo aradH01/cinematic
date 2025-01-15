@@ -1,9 +1,11 @@
 import styled from "@emotion/styled";
-import {MovieImages} from "@/components/elements/MovieImages";
+
 import {Typography} from "@/components/elements/Typography";
+import {StaticImageData} from "next/image";
+import {MovieImage} from "@/components/blocks/MovieImages";
 
 interface MovieCardProps {
-    image:string
+    image:string | StaticImageData
     title?:string
     description?:string
 }
@@ -20,7 +22,7 @@ export function MovieCard({description,image,title} : MovieCardProps) {
     return(
         <Wrapper>
                 <div>
-                    <MovieImages image={image}/>
+                    <MovieImage image={image}/>
                 </div>
                 <div className="flex flex-col items-start">
                     <Typography.Text color="white" weight="medium" className="!text-[20px] leading-[32px]">{title}</Typography.Text>

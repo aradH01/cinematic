@@ -5,7 +5,7 @@ import {CategoriesButton} from "@/components/elements/CategoriesButton";
 import {useState} from "react";
 import CarouselSlider from "@/components/elements/HomePageSlider/SwiperSlider";
 import {MoviesCards} from "@/core/constants/enums";
-import {MovieCard} from "@/components/elements/MovieCard";
+import {MovieCard} from "../../../components/blocks/MovieCard";
 import {Icon} from "@/components/elements/Icon";
 
 export default function HomePage(){

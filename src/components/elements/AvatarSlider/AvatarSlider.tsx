@@ -68,9 +68,10 @@ interface SliderProps {
     onActiveSlideChange?: (url: string) => void;
     data:  { id: number, image: string }[];
     studioMode?:boolean
+    className?:string
 }
 
-export const AvatarSlider = ({ onActiveSlideChange , data , studioMode }: SliderProps) => {
+export const AvatarSlider = ({ onActiveSlideChange , data , studioMode , className }: SliderProps) => {
 
 
     const [activeIndex, setActiveIndex] = useState(Math.floor(data.length / 2));
@@ -120,6 +121,7 @@ export const AvatarSlider = ({ onActiveSlideChange , data , studioMode }: Slider
     return (
         <div
             css={SliderWrapper}
+            className={className}
             onMouseDown={(e) => handleDragStart(e.clientX)}
             onMouseMove={(e) => handleDragMove(e.clientX)}
             onMouseUp={handleDragEnd}
