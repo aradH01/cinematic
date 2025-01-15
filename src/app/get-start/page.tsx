@@ -2,16 +2,13 @@
 
 import {Typography} from "@/components/elements/Typography";
 import styled from "@emotion/styled";
-import {Button} from "@/components/elements/Button";
+import {Button , GoogleButton} from "@/components/elements/Button";
 import {AvailableIcons, Icon} from "@/components/elements/Icon";
 import {Dropdown} from "@/components/elements/Dropdown";
 import {LanguagesList, Path} from "@/core/constants/enums";
 import {useEffect, useState} from "react";
 import {useGeolocation} from "@/shared/hooks/useGeolocation";
 import {useRouter} from "next/navigation";
-import {GoogleLogin} from "@react-oauth/google";
-import {verifyGoogleToken} from "@/core/utils/googleAuth";
-import {GoogleButton} from "@/components/elements/Button/GoogleButton";
 const ProjectName= styled.h1`
     color: ${({theme})=> theme.font.white};
     text-align: center;

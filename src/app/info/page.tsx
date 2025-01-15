@@ -6,8 +6,7 @@ import {MovieCard} from "@/components/blocks/MovieCard";
 import Image from "@/public/images/show4.jpg"
 import {MovieImage} from "@/components/blocks/MovieImages";
 import {Icon} from "@/components/elements/Icon";
-import DownloadButton from "@/components/elements/Button/DownloadButton";
-import {Button} from "@/components/elements/Button";
+import {Button, DownloadButton} from "@/components/elements/Button";
 import {MoviesCards} from "@/core/constants/enums";
 import Link from "next/link";
 

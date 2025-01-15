@@ -12,7 +12,7 @@ const config: Config = {
     extend: {
       backgroundImage: {
         'get-start-bg': "url('/images/getStartBg.svg')",
-
+        'custom-gradient': 'linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 41%, rgba(255, 255, 255, 0) 57%, rgba(255, 255, 255, 0.05) 100%)',
       },
       boxShadowColor:{
         signInNext : '0px 14px 28px 0px rgba(0, 0, 0, 0.30)',
@@ -20,7 +20,8 @@ const config: Config = {
       },
       backgroundColor:{
         signInBg: '#171717',
-        gray900: 'rgba(43, 43, 43, 0.90)'
+        gray900: 'rgba(43, 43, 43, 0.90)',
+        gray800: 'rgba(43, 43, 43, 0.80)'
       },
       colors: {
         border100: 'rgba(255, 255, 255, 0.10)',

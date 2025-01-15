@@ -101,3 +101,8 @@ export const CastsAvatar=[
   {image: "/images/ovalmenAvatar.svg" , name:"Zazie Beetz" },
   {image: "/images/ovalmenAvatar.svg" , name:"Zazie Beetz" },
 ];
+export const TopSearches=[
+  {title:'football'},
+  {title:'elemental movie'},
+  {title:'five nights at freddy\'s help wanted'},
+];

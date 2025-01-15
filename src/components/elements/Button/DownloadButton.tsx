@@ -8,7 +8,7 @@ interface DownloadButtonProps {
     name: string;
 }
 
-export default function DownloadButton({ link, name }: DownloadButtonProps) {
+export function DownloadButton({ link, name }: DownloadButtonProps) {
     const [isDownloading, setIsDownloading] = useState(false);
     const [progress, setProgress] = useState(0);
 
