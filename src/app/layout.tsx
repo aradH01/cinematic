@@ -1,7 +1,8 @@
+import '@mantine/core/styles.css';
 import '@/shared/styles/global.css';
+import '@mantine/core/styles.css';
 import '@/shared/styles/globals';
 import type { Metadata } from 'next';
-import { addClass } from '@/core/utils/classNames';
 import MainLayout from '@/layouts/DashboardLayout/DashboardLayout';
 import React from "react";
 import {AppProvider} from "@/components/providers/AppProvider";
@@ -17,15 +18,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en">
         <body className="bg-signInBg">
-        <AppProvider> {/* Wrap the entire app */}
-
                 <MainLayout>
-
+                    <AppProvider>
                     {children}
-
+                    </AppProvider>
                 </MainLayout>
-
-        </AppProvider>
         </body>
         </html>
     );

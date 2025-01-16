@@ -28,6 +28,7 @@ const light = {
         black300:'#262626',
         red300: '#FF4D4F',
         gray300: 'rgba(31, 31, 31, 0.60)',
+        gray900: 'rgba(31, 31, 31, 0.90)',
         black800:'rgba(0, 0, 0, 0.80)',
         white500: 'rgba(255, 255, 255, 0.50)'
     },
@@ -40,7 +41,8 @@ const light = {
         gray400 : 'rgba(255, 255, 255, 0.50)',
         white100: '#EDF0F3',
         white500:'#8C8C8C',
-        white750: 'rgba(255,255,255, 0.75'
+        white750: 'rgba(255,255,255, 0.75',
+        white700: 'rgba(255, 255, 255, 0.70)'
 
     },
 };
@@ -69,6 +71,7 @@ const dark: AppTheme = {
         black300:'#262626',
         red300: '#FF4D4F',
         gray300: 'rgba(31, 31, 31, 0.60)',
+        gray900: 'rgba(31, 31, 31, 0.90)',
         black800:'rgba(0, 0, 0, 0.80)',
         white500: 'rgba(255, 255, 255, 0.50)'
     },
@@ -81,7 +84,8 @@ const dark: AppTheme = {
         gray400 : 'rgba(255, 255, 255, 0.50)',
         white100: '#EDF0F3',
         white500:'#8C8C8C',
-        white750: 'rgba(255,255,255, 0.75'
+        white750: 'rgba(255,255,255, 0.75',
+        white700: 'rgba(255, 255, 255, 0.70)'
     },
 };
 

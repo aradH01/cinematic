@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React, {MouseEventHandler} from 'react';
+import React, {MouseEventHandler, useState} from 'react';
 import {AvailableIcons, Icon} from '@/components/elements/Icon';
 import {addClass} from '@/core/utils/classNames';
 import {getSize, Size} from '@/shared/styles/globals';
@@ -16,6 +16,7 @@ export interface SettingButtonProps {
     height?: string,
     icon?: AvailableIcons,
     outline?: boolean,
+    link?:string
     iconClass?: string,
     redIcon?: boolean,
     onClick?: MouseEventHandler<HTMLButtonElement>
@@ -87,6 +88,7 @@ export const SettingButton: React.FC<SettingButtonProps> = ({
                                                                 className,
                                                                 title,
                                                                 type,
+    link,
                                                                 outline,
                                                                 redIcon,
                                                                 description,
@@ -97,6 +99,27 @@ export const SettingButton: React.FC<SettingButtonProps> = ({
                                                                 iconClass,
                                                                 ...props
                                                             }) => {
+
+    const [isCopied, setIsCopied] = useState(false);
+
+    const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
+        if (link) {
+            // Copy the link to the clipboard
+            navigator.clipboard.writeText(link)
+                .then(() => {
+                    setIsCopied(true); // Set copied state to true
+                    setTimeout(() => setIsCopied(false), 2000); // Reset copied state after 2 seconds
+                })
+                .catch((err) => {
+                    console.error('Failed to copy text: ', err);
+                });
+        }
+
+        if (onClick) {
+            onClick(e); // Call the passed onClick handler if it exists
+        }
+    };
+
     return (
         <StyledSettingButton
             className={addClass("", `app-button ${className ?? ''}    ${outline ? "outline" : ''}`)}
@@ -105,7 +128,7 @@ export const SettingButton: React.FC<SettingButtonProps> = ({
             width={width}
             height={height}
             type={type}
-            onClick={onClick}
+            onClick={handleClick}
             {...props}
         >
 
@@ -131,6 +154,11 @@ export const SettingButton: React.FC<SettingButtonProps> = ({
                     :
                     <Icon name="RightUpArrow" className="w-6 h-6"/>
             }
+            {isCopied && (
+                <span className="absolute top-0 right-0 bg-green-500 text-white px-2 py-1 text-sm rounded-md">
+                    Copied!
+                </span>
+            )}
 
         </StyledSettingButton>
     )

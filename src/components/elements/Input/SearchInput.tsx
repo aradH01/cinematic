@@ -116,7 +116,7 @@ const ClearIcon = styled.div`
     }
 `;
 
-export default function SearchInput({
+export function SearchInput({
                                         className,
                                         error,
                                         type = "text",

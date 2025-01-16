@@ -112,3 +112,7 @@ export const SearchBoxTypes = [
   { value: "series", label: "Series" },
   { value: "episodes", label: "Episodes" },
 ];
+export const Comments=[
+  {name:"Pamela G", comment:"I like the fact that author read his book. He read clearly and is easy to follow." ,rating:3, date:"Sep 09, 2024"},
+  {name:"Pamela G",image: "/images/ovalWomenAvatar.svg", comment:"I like the fact that author read his book. He read clearly and is easy to follow. I devoured this book in two days and will." ,rating:3, date:"Sep 03, 2024"},
+]

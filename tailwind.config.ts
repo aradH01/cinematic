@@ -21,7 +21,9 @@ const config: Config = {
       backgroundColor:{
         signInBg: '#171717',
         gray900: 'rgba(43, 43, 43, 0.90)',
-        gray800: 'rgba(43, 43, 43, 0.80)'
+        gray800: 'rgba(43, 43, 43, 0.80)',
+        gray700:'rgba(31, 31, 31, 0.90)',
+        gray100: '#434343',
       },
       colors: {
         border100: 'rgba(255, 255, 255, 0.10)',
