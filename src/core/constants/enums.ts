@@ -106,3 +106,9 @@ export const TopSearches=[
   {title:'elemental movie'},
   {title:'five nights at freddy\'s help wanted'},
 ];
+export const SearchBoxTypes = [
+  { value: "top-result", label: "Top Result" },
+  { value: "franchises", label: "Franchises" },
+  { value: "series", label: "Series" },
+  { value: "episodes", label: "Episodes" },
+];
