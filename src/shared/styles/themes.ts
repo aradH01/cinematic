@@ -42,7 +42,8 @@ const light = {
         white100: '#EDF0F3',
         white500:'#8C8C8C',
         white750: 'rgba(255,255,255, 0.75',
-        white700: 'rgba(255, 255, 255, 0.70)'
+        white700: 'rgba(255, 255, 255, 0.70)',
+        white600: 'rgba(255, 255, 255, 0.60)'
 
     },
 };
@@ -85,7 +86,8 @@ const dark: AppTheme = {
         white100: '#EDF0F3',
         white500:'#8C8C8C',
         white750: 'rgba(255,255,255, 0.75',
-        white700: 'rgba(255, 255, 255, 0.70)'
+        white700: 'rgba(255, 255, 255, 0.70)',
+        white600: 'rgba(255, 255, 255, 0.60)'
     },
 };
 
