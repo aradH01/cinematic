@@ -46,19 +46,22 @@ const VerticalProgressBar = styled.div<{ value: number; type: 'brightness' | 'vo
     position: absolute;
     top: 20%;
     ${({ type }) => (type === 'brightness' ? 'right: 10px;' : 'left: 10px;')}
-    width: 8px;
-    height: 60%;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
+    width: 36px;
+    border:1px solid ${({ theme }) => theme.components.border200};
+    height: 179px;
+    background:${({ theme }) => theme.components.black600};
+    border-radius: 20px;
+    backdrop-filter: blur(50px);
     overflow: hidden;
-
+    padding: 4px;
     &::after {
         content: '';
         display: block;
         width: 100%;
         height: ${({ value }) => `${value * 100}%`};
-        background: ${({ type }) => (type === 'brightness' ? '#FFD700' : '#1E90FF')};
+        background: ${({ type }) => (type === 'brightness' ? '#fff' : '#fff')};
         transition: height 0.1s ease;
+        border-radius: 20px;
     }
 `;
 const ControlBar = styled.div<{ visible: boolean }>`
