@@ -33,6 +33,7 @@ const config: Config = {
         black900:'#0F0F10',
         white500 : 'rgba(255, 255, 255, 0.5)',
         red200: '#CF1322',
+        red300: '#FF4D4F',
         black600 : 'rgba(31, 31, 31, 0.60)',
         black100: 'rgba(0, 0, 0, 0.10)',
         white100:'#EDF0F3',

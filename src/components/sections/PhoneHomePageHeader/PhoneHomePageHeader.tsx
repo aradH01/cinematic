@@ -1,8 +1,13 @@
 'use client'
 import Avatar from "@/public/images/FemaleAvatar.svg"
 import Image from "next/image";
-import {Icon} from "@/components/elements/Icon";
-export const PhoneHomePageHeader = ()=>{
+import {AvailableIcons, Icon} from "@/components/elements/Icon";
+
+interface PhoneHomePageHeaderProps {
+    icon?:AvailableIcons
+}
+
+export const PhoneHomePageHeader = ({icon="Calender"}:PhoneHomePageHeaderProps)=>{
 
     return(
         <div>
@@ -16,7 +21,7 @@ export const PhoneHomePageHeader = ()=>{
                 </div>
                 <div
                     className="w-[48px] bg-black600 border-t border-b border-solid border-border200 h-[48px] rounded-full flex items-center justify-center">
-                    <Icon name="Calender" className="w-[28px] h-[28px]"/>
+                    <Icon name={icon} className="w-[28px] h-[28px]"/>
                 </div>
             </div>
         </div>

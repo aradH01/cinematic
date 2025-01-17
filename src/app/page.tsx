@@ -9,6 +9,7 @@ import {CategoriesButton} from "@/components/elements/CategoriesButton/Categorie
 import {RadioButton} from "@/components/elements/RadioButton";
 import {SwapButton} from "@/components/elements/SwapButton";
 import {toast} from "@/core/utils/toast";
+import {DownloadCard} from "@/components/blocks/DownloadCard";
 
 export default function HomePage() {
     const { t, i18n } = useTranslation(); // Use default namespace or specify if required
@@ -33,8 +34,16 @@ export default function HomePage() {
     const handleToggleChange = (newState: boolean) => {
         setIsToggled(newState); // Update local state
     };
+
+    const [cards, setCards] = useState([1, 2, 3, 4, 5]); // Array of card IDs
+
+    const handleDelete = (id: number) => {
+        setCards((prevCards) => prevCards.filter((card) => card !== id));
+    };
+
+
     return (
-        <div className="mx-auto p-16">
+        <div className=" p-16 max-w-[600px]">
             <h1 className="text-black">{t('welcome')}</h1>
             <p className="text-black">{t('description')}</p>
             <p className="text-black">{t('test')}</p>
@@ -78,10 +87,15 @@ export default function HomePage() {
                 />
             </div>
             <div>
-                <SwapButton checked={isToggled} onCheckedChange={handleToggleChange} />
-                <SwapButton disabled checked={false} onCheckedChange={handleToggleChange} />
-                <SwapButton disabled checked={true} onCheckedChange={handleToggleChange} />
-                <SwapButton checked={isToggled} onCheckedChange={handleToggleChange} />
+                <SwapButton checked={isToggled} onCheckedChange={handleToggleChange}/>
+                <SwapButton disabled checked={false} onCheckedChange={handleToggleChange}/>
+                <SwapButton disabled checked={true} onCheckedChange={handleToggleChange}/>
+                <SwapButton checked={isToggled} onCheckedChange={handleToggleChange}/>
+            </div>
+            <div className="max-w-[400px]">
+                {cards.map((id) => (
+                    <DownloadCard image="" key={id} id={id} onDelete={handleDelete} />
+                ))}
             </div>
         </div>
     );

@@ -492,6 +492,32 @@ const Report = (props: React.SVGProps<SVGSVGElement>) => (
         <circle cx="1" cy="1" r="0.5" transform="matrix(1 0 0 -1 11 9)" fill="white" stroke="white"/>
     </svg>
 );
+const ScreenCast = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none" {...props}>
+        <path
+            d="M16.332 23.3332C20.7318 23.3332 22.9317 23.3332 24.2985 21.9663C25.6654 20.5995 25.6654 18.3996 25.6654 13.9998C25.6654 13.5925 25.6654 13.2039 25.6643 12.8332M2.33203 9.9165C2.33203 9.37478 2.33203 9.10391 2.3545 8.87576C2.57272 6.66013 4.32566 4.9072 6.54128 4.68898C6.76944 4.6665 7.0403 4.6665 7.58203 4.6665H16.332C20.7318 4.6665 22.9317 4.6665 24.2985 6.03334C24.8464 6.58121 25.1747 7.26292 25.3714 8.1665"
+            stroke="#EDF0F3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12.832 23.3335C12.832 17.5345 8.13102 12.8335 2.33203 12.8335" stroke="#EDF0F3" stroke-width="1.5"
+              stroke-linecap="round"/>
+        <path d="M9.33203 23.3335C9.33203 19.4675 6.19802 16.3335 2.33203 16.3335" stroke="#EDF0F3" stroke-width="1.5"
+              stroke-linecap="round"/>
+        <path d="M5.83203 23.3335C5.83203 21.4005 4.26503 19.8335 2.33203 19.8335" stroke="#EDF0F3" stroke-width="1.5"
+              stroke-linecap="round"/>
+    </svg>
+);
+const RedDelete = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none" {...props}>
+        <path d="M23.9155 7H4.08203" stroke="#FF4D4F" stroke-width="1.5" stroke-linecap="round"/>
+        <path
+            d="M21.9718 9.9165L21.4352 17.9655C21.2287 21.0629 21.1255 22.6116 20.1163 23.5557C19.1071 24.4998 17.555 24.4998 14.4507 24.4998H13.5484C10.4442 24.4998 8.89203 24.4998 7.88286 23.5557C6.87368 22.6116 6.77043 21.0629 6.56394 17.9655L6.02734 9.9165"
+            stroke="#FF4D4F" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M11.082 12.8335L11.6654 18.6668" stroke="#FF4D4F" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M16.9154 12.8335L16.332 18.6668" stroke="#FF4D4F" stroke-width="1.5" stroke-linecap="round"/>
+        <path
+            d="M7.58203 7C7.64722 7 7.67982 7 7.70937 6.99925C8.67006 6.97491 9.51756 6.36406 9.84445 5.46037C9.85451 5.43258 9.86481 5.40165 9.88543 5.3398L9.9987 5C10.0954 4.70993 10.1437 4.56488 10.2079 4.44173C10.4637 3.95042 10.9371 3.60924 11.4841 3.52189C11.6212 3.5 11.7741 3.5 12.0798 3.5H15.9176C16.2233 3.5 16.3762 3.5 16.5133 3.52189C17.0603 3.60924 17.5337 3.95042 17.7895 4.44173C17.8537 4.56488 17.902 4.70992 17.9987 5L18.112 5.3398C18.1326 5.40157 18.1429 5.43259 18.1529 5.46037C18.4798 6.36406 19.3273 6.97491 20.288 6.99925C20.3176 7 20.3502 7 20.4154 7"
+            stroke="#FF4D4F" stroke-width="1.5"/>
+    </svg>
+);
 
 
 const Empty = (props: React.SVGProps<SVGSVGElement>) => null;
@@ -500,6 +526,8 @@ export const Icons = {
     Empty,
     RightUpArrow,
     Heart,
+    RedDelete,
+    ScreenCast,
     PlayIconV2,
     Close,
     LeftWheat,
