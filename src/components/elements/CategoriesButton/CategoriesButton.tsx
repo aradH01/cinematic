@@ -36,7 +36,7 @@ export const CategoriesButton: React.FC<CatButtonsProps> = ({label, className, c
         if (!updatedCategories.find((item) => item.selected)) {
             categories[0].selected = true
         }
-        // Update the state with the new categories array
+
         setCategory(updatedCategories);
         onClick?.(updatedCategories.filter((item) => categories[0].selected || item.selected))
     }

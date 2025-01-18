@@ -47,7 +47,7 @@ const StyledInput = styled.input<{ hasIcon: boolean }>`
 
     &:focus, &:valid {
         outline: none;
-        //box-shadow: 0px 0px 10px 0px rgba(64, 64, 64, 0.6);
+       
     }
 `
 const PassIcon = styled.span`
@@ -122,7 +122,7 @@ export const PhoneInput = forwardRef<HTMLInputElement, PhoneInputProps>(({
             if (rest.onChange) rest.onChange(e);
         };
         const handleClear = (e: React.MouseEvent<HTMLDivElement>) => {
-            e.preventDefault(); // Prevent any unintended behavior
+            e.preventDefault();
             setValue("");
 
 

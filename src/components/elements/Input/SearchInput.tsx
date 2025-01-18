@@ -153,7 +153,7 @@ export function SearchInput({
     const handleClear = (e: React.MouseEvent<HTMLDivElement>) => {
         e.preventDefault();
         setHasValue(false);
-        onChange?.({ target: { value: "" } }); // Clear the value externally
+        onChange?.({ target: { value: "" } });
         if (inputRef.current) {
             inputRef.current.focus();
         }

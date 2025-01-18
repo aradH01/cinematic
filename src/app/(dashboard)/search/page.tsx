@@ -1,6 +1,5 @@
 'use client'
 
-import SearchInput from "@/components/elements/Input/SearchInput";
 import React, {useState} from "react";
 import {CategoriesButton} from "@/components/elements/CategoriesButton";
 import {CastsAvatar, InterestsCat, MoviesCards, SearchBoxTypes, ShowImages, TopSearches} from "@/core/constants/enums";
@@ -14,6 +13,7 @@ import styled from "@emotion/styled";
 import {EpisodeCard} from "@/components/blocks/EpisodeCard";
 import EpisodeImage from "@/public/images/show1.jpg"
 import {MovieCard} from "@/components/blocks/MovieCard";
+import {SearchInput} from "@/components/elements/Input";
 
 
 const FranchisesWrapper = styled.div<{ length: number }>`
@@ -23,12 +23,12 @@ const FranchisesWrapper = styled.div<{ length: number }>`
     margin: 0 auto;
     gap: 6px;
     justify-content: center;
-    grid-template-columns: repeat(auto-fill, minmax(8, 1fr)); /* Responsive grid for larger screens */
+    grid-template-columns: repeat(auto-fill, minmax(8, 1fr)); 
 
-    /* Apply 4 columns for screens smaller than 768px */
+  
     @media (max-width: 768px) {
         display: grid;
-        grid-template-columns: repeat(4, 1fr); /* 4 columns layout */
+        grid-template-columns: repeat(4, 1fr);
     }
     
     & > :nth-child(1) {
@@ -80,7 +80,7 @@ export default function SearchPage(){
     const [selectedImages, setSelectedImages] = useState<string[]>([]);
 
     const handleSearchCardClick = (title: string) => {
-        setSearchValue(title); // Set the clicked title as the input value
+        setSearchValue(title);
     };
     const handleTypeChange = (value: string) => {
         setSelectedOption(value);
@@ -89,7 +89,7 @@ export default function SearchPage(){
     const handleCheckboxToggle = (image: string) => {
         setSelectedImages((prevSelected) =>
             prevSelected.includes(image)
-                ? prevSelected.filter((img) => img !== image) // Uncheck
+                ? prevSelected.filter((img) => img !== image)
                 : [...prevSelected, image]
         );
     };

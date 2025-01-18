@@ -17,7 +17,7 @@ export default function GetStartLayout({ children }: { children: React.ReactNode
     return (
         <html lang="en">
         <body>
-        <AppProvider> {/* Wrap the entire app */}
+        <AppProvider>
             <main className={addClass('w-full min-h-screen px-[24px] h-[100vh] h-[100dvh] bg-get-start-bg bg-cover bg-center')}>
                         {children}
             </main>

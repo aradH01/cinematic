@@ -150,8 +150,8 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ src, poster }) => {
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
     const hideControlsTimeout = useRef<NodeJS.Timeout | null>(null);
-    const [brightness, setBrightness] = useState(1); // Brightness level (1 is default)
-    const [volume, setVolume] = useState(1); // Volume level (1 is max)
+    const [brightness, setBrightness] = useState(1);
+    const [volume, setVolume] = useState(1);
     const [touchArea, setTouchArea] = useState<'left' | 'right' | null>(null);
     const [showProgressBar, setShowProgressBar] = useState(false);
 
@@ -185,13 +185,13 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ src, poster }) => {
         const deltaY = e.touches[0].clientY - touchStart.current.y;
 
         if (touchArea === 'right') {
-            // Adjust brightness (bottom to top increases)
-            const newBrightness = Math.min(Math.max(brightness + deltaY / 300, 0), 2); // Scale brightness change
+
+            const newBrightness = Math.min(Math.max(brightness + deltaY / 300, 0), 2);
             setBrightness(newBrightness);
             document.documentElement.style.filter = `brightness(${newBrightness})`;
         } else if (touchArea === 'left') {
-            // Adjust volume (bottom to top increases)
-            const newVolume = Math.min(Math.max(volume + deltaY / 300, 0), 1); // Scale volume change
+
+            const newVolume = Math.min(Math.max(volume + deltaY / 300, 0), 1);
             setVolume(newVolume);
             if (videoRef.current) {
                 videoRef.current.volume = newVolume;
@@ -208,7 +208,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ src, poster }) => {
 
     useEffect(() => {
         return () => {
-            // Reset brightness when unmounting
+
             document.documentElement.style.filter = 'brightness(1)';
         };
     }, []);
@@ -218,7 +218,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ src, poster }) => {
         }
         hideControlsTimeout.current = setTimeout(() => {
             setShowControls(false);
-        }, 3000); // Hide controls after 3000ms
+        }, 3000);
     };
 
     const handleMouseMove = () => {
@@ -275,7 +275,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ src, poster }) => {
                 preload="metadata"
                 playsInline
                 controls={false}
-                muted={false} // You can change this to true for autoplay in some browsers
+                muted={false}
             />
             <GestureOverlay
                 onTouchStart={handleTouchStart}

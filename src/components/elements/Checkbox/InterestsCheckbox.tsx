@@ -20,7 +20,7 @@ const Content = styled.div`
     }
 
     span {
-        // color: #fff;
+      
     }
 
     div {
@@ -67,7 +67,7 @@ export const InterestsCheckbox = ({ title, onChange }: InterestsCheckboxProps) =
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { checked } = event.target;
         setIsChecked(checked);
-        if (onChange) onChange(checked); // Call parent onChange if provided
+        if (onChange) onChange(checked);
     };
 
     return (

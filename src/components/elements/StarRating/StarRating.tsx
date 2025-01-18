@@ -18,8 +18,8 @@ const Star = styled.svg<{ filled: boolean; hover: boolean }>`
 `;
 
 export const StarRating = ({ onSubmit }: { onSubmit: (rating: number) => void }) => {
-    const [rating, setRating] = useState(0); // Final selected rating
-    const [hoverRating, setHoverRating] = useState(0); // Hovered rating
+    const [rating, setRating] = useState(0);
+    const [hoverRating, setHoverRating] = useState(0);
 
     const handleMouseEnter = (index: number) => {
         setHoverRating(index + 1);

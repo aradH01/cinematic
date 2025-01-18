@@ -104,11 +104,11 @@ export const SettingButton: React.FC<SettingButtonProps> = ({
 
     const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
         if (link) {
-            // Copy the link to the clipboard
+
             navigator.clipboard.writeText(link)
                 .then(() => {
-                    setIsCopied(true); // Set copied state to true
-                    setTimeout(() => setIsCopied(false), 2000); // Reset copied state after 2 seconds
+                    setIsCopied(true);
+                    setTimeout(() => setIsCopied(false), 2000);
                 })
                 .catch((err) => {
                     console.error('Failed to copy text: ', err);
@@ -116,7 +116,7 @@ export const SettingButton: React.FC<SettingButtonProps> = ({
         }
 
         if (onClick) {
-            onClick(e); // Call the passed onClick handler if it exists
+            onClick(e);
         }
     };
 

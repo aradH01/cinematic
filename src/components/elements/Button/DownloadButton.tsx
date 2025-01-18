@@ -16,26 +16,26 @@ export function DownloadButton({ link, name }: DownloadButtonProps) {
         setIsDownloading(true);
 
         try {
-            const response = await fetch(link); // Fetch the file
+            const response = await fetch(link);
             if (response.ok) {
                 const contentLength = response.headers.get("Content-Length");
                 const total = contentLength ? parseInt(contentLength, 10) : 0;
                 let received = 0;
 
-                // Read the response as a stream
+
                 const reader = response.body?.getReader();
                 const chunks: Uint8Array[] = [];
 
-                // Read the stream in chunks
+
                 while (true) {
                     const { done, value } = await reader!.read();
                     if (done) break;
                     chunks.push(value);
                     received += value.length;
-                    setProgress(Math.round((received / total) * 100)); // Update progress
+                    setProgress(Math.round((received / total) * 100));
                 }
 
-                // Create a Blob from the chunks and trigger download
+
                 const blob = new Blob(chunks, { type: response.headers.get("Content-Type") || "application/octet-stream" });
                 const downloadLink = document.createElement("a");
                 downloadLink.href = URL.createObjectURL(blob);

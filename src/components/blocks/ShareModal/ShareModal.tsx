@@ -1,6 +1,6 @@
 'use client'
 import {StaticImageData} from 'next/image';
-import {SettingButton, SocialShareButton} from "@/components/elements/Button"; // Import StaticImageData for image type
+import {SettingButton, SocialShareButton} from "@/components/elements/Button";
 import {Typography} from '@/components/elements/Typography';
 import {MovieImage} from '../MovieImages';
 import {TSocialShare} from "@/core/utils/socialShare";

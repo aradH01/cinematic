@@ -24,9 +24,9 @@ const PercentageText = styled.div<{ isRed: boolean }>`
 `;
 
 interface SpaceUsedProps {
-    used: number; // Used space in GB
-    total: number; // Total space in GB
-    warningThreshold?: number; // Percentage at which the background turns red
+    used: number;
+    total: number;
+    warningThreshold?: number;
 }
 
 export const SpaceUsed: React.FC<SpaceUsedProps> = ({
@@ -37,7 +37,7 @@ export const SpaceUsed: React.FC<SpaceUsedProps> = ({
     const percentage = Math.min((used / total) * 100, 100);
     const isRed = percentage >= warningThreshold;
 
-    const radius = 20; // Adjusted for larger stroke width while maintaining size
+    const radius = 20;
     const circumference = 2 * Math.PI * radius;
 
     const strokeDashoffset =

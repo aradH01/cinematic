@@ -17,12 +17,12 @@ const Wrapper = styled.div<{ length: number }>`
     margin: 0 auto;
     gap: 6px;
     justify-content: center;
-    grid-template-columns: repeat(auto-fill, minmax(8, 1fr)); /* Responsive grid for larger screens */
+    grid-template-columns: repeat(auto-fill, minmax(8, 1fr)); 
 
-    /* Apply 4 columns for screens smaller than 768px */
+    
     @media (max-width: 768px) {
         display: grid;
-        grid-template-columns: repeat(4, 1fr); /* 4 columns layout */
+        grid-template-columns: repeat(4, 1fr); 
     }
     
     & > :nth-child(1) {
@@ -90,7 +90,7 @@ export default function InterestsPage(){
     const handleCheckboxToggle = (image: string) => {
         setSelectedImages((prevSelected) =>
             prevSelected.includes(image)
-                ? prevSelected.filter((img) => img !== image) // Uncheck
+                ? prevSelected.filter((img) => img !== image)
                 : [...prevSelected, image]
         );
     };

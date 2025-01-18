@@ -88,7 +88,6 @@ export const DownloadCard = ({id, onDelete , image , title , description}: Downl
         const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
         const deltaX = clientX - startX;
 
-        // Allow only left swiping up to -76px
         if (deltaX < 0 && deltaX >= -76) {
             setTranslateX(deltaX);
         }
@@ -98,10 +97,10 @@ export const DownloadCard = ({id, onDelete , image , title , description}: Downl
         setDragging(false);
 
         if (translateX <= -30) {
-            setTranslateX(-76); // Stick to the swiped position
+            setTranslateX(-76);
             setIsSwiped(true);
         } else {
-            setTranslateX(0); // Reset to original position
+            setTranslateX(0);
             setIsSwiped(false);
         }
     };
@@ -113,7 +112,7 @@ export const DownloadCard = ({id, onDelete , image , title , description}: Downl
 
     const handleCardClick = () => {
         if (isSwiped) {
-            handleReset(); // Reset the card if already swiped
+            handleReset();
         }
     };
     return (
@@ -133,7 +132,7 @@ export const DownloadCard = ({id, onDelete , image , title , description}: Downl
                     onTouchStart={handleDragStart}
                     onTouchMove={handleDragMove}
                     onTouchEnd={handleDragEnd}
-                    onClick={handleCardClick} // Reset card on click
+                    onClick={handleCardClick}
                 >
 
                     <InnerWrapper>
