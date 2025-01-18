@@ -1,138 +1,168 @@
-import React, { useState } from "react";
-import styled from "@emotion/styled";
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
+import { useState, useEffect, useRef } from "react";
+import {MovieImage} from "@/components/blocks/MovieImages";
+import {addClass} from "@/core/utils/classNames";
+import Image from "next/image";
 
-const CarouselContainer = styled.div`
+const SliderWrapper = css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    width: 100%;
-    max-width: 600px; /* Adjust this based on your layout */
-    height: 209px; /* Match the height of the slide */
-    margin: 0 auto;
     overflow: hidden;
+    width: 100%;
+    height: 200px;
+`;
+
+const SlidesContainer = (offset: number) => css`
     display: flex;
-    justify-content: center;
     align-items: center;
-`;
-
-const SlidesWrapper = styled.div<{ currentIndex: number }>`
-    display: flex;
-    transition: transform 0.6s ease-in-out;
-    transform: ${({ currentIndex }) => `translateX(calc(-${currentIndex} * 122px))`}; /* Adjusted for margins */
     position: relative;
-    width: auto;
+    transform: translateX(${offset}px);
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
 `;
 
-const Slide = styled.div<{ isCenter: boolean; isAdjacent: boolean; isPrevAdjacent: boolean }>`
-    width: 102px;
-    height: 161px;
-    margin: 0 10px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: ${({ isCenter, isAdjacent, isPrevAdjacent }) =>
-            isCenter
-                    ? "0 8px 16px rgba(0, 0, 0, 0.3)"
-                    : isAdjacent
-                            ? "0 4px 12px rgba(0, 0, 0, 0.2)"
-                            : isPrevAdjacent
-                                    ? "0 2px 8px rgba(0, 0, 0, 0.1)"
-                                    : "0 2px 8px rgba(0, 0, 0, 0.1)"};
-    transform: ${({ isCenter, isAdjacent, isPrevAdjacent }) =>
-            isCenter
-                    ? "scale(1.2)"
-                    : isAdjacent
-                            ? "scale(1)"
-                            : isPrevAdjacent
-                                    ? "scale(0.8)"
-                                    : "scale(0.8)"};
-    transition: transform 0.3s, box-shadow 0.3s;
+const Slide = (isActive: boolean, isOverlap: boolean , index:number , activeIn: number ) => css`
+    transition: width 0.3s ease-in-out, height 0.3s ease-in-out, margin 0.3s ease-in-out;
     position: relative;
-    z-index: ${({ isCenter }) => (isCenter ? 3 : 2)};
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
-    font-weight: bold;
+    z-index: ${isActive ? "10" :index > activeIn ? "1" :index < activeIn ? `-${activeIn - index}` : '1'};
+    margin-left: ${isOverlap ? '-24px' : "0"};
+`;
+const ImageWrapper = (index:number ,activeIn: number , isActive: boolean ) => css`
+    transition: width 0.3s ease-in-out, height 0.3s ease-in-out, margin 0.3s ease-in-out;
+    width: ${isActive ? "118px" : index===activeIn -2  ? "94px" :
+            index===activeIn -1  ? "106px" :index===activeIn +2 ? "94px" :index===activeIn +1 ? "106px" : "94px"} !important;
+    
+    height: ${isActive ? "177px" : (index===activeIn -2)  ? "142px" :
+            index===activeIn -1  ? "159px" :index===activeIn +2 ? "142px" : index===activeIn +1 ? "159px" : '142px'} !important;
 `;
 
-const Arrow = styled.button`
+const AvatarImage = css`
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+`;
+
+const Arrow = css`
+    cursor: pointer;
+    color: #fff;
+    font-size: 24px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    z-index: 10;
-
-    &:hover {
-        background: rgba(0, 0, 0, 0.8);
-    }
-
-    &:nth-of-type(1) {
-        left: 10px;
-    }
-
-    &:nth-of-type(2) {
-        right: 10px;
+    z-index: 3;
+    @media (max-width: 768px) {
+        display: none;
     }
 `;
 
-const PaginationWrapper = styled.div`
-    position: absolute;
-    bottom: 10px;
-    display: flex;
-    gap: 5px;
+const ArrowLeft = css`
+    ${Arrow};
+    left: 16px;
 `;
 
-const PaginationDot = styled.div<{ isActive: boolean }>`
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: ${({ isActive }) => (isActive ? "#FF6600" : "#999")};
-    transition: background 0.3s;
+const ArrowRight = css`
+    ${Arrow};
+    right: 16px;
 `;
 
-const CarouselSlider = () => {
-    const slides = [1, 2, 3, 4, 5];
-    const [currentIndex, setCurrentIndex] = useState(0);
+interface SliderProps {
+    onActiveSlideChange?: (url: string) => void;
+    data:  { id: number, image: string }[];
+    studioMode?:boolean
+    className?:string
+}
 
-    const handlePrev = () => {
-        setCurrentIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+export const MovieSlider = ({ onActiveSlideChange , data  , className }: SliderProps) => {
+
+
+    const [activeIndex, setActiveIndex] = useState(Math.floor(data.length / 2));
+    const SLIDE_WIDTH = 140;
+    const SLIDE_GAP = 24;
+    const offset = -((activeIndex - Math.floor(data.length / 2)) * (SLIDE_WIDTH - SLIDE_GAP));
+
+    const [dragStart, setDragStart] = useState(0);
+    const [dragging, setDragging] = useState(false);
+    const dragOffset = useRef(0);
+
+    useEffect(() => {
+        if (onActiveSlideChange) {
+            onActiveSlideChange(data[activeIndex].image);
+        }
+    }, [activeIndex, onActiveSlideChange]);
+
+    const handleDragStart = (clientX: number) => {
+        setDragging(true);
+        setDragStart(clientX);
+        dragOffset.current = 0;
+    };
+
+    const handleDragMove = (clientX: number) => {
+        if (!dragging) return;
+        dragOffset.current = clientX - dragStart;
+    };
+
+    const handleDragEnd = () => {
+        setDragging(false);
+
+        if (dragOffset.current > 50) {
+            handlePrev();
+        } else if (dragOffset.current < -50) {
+            handleNext();
+        }
     };
 
     const handleNext = () => {
-        setCurrentIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+        setActiveIndex((prev) => (prev + 1) % data.length);
     };
 
-    const getSlideProps = (index: number) => {
-        if (index === currentIndex) return { isCenter: true, isAdjacent: false, isPrevAdjacent: false };
-        if (index === (currentIndex - 1 + slides.length) % slides.length)
-            return { isCenter: false, isAdjacent: true, isPrevAdjacent: false };
-        if (index === (currentIndex + 1) % slides.length)
-            return { isCenter: false, isAdjacent: true, isPrevAdjacent: false };
-        if (index === (currentIndex - 2 + slides.length) % slides.length)
-            return { isCenter: false, isAdjacent: false, isPrevAdjacent: true };
-        return { isCenter: false, isAdjacent: false, isPrevAdjacent: false };
+    const handlePrev = () => {
+        setActiveIndex((prev) => (prev - 1 + data.length) % data.length);
     };
 
     return (
-        <CarouselContainer>
-            <Arrow onClick={handlePrev}>❮</Arrow>
-            <SlidesWrapper currentIndex={currentIndex}>
-                {slides.map((slide, index) => {
-                    const props = getSlideProps(index);
+        <div
+            css={SliderWrapper}
+            className={className}
+            onMouseDown={(e) => handleDragStart(e.clientX)}
+            onMouseMove={(e) => handleDragMove(e.clientX)}
+            onMouseUp={handleDragEnd}
+            onTouchStart={(e) => handleDragStart(e.touches[0].clientX)}
+            onTouchMove={(e) => handleDragMove(e.touches[0].clientX)}
+            onTouchEnd={handleDragEnd}
+        >
+            <div css={ArrowLeft} onClick={handlePrev}>
+                &#8592;
+            </div>
+            <div css={SlidesContainer(offset)}>
+                {data.map((item, index) => {
+                    const isActive = index === activeIndex;
+                    const isOverlap = true
+                    const itemIndex=index
+                    const activeIn=activeIndex
+                    console.log(index)
+                    console.log(activeIn)
                     return (
-                        <Slide key={index} {...props}>
-                            {`Slide ${slide}`}
-                        </Slide>
+                        <div key={item.id} css={Slide(isActive, isOverlap ,activeIn, itemIndex )}>
+                            <div className="relative rounded-[16px]">
+                                <div css={ImageWrapper(itemIndex , activeIn ,  isActive)}
+                                    className={addClass(className, "max-w-[99.9%] max-h-[99.9%] relative rounded-[16px]")}>
+                                    <Image fill src={item.image} alt="Movie Card" className="object-cover rounded-2xl"/>
+                                </div>
+                                <div
+                                    className="w-full h-full rounded-[16px] bg-border100 absolute z-[5] right-1/2 translate-x-1/2 translate-y-1/2 bottom-1/2 backdrop-blur-xl "></div>
+                                <Image width={56} height={86} src={item.image} alt="Movie Card"
+                                       className="!w-full p-2 !h-full border-black100 object-cover absolute right-1/2 translate-x-1/2 translate-y-1/2 bottom-1/2 z-[10] rounded-[16px] "/>
+                            </div>
+                        </div>
                     );
                 })}
-            </SlidesWrapper>
-            <Arrow onClick={handleNext}>❯</Arrow>
-        </CarouselContainer>
+            </div>
+            <div css={ArrowRight} onClick={handleNext}>
+                &#8594;
+            </div>
+        </div>
     );
 };
-
-export default CarouselSlider;

@@ -15,7 +15,8 @@ const Wrapper = styled.div`
         border-radius: 24px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    width: 100%;
+    justify-content: flex-start;
     gap: 12px;
 `
 export function MovieCard({description,image,title} : MovieCardProps) {
