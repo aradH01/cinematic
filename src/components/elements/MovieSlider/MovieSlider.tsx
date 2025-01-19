@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { useState, useEffect, useRef } from "react";
-import {MovieImage} from "@/components/blocks/MovieImages";
 import {addClass} from "@/core/utils/classNames";
 import Image from "next/image";
 
@@ -39,11 +38,7 @@ const ImageWrapper = (index:number ,activeIn: number , isActive: boolean ) => cs
             index===activeIn -1  ? "159px" :index===activeIn +2 ? "142px" : index===activeIn +1 ? "159px" : '142px'} !important;
 `;
 
-const AvatarImage = css`
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-`;
+
 
 const Arrow = css`
     cursor: pointer;
@@ -142,8 +137,6 @@ export const MovieSlider = ({ onActiveSlideChange , data  , className }: SliderP
                     const isOverlap = true
                     const itemIndex=index
                     const activeIn=activeIndex
-                    console.log(index)
-                    console.log(activeIn)
                     return (
                         <div key={item.id} css={Slide(isActive, isOverlap ,activeIn, itemIndex )}>
                             <div className="relative rounded-[16px]">

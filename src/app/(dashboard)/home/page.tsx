@@ -3,11 +3,10 @@ import {PhoneHomePageHeader} from "@/components/sections/PhoneHomePageHeader";
 import {Typography} from "@/components/elements/Typography";
 import {CategoriesButton} from "@/components/elements/CategoriesButton";
 import React, {useState} from "react";
-import {MovieSlider} from "@/components/elements/HomePageSlider/SwiperSlider";
-import {AvatarSliderMockData, MoviesCards} from "@/core/constants/enums";
+import {MoviesCards} from "@/core/constants/enums";
 import {MovieCard} from "@/components/blocks/MovieCard";
 import {Icon} from "@/components/elements/Icon";
-import {AvatarSlider} from "@/components/elements/AvatarSlider";
+import {MovieSlider} from "@/components/elements/MovieSlider";
 
 export default function HomePage(){
     const [categories, setCategories] = useState<{ value: number, label: string, selected: boolean }[]>([

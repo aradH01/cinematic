@@ -21,7 +21,7 @@ const SlidesContainer = (offset: number) => css`
     will-change: transform;
 `;
 
-const Slide = (isActive: boolean, isOverlap: boolean , studioMode?:boolean) => css`
+const Slide = (isActive: boolean, isOverlap: boolean ,index:number , activeIn: number ,studioMode?:boolean ,  ) => css`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,7 +31,7 @@ const Slide = (isActive: boolean, isOverlap: boolean , studioMode?:boolean) => c
     height: ${(studioMode&&isActive) ? "112px" : isActive ? '140px' : "88px"};
     overflow: hidden;
     position: relative;
-    z-index: ${isActive ? "10" : "1"};
+    z-index: ${isActive ? "10" :(index < activeIn && !studioMode) ? "1" :(index > activeIn && studioMode) ? `${activeIn - index}` : '1'};
     margin-left: ${(studioMode&& isOverlap) ? "-16px" : isOverlap ? '-24px' : "0"};
 `;
 
@@ -139,9 +139,10 @@ export const AvatarSlider = ({ onActiveSlideChange , data , studioMode , classNa
                         !(index > activeIndex + 2) &&
                         !(index < activeIndex - 1) &&
                         index !== activeIndex;
-
+                    const itemIndex=index
+                    const activeIn=activeIndex
                     return (
-                        <div key={item.id} css={Slide(isActive, isOverlap , studioMode)}>
+                        <div key={item.id} css={Slide(isActive, isOverlap ,itemIndex , activeIn ,studioMode )}>
                             <img src={item.image} alt={`Avatar ${item.id}`} css={AvatarImage} />
                         </div>
                     );
