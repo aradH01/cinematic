@@ -1,5 +1,6 @@
 import React from "react";
 import {addClass} from "@/core/utils/classNames";
+import {useTranslation} from "react-i18next";
 
 interface Option {
     value: string;
@@ -14,6 +15,8 @@ interface RadioButtonProps {
 }
 
 export const LabelRadioButton: React.FC<RadioButtonProps> = ({ options, checked, onChange, className }) => {
+    const { t } = useTranslation();
+
     return (
         <div className={addClass( "flex space-x-4")}>
             {options.map((option) => (
@@ -34,7 +37,7 @@ export const LabelRadioButton: React.FC<RadioButtonProps> = ({ options, checked,
                         onChange={() => onChange(option.value)}
                         checked={checked === option.value}
                     />
-                    {option.label}
+                    {t(option.label)}
                 </label>
             ))}
         </div>

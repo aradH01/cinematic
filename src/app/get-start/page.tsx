@@ -9,6 +9,7 @@ import {LanguagesList, Path} from "@/core/constants/enums";
 import {useEffect, useState} from "react";
 import {useGeolocation} from "@/shared/hooks/useGeolocation";
 import {useRouter} from "next/navigation";
+import {useTranslation} from "react-i18next";
 const ProjectName= styled.h1`
     color: ${({theme})=> theme.font.white};
     text-align: center;
@@ -37,9 +38,13 @@ const StyledButton = styled(Button)`
 
 export default function GetStartPage() {
     const language = useGeolocation();
-    const [selectedOption, setSelectedOption] = useState<{ value: string; label: string; icon?: AvailableIcons }>({value: 'en', label: 'English', icon: 'UsFlag',});
+    const { t, i18n } = useTranslation();
+    const [selectedOption, setSelectedOption] = useState<{ value: string; label: string; icon?: AvailableIcons } | null>(null);
     const router=useRouter()
-    useEffect(() => {
+    i18n.on('languageChanged', (lng) => {
+        console.log(`Global language changed to: ${lng}`);
+    });
+   /* useEffect(() => {
         if (language==='en'){
             setSelectedOption({value: 'en', label: 'English', icon: 'UsFlag'})
         } if (language==='az'){
@@ -47,12 +52,34 @@ export default function GetStartPage() {
         }if (language==='ru'){
             setSelectedOption({value: 'ru', label: 'Russian', icon: 'RussianFlag'})
         }
-    }, [language]);
+    }, [language]);*/
 
+    useEffect(() => {
+        const currentLanguage = i18n.language || 'en';
+        const languageOption = LanguagesList.find(
+            (lang) => lang.value === currentLanguage
+        );
+        if (languageOption) {
+            setSelectedOption(languageOption);
+        }
+    }, [i18n.language]);
+
+    const handleLanguageChange = (lang: string) => {
+
+        if (i18n?.changeLanguage) {
+            i18n.changeLanguage(lang)
+                .then(() => console.log(`Language changed to: ${lang}`))
+                .catch((err) => console.error('Error changing language:', err));
+        } else {
+            console.error('i18n.changeLanguage is not a function');
+        }
+    };
 
     const handleSelect = (option: { value: string; label: string; icon?: AvailableIcons }) => {
+        handleLanguageChange(option.value)
         setSelectedOption(option);
     };
+
 
     return(
         <div className="flex-col flex items-center">
@@ -60,18 +87,18 @@ export default function GetStartPage() {
                 <ProjectName className="font-lecturis-rounded">
                     Cinewo
                 </ProjectName>
-                <Typography.Text className="font-lecturis-rounded leading-[40px] text-center" size="lt" color="white" weight="normal">Get started</Typography.Text>
+                <Typography.Text className="font-lecturis-rounded leading-[40px] text-center" size="lt" color="white" weight="normal">{t('get_started')}</Typography.Text>
             </div>
             <div className="flex flex-col gap-[14px] items-center justify-center w-full max-w-[350px]">
                 <div className="mt-[91px] w-full">
                     <StyledButton onClick={()=>{
-                        router.push(Path.AddPhone)
-                    }} height="56px" title="Continue with Phone"/>
+                        router.push(Path.OTPCode)
+                    }} height="56px" title="continue_with_phone"/>
                 </div>
                 <div className="flex items-center justify-center gap-[8px]">
                     <Icon name="ThreeDots" className="w-6 h-6"/>
                     <Typography.Text
-                        className="!text-[14px] leading-[20px] font-urbanist font-semibold">OR</Typography.Text>
+                        className="!text-[14px] leading-[20px] font-urbanist font-semibold">{t('or')}</Typography.Text>
                     <Icon name="ThreeDots" className="w-6 h-6"/>
                 </div>
                 <div className="w-full flex flex-col items-center gap-[12px]">

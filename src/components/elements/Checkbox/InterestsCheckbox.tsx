@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import React, { useState } from "react";
 import { Typography } from "@/components/elements/Typography";
+import {useTranslation} from "react-i18next";
 
 export interface InterestsCheckboxProps {
     title: string;
@@ -69,6 +70,7 @@ export const InterestsCheckbox = ({ title, onChange }: InterestsCheckboxProps) =
         setIsChecked(checked);
         if (onChange) onChange(checked);
     };
+    const { t } = useTranslation();
 
     return (
         <Content>
@@ -80,7 +82,7 @@ export const InterestsCheckbox = ({ title, onChange }: InterestsCheckboxProps) =
                     className="!font-urbanist"
                     color="white"
                 >
-                    {title}
+                    {t(title)}
                 </Typography.Text>
             </div>
         </Content>

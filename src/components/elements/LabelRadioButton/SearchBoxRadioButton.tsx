@@ -1,5 +1,6 @@
 import React from "react";
 import {addClass} from "@/core/utils/classNames";
+import {useTranslation} from "react-i18next";
 
 interface Option {
     value: string;
@@ -14,6 +15,7 @@ interface SearchBoxRadioButtonProps {
 }
 
 export const SearchBoxRadioButton: React.FC<SearchBoxRadioButtonProps> = ({ options, checked, onChange, className }) => {
+    const { t } = useTranslation();
     return (
         <div className={addClass( "flex ")}>
             {options.map((option) => (
@@ -34,7 +36,7 @@ export const SearchBoxRadioButton: React.FC<SearchBoxRadioButtonProps> = ({ opti
                         onChange={() => onChange(option.value)}
                         checked={checked === option.value}
                     />
-                    {option.label}
+                    {t(option.label)}
                 </label>
             ))}
         </div>

@@ -7,6 +7,7 @@ import Image from "@/public/images/show1.jpg"
 import {Typography} from "@/components/elements/Typography";
 import {AvatarSlider} from "@/components/elements/AvatarSlider";
 import {AvatarSliderMockData} from "@/core/constants/enums";
+import {useTranslation} from "react-i18next";
 export default function EpisodePage(){
 
     const [categories, setCategories] = useState<{ value: number, label: string, selected: boolean }[]>([
@@ -19,6 +20,7 @@ export default function EpisodePage(){
         {label: "Anime", value: 0, selected: false},
         {label: "Black stories", value: 0, selected: false},
     ]);
+    const { t } = useTranslation();
     const handleActiveChange = (url: string) => {
     };
     return(
@@ -35,7 +37,7 @@ export default function EpisodePage(){
             </div>
             <div className="mt-[26px]">
                 <Typography.Paragraph color="gray400" weight="semiBold" size="xsm"
-                                      className="leading-[24px] font-urbanist px-[12px]">Studio</Typography.Paragraph>
+                                      className="leading-[24px] font-urbanist px-[12px]">{t('studio')}</Typography.Paragraph>
                 <div>
                     <AvatarSlider className="!h-[112px]" studioMode data={AvatarSliderMockData} onActiveSlideChange={handleActiveChange}/>
                 </div>

@@ -10,9 +10,11 @@ import {Button, DownloadButton} from "@/components/elements/Button";
 import {MoviesCards} from "@/core/constants/enums";
 import Link from "next/link";
 import {ShareModal} from "@/components/blocks/ShareModal";
+import {useTranslation} from "react-i18next";
 
 export default function InfoPage(){
     const [showShareModal, setShowShareModal] = useState(true)
+    const { t } = useTranslation();
     return(
         <div>
             <div className="px-[16px]">
@@ -26,7 +28,7 @@ export default function InfoPage(){
                     <div className="flex flex-col w-full items-start gap-[8px] ">
                         <div className="flex w-full items-center justify-between">
                             <Typography.Text color="white" weight="medium" size="sm"
-                                             className="leading-6 font-urbanist">Info</Typography.Text>
+                                             className="leading-6 font-urbanist">{t('info')}</Typography.Text>
                             <Link href="/info/23">
                                 <Icon name="BackArrow" className="w-6 h-6 rotate-180"/>
                             </Link>
@@ -57,7 +59,7 @@ export default function InfoPage(){
                         </button>
                     </div>
                 </div>
-                <Button opacity title="More Like This" icon="DownArrow" className="mx-auto mt-[20px] mb-4"/>
+                <Button opacity title="more_like" icon="DownArrow" className="mx-auto mt-[20px] mb-4"/>
                 <div className="flex flex-col items-center gap-[12px]">
                     {
                         MoviesCards.map((card, index) => (

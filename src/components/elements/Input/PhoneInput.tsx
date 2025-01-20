@@ -4,6 +4,7 @@ import React, {forwardRef, useState} from "react";
 import {AvailableIcons, Icon} from '@/components/elements/Icon';
 import {Typography} from "../Typography";
 import {Simulate} from "react-dom/test-utils";
+import {useTranslation} from "react-i18next";
 
 
 export interface PhoneInputProps {
@@ -130,6 +131,7 @@ export const PhoneInput = forwardRef<HTMLInputElement, PhoneInputProps>(({
                 .parentElement?.querySelector("input") as HTMLInputElement;
             inputElement?.focus();
         };
+    const { t } = useTranslation();
 
         return (
             <Wrapper className={className}>
@@ -141,7 +143,7 @@ export const PhoneInput = forwardRef<HTMLInputElement, PhoneInputProps>(({
                     )}
                     <StyledInput hasIcon={!!icon}
                                  onChange={handleInputChange} value={value}
-                                 placeholder={placeHolder} required ref={ref} type={type} {...rest}/>
+                                 placeholder={`${t(placeHolder || '')}`} required ref={ref} type={type} {...rest}/>
                     {icon ? <StyledIcon>
                         <Icon name={icon || "Empty"}/>
                     </StyledIcon> : ''}

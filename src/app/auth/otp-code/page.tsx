@@ -5,6 +5,7 @@ import React, {useState} from "react";
 import {Icon} from "@/components/elements/Icon";
 import {Path} from "@/core/constants/enums";
 import {useRouter} from "next/navigation";
+import {useTranslation} from "react-i18next";
 
 export default function SignInPage() {
     const [code, setCode] = useState('');
@@ -12,18 +13,19 @@ export default function SignInPage() {
     const handleNext=()=>{
         router.push(Path.CreateProfile);
     }
+    const { t } = useTranslation();
+
     return(
         <div className="flex flex-col items-center">
             <div className="flex flex-col items-center">
                 <Typography.Title size="lt" className="leading-[40px] !font-lecturis-rounded text-center" color="white"
                                   weight="normal" level="h1">
-                    Check your email
+                    {t('check_your_email')}
                 </Typography.Title>
                 <Typography.Text size="md"
                                  className="leading-[28px] mt-[2px] w-[70%] !font-lecturis-rounded text-center"
                                  color="gray400" weight="normal">
-                    We need you to verity your
-                    email address.
+                    {t('verify_email')}
                 </Typography.Text>
             </div>
             <div className="my-[56px]">
@@ -39,9 +41,8 @@ export default function SignInPage() {
             <div className="w-[255px] mb-[194px]">
                 <Typography.Paragraph className="text-center !font-lecturis-rounded leading-[24px] !text-[13px]"
                                       color="gray400" weight="normal">
-                    Didn&apos;t receive the email? Try checking your
-                    junk or spam folders. <span
-                    className="cursor-pointer !font-lecturis-rounded leading-[24px] !text-[13px] text-white font-normal">Resend</span>
+                    {t('didnt_receive')}
+                    <button className="cursor-pointer !font-lecturis-rounded leading-[24px] !text-[13px] text-white font-normal">{t('resend')}</button>
                 </Typography.Paragraph>
             </div>
             <button onClick={handleNext}

@@ -7,6 +7,7 @@ import {TSocialShare} from "@/core/utils/socialShare";
 import styled from "@emotion/styled";
 import React from "react";
 import {Icon} from "@/components/elements/Icon";
+import {useTranslation} from "react-i18next";
 
 
 interface ShareModalProps {
@@ -60,6 +61,7 @@ const SocialsWrapper = styled.div`
            border-radius: 20px 8px 8px 20px!important;
        }
     }
+    margin: 0 auto;
 `
 const OtherSocials = styled.div`
   display: flex;
@@ -74,7 +76,7 @@ const OtherSocials = styled.div`
 `
 export const ShareModal = ({open, onClose, title, image, link}: ShareModalProps) => {
 
-
+    const { t } = useTranslation();
     const links = [
         {id: 1, image: '/images/facebook.jpg', name: "Facebook"},
         {id: 2, image: '/images/tiktok.jpg', name: "Tiktok"},
@@ -105,7 +107,7 @@ export const ShareModal = ({open, onClose, title, image, link}: ShareModalProps)
                                 size="md"
                                 className="font-urbanist leading-[28px]"
                             >
-                                Share to
+                                {t('share_to')}
                             </Typography.Text>
                         </div>
                     </div>
@@ -125,9 +127,9 @@ export const ShareModal = ({open, onClose, title, image, link}: ShareModalProps)
                     </SocialsWrapper>
 
                     <div className="flex w-full flex-col items-center gap-[2px] max-w-[500px]">
-                        <SettingButton title="Copy Link" icon="ClipBoard" link={link}/>
-                        <SettingButton title="Save Video" icon="DownloadV2"/>
-                        <SettingButton title="Report" icon="Report"/>
+                        <SettingButton title="copy_link" icon="ClipBoard" link={link}/>
+                        <SettingButton title="save_video" icon="DownloadV2"/>
+                        <SettingButton title="report" icon="Report"/>
                     </div>
                 </div>
 

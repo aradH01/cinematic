@@ -18,8 +18,8 @@ export const LanguagesList = [
 ] ;
 
 export const InterestsCat = [
-  { value: "genres", label: "Genres" },
-  { value: "shows", label: "Shows" },
+  { value: "genres", label: "genres" },
+  { value: "shows", label: "shows" },
 ];
 export const InterestsTypes = [
   { title: "Actuality", id: '1' },
@@ -90,10 +90,10 @@ export const AvatarSliderMockData = [
   { id: 9, image: "/images/MenAvatar.svg" },
 ];
 export const Factors=[
-  {title:'Genres' , detail:'Drama, Romance'},
-  {title:'Audio tracks' , detail:'English, French'},
-  {title:'Subtitles' , detail:'English'},
-  {title:'Director' , detail:'Joaquim Dos Santos'},
+  {title:'genres' , detail:'Drama, Romance'},
+  {title:'audio_tracks' , detail:'English, French'},
+  {title:'subtitles' , detail:'English'},
+  {title:'director' , detail:'Joaquim Dos Santos'},
 ]
 export const CastsAvatar=[
   {image: "/images/ovalWomenAvatar.svg" , name:"Todd Phillips"},
@@ -107,10 +107,10 @@ export const TopSearches=[
   {title:'five nights at freddy\'s help wanted'},
 ];
 export const SearchBoxTypes = [
-  { value: "top-result", label: "Top Result" },
-  { value: "franchises", label: "Franchises" },
-  { value: "series", label: "Series" },
-  { value: "episodes", label: "Episodes" },
+  { value: "top-result", label: "top_result" },
+  { value: "franchises", label: "franchises" },
+  { value: "series", label: "series" },
+  { value: "episodes", label: "episodes" },
 ];
 export const Comments=[
   {name:"Pamela G", comment:"I like the fact that author read his book. He read clearly and is easy to follow." ,rating:3, date:"Sep 09, 2024"},

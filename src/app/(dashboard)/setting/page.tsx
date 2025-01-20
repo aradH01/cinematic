@@ -7,14 +7,16 @@ import {Button} from "@/components/elements/Button";
 import {SettingButton} from "@/components/elements/Button";
 import {useRouter} from "next/navigation";
 import {Path} from "@/core/constants/enums";
+import {useTranslation} from "react-i18next";
 export default function SettingPage() {
     const router= useRouter()
+    const { t } = useTranslation();
     return (
         <div className="px-[12px]">
             <div className="mt-[80px]">
                 <Typography.Title className="!text-[40px] leading-[48px] !font-lecturis-rounded text-left" color="white"
                                   weight="bold" level="h1">
-                    Settings
+                    {t('settings')}
                 </Typography.Title>
             </div>
             <div className="relative w-full flex justify-center mt-[24px]">
@@ -35,16 +37,16 @@ export default function SettingPage() {
                     />
                 </div>
             </div>
-            <Button onClick={()=>router.push(Path.ManageProfile)} title="Manage Profiles" className="!bg-transparent !border !border-solid !border-border100 [&>div>span]:!font-lecturis-rounded [&>div>span]:!font-normal !px-4 mt-[12px] mb-8 mx-auto"/>
+            <Button onClick={()=>router.push(Path.ManageProfile)} title="manage_profiles" className="!bg-transparent !border !border-solid !border-border100 [&>div>span]:!font-lecturis-rounded [&>div>span]:!font-normal !px-4 mt-[12px] mb-8 mx-auto"/>
             <div className="flex flex-col items-center justify-center gap-4 w-full">
               <div className="flex flex-col items-center justify-center gap-[2px] w-full">
-                  <SettingButton redIcon icon="Setting" title="App Setting"/>
-                  <SettingButton redIcon icon="Phone" title="Devices"/>
-                  <SettingButton redIcon icon="Global" title="App Language"/>
+                  <SettingButton redIcon icon="Setting" title="app_settings"/>
+                  <SettingButton redIcon icon="Phone" title="devices"/>
+                  <SettingButton redIcon icon="Global" title="app_language"/>
               </div>
                 <div className="flex flex-col items-center justify-center gap-[2px] w-full">
-                    <SettingButton icon="Question" title="Support Center"/>
-                    <SettingButton icon="Notes" title="Privacy & Terms"/>
+                    <SettingButton icon="Question" title="support_center"/>
+                    <SettingButton icon="Notes" title="privacy_terms"/>
                 </div>
             </div>
         </div>

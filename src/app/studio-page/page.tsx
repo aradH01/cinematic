@@ -7,6 +7,7 @@ import {Typography} from "@/components/elements/Typography";
 import {MoviesCards, ShowImages} from "@/core/constants/enums";
 import styled from "@emotion/styled";
 import {MovieCard} from "@/components/blocks/MovieCard";
+import {useTranslation} from "react-i18next";
 
 const ImageWrapper = styled.div<{ length: number }>`
     display: flex;
@@ -30,6 +31,7 @@ const ImageWrapper = styled.div<{ length: number }>`
 `;
 
 export default function StudioPage(){
+    const { t } = useTranslation();
     return (
         <div className="px-[16px]">
             <div className="mb-[30px]">
@@ -41,7 +43,7 @@ export default function StudioPage(){
                     <Typography.Title level="h1" color="white" weight="normal"
                                       className="!text-[40px] leading-[48px] font-urbanist text-ellipsis">Pixar</Typography.Title>
                     <Typography.Text color="gray400" className="leading-[28px] font-urbanist" weight="normal"
-                                     size="md">Studio</Typography.Text>
+                                     size="md">{t('studio')}</Typography.Text>
                 </div>
             </div>
             <ImageWrapper length={4} className="mt-4">

@@ -4,6 +4,7 @@ import {Typography} from "@/components/elements/Typography";
 import {SpaceUsed} from "@/components/elements/SpaceUsed";
 import {DownloadCard} from "@/components/blocks/DownloadCard";
 import {useState} from "react";
+import {useTranslation} from "react-i18next";
 
 export default function DownloadsPage(){
     const [cards, setCards] = useState([
@@ -16,7 +17,7 @@ export default function DownloadsPage(){
         setCards((prevCards) => prevCards.filter((card) => card.id !== id));
     };
 
-
+    const { t } = useTranslation();
     return (
         <div className="">
             <div className="px-[16px]">
@@ -24,7 +25,7 @@ export default function DownloadsPage(){
                     <PhoneHomePageHeader icon="ScreenCast"/>
                 </div>
                 <Typography.Title level="h1" color="white" weight="normal"
-                                  className="leading-[48px] !text-[40px] font-urbnanist mb-[14px]">Download</Typography.Title>
+                                  className="leading-[48px] !text-[40px] font-urbnanist mb-[14px]">{t('download')}</Typography.Title>
                 <div>
                     <SpaceUsed used={18} total={60} warningThreshold={80}/>
                 </div>

@@ -8,6 +8,7 @@ import {InterestsCheckbox, ShowsImageCheckbox} from "@/components/elements/Check
 import styled from "@emotion/styled";
 import {Icon} from "@/components/elements/Icon";
 import {useRouter} from "next/navigation";
+import {useTranslation} from "react-i18next";
 
 
 const Wrapper = styled.div<{ length: number }>`
@@ -72,6 +73,7 @@ export default function InterestsPage(){
     const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
     const [selectedImages, setSelectedImages] = useState<string[]>([]);
     const router = useRouter();
+    const { t } = useTranslation();
     const handleNext=()=>{
         router.push(Path.Settings);
     }
@@ -100,12 +102,12 @@ export default function InterestsPage(){
             <div className="flex flex-col items-center">
                 <Typography.Title size="lt" className="leading-[40px] !font-lecturis-rounded text-center" color="white"
                                   weight="bold" level="h1">
-                    Choose your interests
+                    {t('choose_interests')}
                 </Typography.Title>
                 <Typography.Text size="md"
                                  className="leading-[28px] mt-[2px] !font-lecturis-rounded text-center"
                                  color="gray400" weight="normal">
-                    Get better video recommendations
+                    {t('better_recommendations')}
                 </Typography.Text>
             </div>
             <div className="mt-4 mb-[35px]">

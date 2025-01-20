@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import {Typography} from "@/components/elements/Typography";
+import {useTranslation} from "react-i18next";
 
 const CircleContainer = styled.div`
     display: flex;
@@ -36,7 +37,7 @@ export const SpaceUsed: React.FC<SpaceUsedProps> = ({
                                                     }) => {
     const percentage = Math.min((used / total) * 100, 100);
     const isRed = percentage >= warningThreshold;
-
+    const { t } = useTranslation();
     const radius = 20;
     const circumference = 2 * Math.PI * radius;
 
@@ -67,9 +68,9 @@ export const SpaceUsed: React.FC<SpaceUsedProps> = ({
                 />
             </ProgressRing>
            <div className="flex items-stert flex-col">
-               <Typography.Text color="white500" className="leading-[24px] font-urbanist" weight="medium" size="sm">Space used</Typography.Text>
+               <Typography.Text color="white500" className="leading-[24px] font-urbanist" weight="medium" size="sm">{t('space_used')}</Typography.Text>
                <PercentageText isRed={isRed} className="font-urbanist">
-                   {Math.round(percentage)}% Of {total} Gb
+                   {Math.round(percentage)}% {t('of')} {total} Gb
                </PercentageText>
            </div>
         </CircleContainer>

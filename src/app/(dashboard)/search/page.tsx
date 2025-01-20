@@ -14,6 +14,7 @@ import {EpisodeCard} from "@/components/blocks/EpisodeCard";
 import EpisodeImage from "@/public/images/show1.jpg"
 import {MovieCard} from "@/components/blocks/MovieCard";
 import {SearchInput} from "@/components/elements/Input";
+import {useTranslation} from "react-i18next";
 
 
 const FranchisesWrapper = styled.div<{ length: number }>`
@@ -79,6 +80,8 @@ export default function SearchPage(){
     const [selectedOption, setSelectedOption] = useState<string | null>('top-result');
     const [selectedImages, setSelectedImages] = useState<string[]>([]);
 
+    const { t } = useTranslation();
+
     const handleSearchCardClick = (title: string) => {
         setSearchValue(title);
     };
@@ -110,13 +113,13 @@ export default function SearchPage(){
             </div>
             {selectedOption === 'top-result' &&
             <>
-                <Typography.Paragraph color="gray400" weight="semiBold" size="sm" className="px-4 font-urbanist leading-[24px] mt-4 mb-2">Top searches</Typography.Paragraph>
+                <Typography.Paragraph color="gray400" weight="semiBold" size="sm" className="px-4 font-urbanist leading-[24px] mt-4 mb-2">{t('top_searches')}</Typography.Paragraph>
                 <div className="w-full px-4 flex items-center flex-col gap-[2px]">
                     {TopSearches.map((word) => (
                         <TopSearchCard key={word.title} title={word.title} onClick={() => handleSearchCardClick(word.title)} />
                     ))}
                 </div>
-                <Typography.Paragraph color="gray400" weight="semiBold" size="sm" className="font-urbanist px-4 leading-[24px] mt-4 mb-2">Suggested</Typography.Paragraph>
+                <Typography.Paragraph color="gray400" weight="semiBold" size="sm" className="font-urbanist px-4 leading-[24px] mt-4 mb-2">{t('suggested')}</Typography.Paragraph>
                 <div className="pl-4">
                     <div
                         className="bg-gray900 rounded-bl-[24px] rounded-tl-[24px] p-[12px] flex items-center gap-[6px] overflow-x-auto">
@@ -129,7 +132,7 @@ export default function SearchPage(){
                         }
                     </div>
                 </div>
-                <Typography.Paragraph color="gray400" weight="semiBold" size="sm" className="font-urbanist px-4 leading-[24px] mt-4 mb-2">Cast & Crew</Typography.Paragraph>
+                <Typography.Paragraph color="gray400" weight="semiBold" size="sm" className="font-urbanist px-4 leading-[24px] mt-4 mb-2">{t('cast_crew')}</Typography.Paragraph>
                 <div className="pl-4">
                     <div className="flex items-center overflow-x-auto">
                         {

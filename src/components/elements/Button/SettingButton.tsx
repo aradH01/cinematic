@@ -4,6 +4,7 @@ import {AvailableIcons, Icon} from '@/components/elements/Icon';
 import {addClass} from '@/core/utils/classNames';
 import {getSize, Size} from '@/shared/styles/globals';
 import {SwapButton} from "@/components/elements/SwapButton";
+import {useTranslation} from "react-i18next";
 
 
 export interface SettingButtonProps {
@@ -101,7 +102,7 @@ export const SettingButton: React.FC<SettingButtonProps> = ({
                                                             }) => {
 
     const [isCopied, setIsCopied] = useState(false);
-
+    const { t } = useTranslation();
     const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
         if (link) {
 
@@ -139,11 +140,11 @@ export const SettingButton: React.FC<SettingButtonProps> = ({
                 </div>
                 <div className="flex flex-col items-start">
                     <span className={addClass("font-urbanist font-normal text-[16px] leading-[24px] text-white")}
-                    >{title}</span>
+                    >{t(title)}</span>
                     {
                         description &&
                         <span className={addClass("font-urbanist font-normal text-[14px] leading-[20px] text-white500")}
-                        >{description}</span>
+                        >{t(description)}</span>
                     }
 
                 </div>
