@@ -10,6 +10,7 @@ import {useEffect, useState} from "react";
 import {useGeolocation} from "@/shared/hooks/useGeolocation";
 import {useRouter} from "next/navigation";
 import {useTranslation} from "react-i18next";
+import AppleSignInButton from "@/components/elements/Button/AppleButton";
 const ProjectName= styled.h1`
     color: ${({theme})=> theme.font.white};
     text-align: center;
@@ -103,7 +104,7 @@ export default function GetStartPage() {
                 </div>
                 <div className="w-full flex flex-col items-center gap-[12px]">
                     <GoogleButton/>
-                    <Button className="!w-full" height="56px" title="Continue with Apple" iconClass="w-[20px] h-[20px]" icon="Apple"/>
+                    <AppleSignInButton/>
                 </div>
             </div>
             <div className="mt-[51px]">
