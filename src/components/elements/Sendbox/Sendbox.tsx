@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import React, { useRef, useState } from "react";
-import { Icon } from "@/components/elements/Icon"; // Replace with your icon component
+import { Icon } from "@/components/elements/Icon";
 
 const Wrapper = styled.div`
     display: flex;
@@ -74,7 +74,7 @@ export const SendBox = () => {
 
 
         if (textareaRef.current) {
-            textareaRef.current.style.height = "auto"; // Reset height
+            textareaRef.current.style.height = "auto";
             textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
         }
     };
@@ -83,7 +83,7 @@ export const SendBox = () => {
         if (message.trim()) {
             setMessage("");
             if (textareaRef.current) {
-                textareaRef.current.style.height = "40px"; // Reset to initial height
+                textareaRef.current.style.height = "40px";
             }
         }
     };

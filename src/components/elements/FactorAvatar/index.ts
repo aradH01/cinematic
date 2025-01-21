@@ -1,0 +1,1 @@
+export {FactorAvatar} from './FactorAvatar'

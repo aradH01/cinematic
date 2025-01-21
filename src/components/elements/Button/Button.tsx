@@ -6,6 +6,7 @@ import { Typography } from "../Typography";
 import { Themes } from '@/shared/styles/themes';
 import { LoadingCircle } from '@/components/elements/LoadingCircle';
 import { getSize, Size } from '@/shared/styles/globals';
+import {useTranslation} from "react-i18next";
 
 
 export interface ButtonProps {
@@ -61,10 +62,11 @@ export const StyledButton = styled.button<StyledButtonType>`
   }
 
   &.opacity {
-    background: ${({theme}) => theme.components.opacityButton};
-
+    background: ${({theme}) => theme.font.white};
+    border: 1px solid  ${({theme}) => theme.components.border100};
     span {
       color: ${({theme}) => theme.font.black} !important;
+        
       font-size: 16px;
       font-weight: 500;
     }
@@ -139,7 +141,9 @@ export const Button: React.FC<ButtonProps> = ({
     iconClass,
                                                 ...props
                                               }) => {
-  return (
+    const { t } = useTranslation();
+
+    return (
     <StyledButton
       className={addClass("" , `app-button ${className ?? ''} ${loading ? "loading" : ''} ${ghost ? "ghost" : ''} ${opacity ? "opacity" : ''} ${outlined ? "outlined" : ''}`)}
       disabled={disabled}
@@ -159,7 +163,7 @@ export const Button: React.FC<ButtonProps> = ({
       <div className="flex items-center gap-[10px]">
         <Icon name={icon || 'Empty'} className={iconClass}/>
         <span className={addClass((outlined || ghost) ? "text-black dark:text-white font-urbanist" : "text-white dark:text-black font-urbanist" , "font-medium text-[16px] font-urbanist")}
-                         >{loading ? "Loading" : title}</span>
+                         >{loading ? "Loading" : `${t(title)}`}</span>
 
       </div>
     </StyledButton>

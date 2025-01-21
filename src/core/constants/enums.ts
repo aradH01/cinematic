@@ -18,8 +18,8 @@ export const LanguagesList = [
 ] ;
 
 export const InterestsCat = [
-  { value: "genres", label: "Genres" },
-  { value: "shows", label: "Shows" },
+  { value: "genres", label: "genres" },
+  { value: "shows", label: "shows" },
 ];
 export const InterestsTypes = [
   { title: "Actuality", id: '1' },
@@ -64,5 +64,55 @@ export const ShowImages=[
 export const WhoWatching=[
   {image: "/images/MenAvatar.svg" , name:"Arad" , active:true},
   {image: "/images/FemaleAvatar.svg" , name:"Mia"},
-
 ];
+
+export const MoviesCards=[
+  {image: "/images/show5.jpg" , title: "I Am Woman" , description: 'A sci-fi action adventure and the definitive origin story of Buzz Lightyear, the hero who inspired the toy, “Lightyear” follows the legendary Space Ranger after he’s marooned on a hostile planet 4.2 million light-years from Earth alongside his commander and their crew. As Buzz tries to find a way back home through space and time, he’s joined by a group of ambitious recruits and his charming robot companion cat, Sox. Complicating matters and threatening the mission is the arrival of Zurg, an imposing presence with an army of ruthless robots and a mysterious agenda.'},
+  {image: "/images/show2.jpg" , title: "Goodfellas" , description: 'A sci-fi action adventure and the definitive origin story of Buzz Lightyear, the hero who inspired the toy, “Lightyear” follows the legendary Space Ranger after he’s marooned on a hostile planet 4.2 million light-years from Earth alongside his commander and their crew. As Buzz tries to find a way back home through space and time, he’s joined by a group of ambitious recruits and his charming robot companion cat, Sox. Complicating matters and threatening the mission is the arrival of Zurg, an imposing presence with an army of ruthless robots and a mysterious agenda.'},
+  {image: "/images/show3.jpg" , title: "Jojo Rabbit" , description: 'A sci- Ranger after less robots and a mysterious agenda.'},
+]
+export const PlayLists=[
+  {title: ' Pilot Part 1 & 2' , duration: '1h 21m'},
+  {title: ' Pilot Part 1 & 2' , duration: '1h 21m'},
+  {title: ' Pilot Part 1 & 2' , duration: '1h 21m'},
+  {title: ' Pilot Part 1 & 2' , duration: '1h 21m'},
+  {title: ' Pilot Part 1 & 2' , duration: '1h 21m'},
+]
+export const AvatarSliderMockData = [
+  { id: 1, image: "/images/MenAvatar.svg" },
+  { id: 2, image: "/images/FemaleAvatar.svg" },
+  { id: 3, image: "/images/MenAvatar.svg" },
+  { id: 4, image: "/images/FemaleAvatar.svg" },
+  { id: 5, image: "/images/MenAvatar.svg" },
+  { id: 6, image: "/images/FemaleAvatar.svg" },
+  { id: 7, image: "/images/MenAvatar.svg" },
+  { id: 8, image: "/images/FemaleAvatar.svg" },
+  { id: 9, image: "/images/MenAvatar.svg" },
+];
+export const Factors=[
+  {title:'genres' , detail:'Drama, Romance'},
+  {title:'audio_tracks' , detail:'English, French'},
+  {title:'subtitles' , detail:'English'},
+  {title:'director' , detail:'Joaquim Dos Santos'},
+]
+export const CastsAvatar=[
+  {image: "/images/ovalWomenAvatar.svg" , name:"Todd Phillips"},
+  {image: "/images/ovalWomenAvatar.svg" , name:"Joaquin Phoenix"},
+  {image: "/images/ovalmenAvatar.svg" , name:"Zazie Beetz" },
+  {image: "/images/ovalmenAvatar.svg" , name:"Zazie Beetz" },
+];
+export const TopSearches=[
+  {title:'football'},
+  {title:'elemental movie'},
+  {title:'five nights at freddy\'s help wanted'},
+];
+export const SearchBoxTypes = [
+  { value: "top-result", label: "top_result" },
+  { value: "franchises", label: "franchises" },
+  { value: "series", label: "series" },
+  { value: "episodes", label: "episodes" },
+];
+export const Comments=[
+  {name:"Pamela G", comment:"I like the fact that author read his book. He read clearly and is easy to follow." ,rating:3, date:"Sep 09, 2024"},
+  {name:"Pamela G",image: "/images/ovalWomenAvatar.svg", comment:"I like the fact that author read his book. He read clearly and is easy to follow. I devoured this book in two days and will." ,rating:3, date:"Sep 03, 2024"},
+]

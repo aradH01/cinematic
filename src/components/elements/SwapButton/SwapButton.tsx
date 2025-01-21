@@ -60,7 +60,7 @@ export const SwapButton = ({
         if (!disabled) {
             if (onCheckedChange) {
                 onCheckedChange(!checked);
-            } // Call the parent callback with the new state
+            }
         }
     };
 

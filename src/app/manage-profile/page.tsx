@@ -4,8 +4,10 @@ import React from "react";
 import {Typography} from "@/components/elements/Typography";
 import {EditProfile} from "@/components/elements/EditProfile";
 import {WhoWatching} from "@/core/constants/enums";
+import {useTranslation} from "react-i18next";
 
 export default function ManageProfilePage() {
+    const { t } = useTranslation();
     return(
         <div className="pt-[60px] px-[12px]">
             <div
@@ -14,7 +16,7 @@ export default function ManageProfilePage() {
             </div>
             <Typography.Title className="!text-[40px] leading-[48px] !font-lecturis-rounded text-left" color="white"
                               weight="bold" level="h1">
-                Who&apos;s watching?
+                {t('who_is_watching')}
             </Typography.Title>
             <div className="flex flex-wrap items-center gap-y-[31px] gap-x-[59px] justify-center mt-[88px]">
                 {

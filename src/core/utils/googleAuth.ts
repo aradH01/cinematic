@@ -1,4 +1,4 @@
-// src/utils/googleAuth.ts
+
 import axios from "axios";
 
 export const verifyGoogleToken = async (idToken: string) => {

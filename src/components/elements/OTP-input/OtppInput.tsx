@@ -90,7 +90,7 @@ export function OTPInputComponent(props: OTPInputProps) {
     focusInput(activeInput + 1);
   }, [activeInput, focusInput]);
 
-  // Handle onFocus input
+
   const handleOnFocus = useCallback(
     (index: number) => () => {
       focusInput(index);

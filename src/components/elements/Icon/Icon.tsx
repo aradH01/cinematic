@@ -8,7 +8,6 @@ import { TypographySize, typographySizeOptions } from '@/shared/styles/globals';
 export type AvailableIcons = keyof typeof Icons;
 
 export type Props = {
-    /** Icon name */
     name: AvailableIcons;
     size?: TypographySize;
     color?: string;

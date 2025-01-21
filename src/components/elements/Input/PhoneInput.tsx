@@ -4,6 +4,7 @@ import React, {forwardRef, useState} from "react";
 import {AvailableIcons, Icon} from '@/components/elements/Icon';
 import {Typography} from "../Typography";
 import {Simulate} from "react-dom/test-utils";
+import {useTranslation} from "react-i18next";
 
 
 export interface PhoneInputProps {
@@ -47,7 +48,7 @@ const StyledInput = styled.input<{ hasIcon: boolean }>`
 
     &:focus, &:valid {
         outline: none;
-        //box-shadow: 0px 0px 10px 0px rgba(64, 64, 64, 0.6);
+       
     }
 `
 const PassIcon = styled.span`
@@ -122,7 +123,7 @@ export const PhoneInput = forwardRef<HTMLInputElement, PhoneInputProps>(({
             if (rest.onChange) rest.onChange(e);
         };
         const handleClear = (e: React.MouseEvent<HTMLDivElement>) => {
-            e.preventDefault(); // Prevent any unintended behavior
+            e.preventDefault();
             setValue("");
 
 
@@ -130,6 +131,7 @@ export const PhoneInput = forwardRef<HTMLInputElement, PhoneInputProps>(({
                 .parentElement?.querySelector("input") as HTMLInputElement;
             inputElement?.focus();
         };
+    const { t } = useTranslation();
 
         return (
             <Wrapper className={className}>
@@ -141,7 +143,7 @@ export const PhoneInput = forwardRef<HTMLInputElement, PhoneInputProps>(({
                     )}
                     <StyledInput hasIcon={!!icon}
                                  onChange={handleInputChange} value={value}
-                                 placeholder={placeHolder} required ref={ref} type={type} {...rest}/>
+                                 placeholder={`${t(placeHolder || '')}`} required ref={ref} type={type} {...rest}/>
                     {icon ? <StyledIcon>
                         <Icon name={icon || "Empty"}/>
                     </StyledIcon> : ''}

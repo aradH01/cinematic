@@ -3,7 +3,6 @@
 import { css, SerializedStyles } from '@emotion/react';
 import { ls } from '@/core/utils/localStorage';
 import { settings } from '@/shared/styles/Settings';
-import {string} from "zod";
 
 export type Size = 'sm' | 'md' | 'lg' | 'xlg' | 'xxlg';
 export type ColorEffect = 'solid' | 'linear';
@@ -14,6 +13,7 @@ export const colorOptions = [
 ] as const;
 export type Color = (typeof colorOptions)[number];
 export const typographySizeOptions = {
+    xsm: '14px',
     sm: '16px',
     md: '18px',
     lg: '24px',

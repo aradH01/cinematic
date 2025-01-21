@@ -48,16 +48,16 @@ export default function EditProfilePage() {
                 className="mx-auto"
             />
             <div className="flex flex-col gap-[12px] items-center mt-4 mb-[36px] w-full">
-                <PhoneInput placeHolder="ID name" className="w-full max-w-[309px]"/>
-                <PhoneInput placeHolder="Email address" className="w-full max-w-[309px]"/>
+                <PhoneInput placeHolder="id_name" className="w-full max-w-[309px]"/>
+                <PhoneInput placeHolder="email_address" className="w-full max-w-[309px]"/>
             </div>
             <div className="flex flex-col items-center justify-center gap-[2px] w-full">
-                <SettingButton icon="Global" title="Display language" description="English"/>
-                <SettingButton icon="Subtitle" title="Audio & Subtitles" description="English and English (United Kingdom)"/>
-                <SettingButton swapButtonChecked={autoPlay} swapButtonOnCheckedChange={handleAutoPlayChange} swapButton icon="Clock" title="Autoplay next episode"/>
-                <SettingButton swapButtonChecked={repeatAutoPlay} swapButtonOnCheckedChange={handleRepeatPlayChange} swapButton icon="Repeat" title="Autoplay previews"/>
+                <SettingButton icon="Global" title="display_language" description="english"/>
+                <SettingButton icon="Subtitle" title="audio_subtitles" description="english_uk"/>
+                <SettingButton swapButtonChecked={autoPlay} swapButtonOnCheckedChange={handleAutoPlayChange} swapButton icon="Clock" title="autoplay_next"/>
+                <SettingButton swapButtonChecked={repeatAutoPlay} swapButtonOnCheckedChange={handleRepeatPlayChange} swapButton icon="Repeat" title="autoplay_previews"/>
             </div>
-            <StyledButton onClick={()=>router.push(Path.SignIn)} title="Log out" className="[&>div>span]:!font-lecturis-rounded"/>
+            <StyledButton onClick={()=>router.push(Path.SignIn)} title="log_out" className="[&>div>span]:!font-lecturis-rounded"/>
         </div>
     )
 }

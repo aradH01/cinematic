@@ -22,11 +22,11 @@ export const useGeolocation = () => {
                             setLanguage("en");
                     }
                 } else {
-                    setLanguage("en"); // Default to 'en' if no countryCode is available
+                    setLanguage("en");
                 }
             } catch (error) {
                 console.error("Error fetching IP data:", error);
-                setLanguage("en"); // Fallback to 'en' on error
+                setLanguage("en");
             }
         };
 

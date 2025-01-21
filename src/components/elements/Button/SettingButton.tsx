@@ -1,9 +1,10 @@
 import styled from "@emotion/styled";
-import React, {MouseEventHandler} from 'react';
+import React, {MouseEventHandler, useState} from 'react';
 import {AvailableIcons, Icon} from '@/components/elements/Icon';
 import {addClass} from '@/core/utils/classNames';
 import {getSize, Size} from '@/shared/styles/globals';
 import {SwapButton} from "@/components/elements/SwapButton";
+import {useTranslation} from "react-i18next";
 
 
 export interface SettingButtonProps {
@@ -16,6 +17,7 @@ export interface SettingButtonProps {
     height?: string,
     icon?: AvailableIcons,
     outline?: boolean,
+    link?:string
     iconClass?: string,
     redIcon?: boolean,
     onClick?: MouseEventHandler<HTMLButtonElement>
@@ -87,6 +89,7 @@ export const SettingButton: React.FC<SettingButtonProps> = ({
                                                                 className,
                                                                 title,
                                                                 type,
+    link,
                                                                 outline,
                                                                 redIcon,
                                                                 description,
@@ -97,6 +100,27 @@ export const SettingButton: React.FC<SettingButtonProps> = ({
                                                                 iconClass,
                                                                 ...props
                                                             }) => {
+
+    const [isCopied, setIsCopied] = useState(false);
+    const { t } = useTranslation();
+    const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
+        if (link) {
+
+            navigator.clipboard.writeText(link)
+                .then(() => {
+                    setIsCopied(true);
+                    setTimeout(() => setIsCopied(false), 2000);
+                })
+                .catch((err) => {
+                    console.error('Failed to copy text: ', err);
+                });
+        }
+
+        if (onClick) {
+            onClick(e);
+        }
+    };
+
     return (
         <StyledSettingButton
             className={addClass("", `app-button ${className ?? ''}    ${outline ? "outline" : ''}`)}
@@ -105,7 +129,7 @@ export const SettingButton: React.FC<SettingButtonProps> = ({
             width={width}
             height={height}
             type={type}
-            onClick={onClick}
+            onClick={handleClick}
             {...props}
         >
 
@@ -116,11 +140,11 @@ export const SettingButton: React.FC<SettingButtonProps> = ({
                 </div>
                 <div className="flex flex-col items-start">
                     <span className={addClass("font-urbanist font-normal text-[16px] leading-[24px] text-white")}
-                    >{title}</span>
+                    >{t(title)}</span>
                     {
                         description &&
                         <span className={addClass("font-urbanist font-normal text-[14px] leading-[20px] text-white500")}
-                        >{description}</span>
+                        >{t(description)}</span>
                     }
 
                 </div>
@@ -131,6 +155,11 @@ export const SettingButton: React.FC<SettingButtonProps> = ({
                     :
                     <Icon name="RightUpArrow" className="w-6 h-6"/>
             }
+            {isCopied && (
+                <span className="absolute top-0 right-0 bg-green-500 text-white px-2 py-1 text-sm rounded-md">
+                    Copied!
+                </span>
+            )}
 
         </StyledSettingButton>
     )
