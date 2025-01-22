@@ -4,12 +4,12 @@ import Link from "next/link";
 interface BackHeaderProps {
     href?: string;
     onClick?: () => void;
-    icon?:AvailableIcons
+    icon?: AvailableIcons
     isLinked?: string
 }
 
-export const BackHeader = ({href , onClick , icon , isLinked} : BackHeaderProps) =>{
-    return(
+export const BackHeader = ({href, onClick, icon, isLinked}: BackHeaderProps) => {
+    return (
         <div className="flex items-center justify-between w-full mt-[45px]">
             <Link href={href || ''}>
                 <Icon name="BackArrow" className="w-[28px] h-[28px]"/>
@@ -17,7 +17,7 @@ export const BackHeader = ({href , onClick , icon , isLinked} : BackHeaderProps)
             {
                 isLinked ?
                     <Link href={isLinked}
-                            className="w-[48px] h-[48px] rounded-full border border-solid border-border100 flex items-center justify-center">
+                          className="w-[48px] h-[48px] rounded-full border border-solid border-border100 flex items-center justify-center">
                         <Icon name={icon ? icon : "ThreeDots"} className="w-[28px] h-[28px]"/>
                     </Link>
                     :

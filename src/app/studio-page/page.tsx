@@ -14,24 +14,24 @@ const ImageWrapper = styled.div<{ length: number }>`
     align-items: center;
     gap: 6px;
     justify-content: center;
-    
+
     & > :nth-child(1) {
-            img {
-                    border-radius: 24px 8px 8px 24px !important;
-            }
+        img {
+            border-radius: 24px 8px 8px 24px !important;
+        }
     }
 
     & > :nth-child(4) {
-            img {
-               
-                    border-radius: 8px 24px 24px 8px !important;
-                
-            }
+        img {
+
+            border-radius: 8px 24px 24px 8px !important;
+
+        }
     }
 `;
 
-export default function StudioPage(){
-    const { t } = useTranslation();
+export default function StudioPage() {
+    const {t} = useTranslation();
     return (
         <div className="px-[16px]">
             <div className="mb-[30px]">

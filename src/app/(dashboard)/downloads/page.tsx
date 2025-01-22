@@ -6,18 +6,38 @@ import {DownloadCard} from "@/components/blocks/DownloadCard";
 import {useState} from "react";
 import {useTranslation} from "react-i18next";
 
-export default function DownloadsPage(){
+export default function DownloadsPage() {
     const [cards, setCards] = useState([
-        {id: 1 , image: "/images/show3.jpg" , title: "Jojo Rabbit" , description: 'A sci- Ranger after less robots and a mysterious agenda.'},
-        {id: 2 , image: "/images/show2.jpg" , title: "Jojo Rabbit" , description: 'A sci- Ranger after less robots and a mysterious agenda.'},
-        {id: 3 , image: "/images/show4.jpg" , title: "Jojo Rabbit" , description: 'A sci- Ranger after less robots and a mysterious agenda.'},
-        {id: 4 , image: "/images/show5.jpg" , title: "Jojo Rabbit" , description: 'A sci- Ranger after less robots and a mysterious agenda.'},
+        {
+            id: 1,
+            image: "/images/show3.jpg",
+            title: "Jojo Rabbit",
+            description: 'A sci- Ranger after less robots and a mysterious agenda.'
+        },
+        {
+            id: 2,
+            image: "/images/show2.jpg",
+            title: "Jojo Rabbit",
+            description: 'A sci- Ranger after less robots and a mysterious agenda.'
+        },
+        {
+            id: 3,
+            image: "/images/show4.jpg",
+            title: "Jojo Rabbit",
+            description: 'A sci- Ranger after less robots and a mysterious agenda.'
+        },
+        {
+            id: 4,
+            image: "/images/show5.jpg",
+            title: "Jojo Rabbit",
+            description: 'A sci- Ranger after less robots and a mysterious agenda.'
+        },
     ]);
     const handleDelete = (id: number) => {
         setCards((prevCards) => prevCards.filter((card) => card.id !== id));
     };
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
     return (
         <div className="">
             <div className="px-[16px]">
@@ -32,7 +52,8 @@ export default function DownloadsPage(){
             </div>
             <div className="mt-[28px] flex flex-col w-full gap-[12px]">
                 {cards.map((card) => (
-                    <DownloadCard image={card.image} title={card.title} description={card.description} key={card.id} id={card.id} onDelete={handleDelete}/>
+                    <DownloadCard image={card.image} title={card.title} description={card.description} key={card.id}
+                                  id={card.id} onDelete={handleDelete}/>
                 ))}
             </div>
         </div>

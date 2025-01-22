@@ -1,5 +1,5 @@
 // hooks/useGeolocation.ts
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 
 export const useGeolocation = () => {
     const [language, setLanguage] = useState<string>("en");

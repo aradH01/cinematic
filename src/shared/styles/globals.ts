@@ -1,8 +1,8 @@
 'use client'
 
-import { css, SerializedStyles } from '@emotion/react';
-import { ls } from '@/core/utils/localStorage';
-import { settings } from '@/shared/styles/Settings';
+import {css, SerializedStyles} from '@emotion/react';
+import {ls} from '@/core/utils/localStorage';
+import {settings} from '@/shared/styles/Settings';
 
 export type Size = 'sm' | 'md' | 'lg' | 'xlg' | 'xxlg';
 export type ColorEffect = 'solid' | 'linear';
@@ -62,10 +62,10 @@ export const getIsDark = (): boolean => {
         : window.matchMedia('(prefers-color-scheme: dark)').matches;
 };
 export const getSize = (
-  size?: Size,
-  width?: string,
-  borderRadius?: string,
-  height?:string
+    size?: Size,
+    width?: string,
+    borderRadius?: string,
+    height?: string
 ): SerializedStyles => {
     if (size === 'sm') {
         return css`

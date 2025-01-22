@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
-import React, { useState } from "react";
-import { css } from "@emotion/react";
+import React, {useState} from "react";
+import {css} from "@emotion/react";
 import {Icon} from "@/components/elements/Icon";
 import styled from "@emotion/styled";
 import {MovieImage} from "@/components/blocks/MovieImages";
@@ -11,8 +11,8 @@ import Link from "next/link";
 
 const wrapperStyle = css`
     position: relative;
-    width: 99%; 
-    height: 126px; 
+    width: 99%;
+    height: 126px;
     overflow: hidden;
 `;
 
@@ -22,11 +22,11 @@ const CardStyle = styled.div`
     left: 0;
     width: 99%;
     height: 100%;
-    background-color: ${({ theme }) => theme.components.black500};
+    background-color: ${({theme}) => theme.components.black500};
     border-radius: 24px;
     transition: transform 0.3s ease-in-out;
     will-change: transform;
-    z-index: 2; 
+    z-index: 2;
 `;
 
 const DeleteIconStyle = styled.button`
@@ -34,7 +34,7 @@ const DeleteIconStyle = styled.button`
     top: 50%;
     right: 10px;
     transform: translateY(-50%);
-    background-color: ${({ theme }) => theme.components.border100};
+    background-color: ${({theme}) => theme.components.border100};
     border-radius: 100%;
     width: 60px;
     height: 60px;
@@ -55,22 +55,24 @@ const overlayStyle = css`
     z-index: 1;
 `;
 const InnerWrapper = styled.div`
-        background-color: ${({theme})=>theme.components.black500};
-        padding: 12px;
-        border-radius: 24px;
+    background-color: ${({theme}) => theme.components.black500};
+    padding: 12px;
+    border-radius: 24px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 12px;
 `
-interface DownloadCardProps{
-    id:number
+
+interface DownloadCardProps {
+    id: number
     onDelete: (id: number) => void
-    image:string |StaticImageData
-    title?:string
-    description?:string
+    image: string | StaticImageData
+    title?: string
+    description?: string
 }
-export const DownloadCard = ({id, onDelete , image , title , description}: DownloadCardProps) => {
+
+export const DownloadCard = ({id, onDelete, image, title, description}: DownloadCardProps) => {
     const [startX, setStartX] = useState(0);
     const [translateX, setTranslateX] = useState(0);
     const [isSwiped, setIsSwiped] = useState(false);

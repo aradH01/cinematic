@@ -14,10 +14,10 @@ interface SearchBoxRadioButtonProps {
     className?: string;
 }
 
-export const SearchBoxRadioButton: React.FC<SearchBoxRadioButtonProps> = ({ options, checked, onChange, className }) => {
-    const { t } = useTranslation();
+export const SearchBoxRadioButton: React.FC<SearchBoxRadioButtonProps> = ({options, checked, onChange, className}) => {
+    const {t} = useTranslation();
     return (
-        <div className={addClass( "flex ")}>
+        <div className={addClass("flex ")}>
             {options.map((option) => (
                 <label
                     key={option.value}

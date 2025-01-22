@@ -4,15 +4,39 @@ import React, {useState} from "react";
 import {MovieImage} from "@/components/blocks/MovieImages";
 import Cover from '@/public/images/show5.jpg'
 import {Typography} from "@/components/elements/Typography";
-import {DownloadCard} from "@/components/blocks/DownloadCard";
 import {SeriesCard} from "@/components/blocks/SeriesCard";
-export default function TurningRedPage(){
+
+export default function TurningRedPage() {
 
     const [cards, setCards] = useState([
-        {id: 1 , image: "/images/show3.jpg" , title: "And They Lived Happily Ever After" , description: 'After a delivery room surprise, new dad Joe struggles to connect with his infant child, but he has no trouble at all' , duration:'51m'},
-        {id: 2 , image: "/images/show2.jpg" , title: "And They Lived Happily Ever After" , description: 'After a delivery room surprise, new dad Joe struggles to connect with his infant child, but he has no trouble at all' , duration:'51m'},
-        {id: 3 , image: "/images/show4.jpg" , title: "And They Lived Happily Ever After" , description: 'After a delivery room surprise, new dad Joe struggles to connect with his infant child, but he has no trouble at all' , duration:'51m'},
-        {id: 4 , image: "/images/show5.jpg" , title: "And They Lived Happily Ever After" , description: 'After a delivery room surprise, new dad Joe struggles to connect with his infant child, but he has no trouble at all' , duration:'51m'},
+        {
+            id: 1,
+            image: "/images/show3.jpg",
+            title: "And They Lived Happily Ever After",
+            description: 'After a delivery room surprise, new dad Joe struggles to connect with his infant child, but he has no trouble at all',
+            duration: '51m'
+        },
+        {
+            id: 2,
+            image: "/images/show2.jpg",
+            title: "And They Lived Happily Ever After",
+            description: 'After a delivery room surprise, new dad Joe struggles to connect with his infant child, but he has no trouble at all',
+            duration: '51m'
+        },
+        {
+            id: 3,
+            image: "/images/show4.jpg",
+            title: "And They Lived Happily Ever After",
+            description: 'After a delivery room surprise, new dad Joe struggles to connect with his infant child, but he has no trouble at all',
+            duration: '51m'
+        },
+        {
+            id: 4,
+            image: "/images/show5.jpg",
+            title: "And They Lived Happily Ever After",
+            description: 'After a delivery room surprise, new dad Joe struggles to connect with his infant child, but he has no trouble at all',
+            duration: '51m'
+        },
     ]);
 
     return (
@@ -28,7 +52,8 @@ export default function TurningRedPage(){
             </div>
             <div className="mt-[28px] mx-auto flex flex-col items-center gap-[12px]">
                 {cards.map((card) => (
-                    <SeriesCard image={card.image} title={card.title} duration={card.duration} description={card.description} key={card.id}/>
+                    <SeriesCard image={card.image} title={card.title} duration={card.duration}
+                                description={card.description} key={card.id}/>
                 ))}
             </div>
         </div>

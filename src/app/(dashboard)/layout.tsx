@@ -5,7 +5,7 @@ import {AppProvider} from "@/components/providers/AppProvider";
 import {addClass} from "@/core/utils/classNames";
 import {PhoneNavbar} from "@/components/sections/PhoneNavbar";
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+export default function DashboardLayout({children}: { children: React.ReactNode }) {
     return (
         <AppProvider>
             <main className={addClass('relative w-full min-h-screen h-[100vh] h-[100dvh] bg-signInBg')}>

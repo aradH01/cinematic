@@ -3,13 +3,12 @@ import {Icon} from "@/components/elements/Icon";
 import React from "react";
 import {Typography} from "@/components/elements/Typography";
 import {EditProfile} from "@/components/elements/EditProfile";
-import {Path, WhoWatching} from "@/core/constants/enums";
+import {WhoWatching} from "@/core/constants/enums";
 import {useTranslation} from "react-i18next";
-import Link from "next/link";
 import {useRouter} from "next/navigation";
 
 export default function ManageProfilePage() {
-    const { t } = useTranslation();
+    const {t} = useTranslation();
     const router = useRouter()
     const handleBack = () => {
         if (window.history.length > 1) {
@@ -18,10 +17,10 @@ export default function ManageProfilePage() {
             router.push("/"); // Fallback to the home page or a default page
         }
     };
-    return(
+    return (
         <div className="pt-[60px] px-[12px]">
             <button onClick={handleBack}
-                className="border-border100 mb-[24px] border-solid border w-[48px] h-[48px] p-[10px] flex items-center justify-center rounded-full bg-transparent">
+                    className="border-border100 mb-[24px] border-solid border w-[48px] h-[48px] p-[10px] flex items-center justify-center rounded-full bg-transparent">
                 <Icon name="SignInBackArrow" className="w-[28px] h-[28px]"/>
             </button>
             <Typography.Title className="!text-[40px] leading-[48px] !font-lecturis-rounded text-left" color="white"
@@ -30,7 +29,7 @@ export default function ManageProfilePage() {
             </Typography.Title>
             <div className="flex flex-wrap items-center gap-y-[31px] gap-x-[59px] justify-center mt-[88px]">
                 {
-                    WhoWatching.map((avatar, index)=>(
+                    WhoWatching.map((avatar, index) => (
                         <EditProfile active={avatar.active} key={index} image={avatar.image} name={avatar.name}/>
                     ))
                 }

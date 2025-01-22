@@ -22,7 +22,7 @@ const AICommentWrapper = styled.div`
 
 export default function RatingPage() {
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
     return (
         <div className="px-[16px]">
             <div className="mb-[12px]">

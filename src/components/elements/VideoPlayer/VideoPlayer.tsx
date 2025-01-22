@@ -1,7 +1,7 @@
 'use client';
-import React, { useRef, useState, useEffect } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styled from '@emotion/styled';
-import { Icon } from '@/components/elements/Icon';
+import {Icon} from '@/components/elements/Icon';
 
 const VideoContainer = styled.div`
     position: relative;
@@ -22,12 +22,12 @@ const CenterIcon = styled.button<{ visible: boolean }>`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: ${({ theme }) => theme.font.white};
+    background: ${({theme}) => theme.font.white};
     border: none;
     border-radius: 50%;
     width: 64px;
     height: 64px;
-    display: ${({ visible }) => (visible ? 'flex' : 'none')};
+    display: ${({visible}) => (visible ? 'flex' : 'none')};
     justify-content: center;
     align-items: center;
     cursor: pointer;
@@ -45,11 +45,11 @@ const GestureOverlay = styled.div`
 const VerticalProgressBar = styled.div<{ value: number; type: 'brightness' | 'volume' }>`
     position: absolute;
     top: 20%;
-    ${({ type }) => (type === 'brightness' ? 'right: 10px;' : 'left: 10px;')}
+    ${({type}) => (type === 'brightness' ? 'right: 10px;' : 'left: 10px;')}
     width: 36px;
-    border:1px solid ${({ theme }) => theme.components.border200};
+    border:1px solid ${({theme}) => theme.components.border200};
     height: 179px;
-    background:${({ theme }) => theme.components.black600};
+    background:${({theme}) => theme.components.black600};
     border-radius: 20px;
     backdrop-filter: blur(50px);
     overflow: hidden;
@@ -58,8 +58,8 @@ const VerticalProgressBar = styled.div<{ value: number; type: 'brightness' | 'vo
         content: '';
         display: block;
         width: 100%;
-        height: ${({ value }) => `${value * 100}%`};
-        background: ${({ type }) => (type === 'brightness' ? '#fff' : '#fff')};
+        height: ${({value}) => `${value * 100}%`};
+        background: ${({type}) => (type === 'brightness' ? '#fff' : '#fff')};
         transition: height 0.1s ease;
         border-radius: 20px;
     }
@@ -70,7 +70,7 @@ const ControlBar = styled.div<{ visible: boolean }>`
     width: 100%;
     padding: 10px 16px;
     display: flex;
-    opacity: ${({ visible }) => (visible ? '100' : '0')};
+    opacity: ${({visible}) => (visible ? '100' : '0')};
     justify-content: space-between;
     align-items: center;
     background-color: transparent;
@@ -100,7 +100,7 @@ const ProgressBarContainer = styled.div<{ visible: boolean }>`
     border-radius: 3px;
     background: rgba(255, 255, 255, 0.3);
     cursor: pointer;
-    opacity: ${({ visible }) => (visible ? '1' : '0')};
+    opacity: ${({visible}) => (visible ? '1' : '0')};
     transition: opacity 250ms ease;
 `;
 
@@ -116,6 +116,7 @@ interface VideoPlayerProps {
     src: string;
     poster: string;
 }
+
 const TimeDisplay = styled.div<{ visible: boolean }>`
     position: absolute;
     bottom: 75px;
@@ -125,7 +126,7 @@ const TimeDisplay = styled.div<{ visible: boolean }>`
     justify-content: space-between;
     font-size: 16px;
     font-weight: 600;
-    opacity: ${({ visible }) => (visible ? '1' : '0')};
+    opacity: ${({visible}) => (visible ? '1' : '0')};
     transition: opacity 250ms ease;
     z-index: 10;
 `;
@@ -141,7 +142,7 @@ const formatTime = (time: number): string => {
         .filter(Boolean)
         .join(':');
 };
-const VideoPlayer: React.FC<VideoPlayerProps> = ({ src, poster }) => {
+const VideoPlayer: React.FC<VideoPlayerProps> = ({src, poster}) => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const progressBarRef = useRef<HTMLDivElement>(null);
     const progressFillRef = useRef<HTMLDivElement>(null);
@@ -174,7 +175,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ src, poster }) => {
         const area = touchX < window.innerWidth / 2 ? 'left' : 'right';
         setTouchArea(area);
 
-        touchStart.current = { x: touchX, y: e.touches[0].clientY };
+        touchStart.current = {x: touchX, y: e.touches[0].clientY};
         setShowProgressBar(true);
     };
 
@@ -283,10 +284,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ src, poster }) => {
                 onTouchEnd={handleTouchEnd}
             />
             {showProgressBar && touchArea === 'right' && (
-                <VerticalProgressBar type="brightness" value={brightness / 2} />
+                <VerticalProgressBar type="brightness" value={brightness / 2}/>
             )}
             {showProgressBar && touchArea === 'left' && (
-                <VerticalProgressBar type="volume" value={volume} />
+                <VerticalProgressBar type="volume" value={volume}/>
             )}
             <CenterIcon visible={showControls} onClick={handlePlayPause}>
                 {isPlaying ? (
@@ -297,10 +298,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ src, poster }) => {
                         strokeWidth={2}
                         stroke="#000"
                     >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 9v6m4-6v6" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 9v6m4-6v6"/>
                     </svg>
                 ) : (
-                    <Icon name="PlayIconV2" className="w-[20px] h-[20px]" />
+                    <Icon name="PlayIconV2" className="w-[20px] h-[20px]"/>
                 )}
             </CenterIcon>
 
@@ -314,24 +315,24 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ src, poster }) => {
                 ref={progressBarRef}
                 onClick={handleProgressBarClick}
             >
-                <ProgressBarFill ref={progressFillRef} />
+                <ProgressBarFill ref={progressFillRef}/>
             </ProgressBarContainer>
 
             <ControlBar visible={showControls}>
                 <button>
-                    <Icon name="VideoSpeed" className="w-[28px] h-[28px]" />
+                    <Icon name="VideoSpeed" className="w-[28px] h-[28px]"/>
                 </button>
                 <button>
-                    <Icon name="Lock" className="w-[28px] h-[28px]" />
+                    <Icon name="Lock" className="w-[28px] h-[28px]"/>
                 </button>
                 <button>
-                    <Icon name="Subtitle" className="w-[28px] h-[28px]" />
+                    <Icon name="Subtitle" className="w-[28px] h-[28px]"/>
                 </button>
                 <button>
-                    <Icon name="Message" className="w-[28px] h-[28px]" />
+                    <Icon name="Message" className="w-[28px] h-[28px]"/>
                 </button>
                 <button>
-                    <Icon name="Share" className="w-[28px] h-[28px]" />
+                    <Icon name="Share" className="w-[28px] h-[28px]"/>
                 </button>
             </ControlBar>
         </VideoContainer>

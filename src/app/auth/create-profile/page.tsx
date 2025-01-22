@@ -12,14 +12,14 @@ import Link from "next/link";
 
 export default function CreateProfilePage() {
     const router = useRouter();
-    const { t } = useTranslation();
+    const {t} = useTranslation();
     const handleActiveChange = (url: string) => {
     };
 
-    const handleNext=()=>{
+    const handleNext = () => {
         router.push(Path.Interests);
     }
-    return(
+    return (
         <div>
             <Link href={Path.OTPCode}
                   className="ml-[12px] border-border100 mb-[24px] border-solid border w-[48px] h-[48px] p-[10px] flex items-center justify-center rounded-full bg-transparent">

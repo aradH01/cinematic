@@ -1,7 +1,7 @@
 'use client'
 import React from "react";
 import styled from "@emotion/styled";
-import { useRouter , usePathname } from 'next/navigation'
+import {usePathname, useRouter} from 'next/navigation'
 import {AvailableIcons, Icon} from "@/components/elements/Icon";
 import Link from "next/link";
 
@@ -26,39 +26,40 @@ const IconWrapper = styled(Link)<{ isActive: boolean }>`
     align-items: center;
     min-width: 72px;
     border-radius: 32px;
-    background-color: ${({ theme , isActive }) => isActive ? theme.components.black800 : 'transparent'};
+    background-color: ${({theme, isActive}) => isActive ? theme.components.black800 : 'transparent'};
     transition: background-color 0.3s ease;
     cursor: pointer;
     padding: 12px 20px;
+
     .navbar-icon {
-    width: 24px;
-    height: 24px;
-    transition: fill 0.3s ease;
-        
-        path,circle,g{
-            stroke: ${({ isActive, theme }) => (isActive ? theme.font.white : theme.font.black400)} !important;
-            opacity: ${({ isActive }) => (isActive ? 1 : '')} !important;
+        width: 24px;
+        height: 24px;
+        transition: fill 0.3s ease;
+
+        path, circle, g {
+            stroke: ${({isActive, theme}) => (isActive ? theme.font.white : theme.font.black400)} !important;
+            opacity: ${({isActive}) => (isActive ? 1 : '')} !important;
         }
-  }
+    }
 `;
 
 const icons = [
-    { name: "Home", path: "/home", icon:  "Home" as AvailableIcons},
-    { name: "Download", path: "/downloads", icon: "Downloads" as AvailableIcons },
-    { name: "Search", path: "/search", icon: "Search" as AvailableIcons },
-    { name: "Settings", path: "/setting", icon: "Setting" as AvailableIcons },
+    {name: "Home", path: "/home", icon: "Home" as AvailableIcons},
+    {name: "Download", path: "/downloads", icon: "Downloads" as AvailableIcons},
+    {name: "Search", path: "/search", icon: "Search" as AvailableIcons},
+    {name: "Settings", path: "/setting", icon: "Setting" as AvailableIcons},
 ];
 
 export const PhoneNavbar = () => {
     const fullPath = usePathname();
-    const router =useRouter()
+    const router = useRouter()
 
     return (
         <NavbarWrapper>
-            {icons.map(({ name, path, icon }) => (
+            {icons.map(({name, path, icon}) => (
                 <IconWrapper href={path}
-                    key={name}
-                    isActive={fullPath?.startsWith(path)}
+                             key={name}
+                             isActive={fullPath?.startsWith(path)}
                 >
                     <Icon className="navbar-icon" name={icon}/>
                 </IconWrapper>

@@ -13,13 +13,13 @@ export default function AddPhonePage() {
     const handlePhoneChange = (value: string | undefined) => {
         setPhoneNumber(value);
     };
-    const handleNext=()=>{
+    const handleNext = () => {
         router.push(Path.OTPCode);
     }
-    return(
+    return (
         <div>
             <Link href={Path.SignIn}
-                className="ml-[12px] border-border100 mb-[24px] border-solid border w-[48px] h-[48px] p-[10px] flex items-center justify-center rounded-full bg-transparent">
+                  className="ml-[12px] border-border100 mb-[24px] border-solid border w-[48px] h-[48px] p-[10px] flex items-center justify-center rounded-full bg-transparent">
                 <Icon name="SignInBackArrow" className="w-[28px] h-[28px]"/>
             </Link>
             <div className="flex flex-col items-center">

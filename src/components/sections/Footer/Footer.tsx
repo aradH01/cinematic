@@ -1,6 +1,7 @@
 'use client'
+
 export function Footer() {
-    return(
+    return (
         <div></div>
     )
 }

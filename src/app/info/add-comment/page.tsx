@@ -12,16 +12,16 @@ import {Path} from "@/core/constants/enums";
 import {useRouter} from "next/navigation";
 
 export default function AddCommentPage() {
-    const { t } = useTranslation();
+    const {t} = useTranslation();
     const {push} = useRouter();
     const handleReviewSubmit = (rating: number) => {
         console.log(`User selected a rating of: ${rating}`);
     };
-    const handleNext=()=>{
+    const handleNext = () => {
         push(Path.Comments)
-        toast.success({message:"comment sended"})
+        toast.success({message: "comment sended"})
     }
-    return(
+    return (
         <div className="px-[16px]">
             <div className="mb-[12px]">
                 <BackHeader href={Path.Comments}/>

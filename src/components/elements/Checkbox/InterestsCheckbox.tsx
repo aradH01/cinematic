@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import React, { useState } from "react";
-import { Typography } from "@/components/elements/Typography";
+import React, {useState} from "react";
+import {Typography} from "@/components/elements/Typography";
 import {useTranslation} from "react-i18next";
 
 export interface InterestsCheckboxProps {
@@ -15,7 +15,7 @@ const Content = styled.div`
     border-radius: 61px;
     box-sizing: border-box;
     transition: all ease-in 250ms;
-    background: ${({ theme }) => theme.components.black400};
+    background: ${({theme}) => theme.components.black400};
     &:hover {
         filter: brightness(1.2);
     }
@@ -52,7 +52,7 @@ const Content = styled.div`
     }
 
     input[type="checkbox"]:checked ~ div {
-        border: 3px solid ${({ theme }) => theme.components.checkboxActiveBorder};
+        border: 3px solid ${({theme}) => theme.components.checkboxActiveBorder};
         outline: none;
         transition: all ease-in 250ms;
     }
@@ -62,19 +62,19 @@ const Content = styled.div`
     }
 `;
 
-export const InterestsCheckbox = ({ title, onChange }: InterestsCheckboxProps) => {
+export const InterestsCheckbox = ({title, onChange}: InterestsCheckboxProps) => {
     const [isChecked, setIsChecked] = useState(false);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { checked } = event.target;
+        const {checked} = event.target;
         setIsChecked(checked);
         if (onChange) onChange(checked);
     };
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     return (
         <Content>
-            <input type="checkbox" checked={isChecked} onChange={handleChange} />
+            <input type="checkbox" checked={isChecked} onChange={handleChange}/>
             <div>
                 <Typography.Text
                     weight="medium"

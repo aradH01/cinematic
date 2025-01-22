@@ -4,7 +4,6 @@ import type {PropsWithChildren} from 'react';
 import '@mantine/core/styles.css';
 
 
-
 const AuthLayout = ({children}: PropsWithChildren) => {
     return (
         <>

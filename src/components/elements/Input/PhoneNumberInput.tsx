@@ -9,7 +9,7 @@ interface PhoneNumberInputProps {
     onChange: (value: string | undefined) => void;
 }
 
-const StyledPhoneNumberInput= styled(PhoneInput)`
+const StyledPhoneNumberInput = styled(PhoneInput)`
     input{
         background: ${({theme}) => theme.components.black500};
         width: 309px;
@@ -41,7 +41,7 @@ const StyledPhoneNumberInput= styled(PhoneInput)`
 `
 
 
-export const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({ value, onChange }) => {
+export const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({value, onChange}) => {
     return (
         <div
             css={{

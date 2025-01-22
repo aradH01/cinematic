@@ -1,9 +1,9 @@
 'use client';
 import styled from "@emotion/styled";
-import { Icon } from "@/components/elements/Icon";
-import { Typography } from "@/components/elements/Typography";
-import React, { useEffect, useRef, useState } from "react";
-import { addClass } from "@/core/utils/classNames";
+import {Icon} from "@/components/elements/Icon";
+import {Typography} from "@/components/elements/Typography";
+import React, {useEffect, useRef, useState} from "react";
+import {addClass} from "@/core/utils/classNames";
 
 interface SearchBoxProps {
     className?: string;
@@ -20,7 +20,7 @@ interface SearchBoxProps {
 }
 
 const Wrapper = styled.div`
-    background-color: ${({ theme }) => theme.components.black400};
+    background-color: ${({theme}) => theme.components.black400};
     width: 100%;
     transition: all ease 500ms;
     backdrop-filter: blur(25px);
@@ -45,7 +45,7 @@ const Wrapper = styled.div`
             transition: all ease 500ms;
             width: 100%;
             height: 48px;
-            color: ${({ theme }) => theme.font.white};
+            color: ${({theme}) => theme.font.white};
             border: none;
             font-size: 16px;
             font-weight: 400;
@@ -110,22 +110,22 @@ const ClearIcon = styled.div`
         height: 24px;
 
         path {
-            fill: ${({ theme }) => theme.font.white};
+            fill: ${({theme}) => theme.font.white};
             opacity: 0.5;
         }
     }
 `;
 
 export function SearchInput({
-                                        className,
-                                        error,
-                                        type = "text",
-                                        onChange,
-                                        placeholder,
-                                        value = "",
-                                        label,
-                                        ...props
-                                    }: SearchBoxProps) {
+                                className,
+                                error,
+                                type = "text",
+                                onChange,
+                                placeholder,
+                                value = "",
+                                label,
+                                ...props
+                            }: SearchBoxProps) {
     const [isFocused, setIsFocused] = useState(false);
     const [hasValue, setHasValue] = useState(!!value);
     const inputRef = useRef<HTMLInputElement | null>(null);
@@ -153,7 +153,7 @@ export function SearchInput({
     const handleClear = (e: React.MouseEvent<HTMLDivElement>) => {
         e.preventDefault();
         setHasValue(false);
-        onChange?.({ target: { value: "" } });
+        onChange?.({target: {value: ""}});
         if (inputRef.current) {
             inputRef.current.focus();
         }
@@ -172,7 +172,7 @@ export function SearchInput({
                         "transition-all"
                     )}
                 >
-                    <Icon name="Close" />
+                    <Icon name="Close"/>
                 </ClearIcon>
 
                 <input
@@ -189,7 +189,7 @@ export function SearchInput({
                 />
                 <SearchBox
                     className={`translate-y-1/2 -translate-x-1/2 pointer-events-none ${
-                        isFocused  ? "focused translate-x-1/2" : ""
+                        isFocused ? "focused translate-x-1/2" : ""
                     }`}
                 >
                     <StyledIcon

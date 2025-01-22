@@ -1,8 +1,8 @@
 'use client';
-import React, { useEffect, useRef, useState } from "react";
-import { Typography } from "../Typography";
-import { Button } from "@/components/elements/Button";
-import { addClass } from "@/core/utils/classNames";
+import React, {useEffect, useRef, useState} from "react";
+import {Typography} from "../Typography";
+import {Button} from "@/components/elements/Button";
+import {addClass} from "@/core/utils/classNames";
 
 export interface CatButtonsProps {
     label?: string;

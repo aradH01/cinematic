@@ -1,7 +1,6 @@
 'use client'
 import {Icon} from "@/components/elements/Icon";
 import React, {useState} from "react";
-import {addClass} from "@/core/utils/classNames";
 import Image from "next/image";
 import Avatar from '@/public/images/MenAvatar.svg'
 import {PhoneInput} from "@/components/elements/Input";
@@ -11,9 +10,9 @@ import {Path} from "@/core/constants/enums";
 import {useRouter} from "next/navigation";
 import Link from "next/link";
 
-const StyledButton=styled(Button)`
+const StyledButton = styled(Button)`
     background: transparent;
-    border: 1px solid ${({theme})=>theme.components.border100};
+    border: 1px solid ${({theme}) => theme.components.border100};
     padding: 8px 24px;
     margin: 1rem auto 0;
 `
@@ -32,7 +31,7 @@ export default function EditProfilePage() {
         <div className="pt-[60px] px-[12px]">
             <div className="mb-[32px] flex items-center justify-between">
                 <Link href={Path.ManageProfile}
-                    className="border-border100  border-solid border w-[48px] h-[48px] p-[10px] flex items-center justify-center rounded-full bg-transparent">
+                      className="border-border100  border-solid border w-[48px] h-[48px] p-[10px] flex items-center justify-center rounded-full bg-transparent">
                     <Icon name="SignInBackArrow" className="w-[28px] h-[28px]"/>
                 </Link>
                 <div
@@ -55,10 +54,13 @@ export default function EditProfilePage() {
             <div className="flex flex-col items-center justify-center gap-[2px] w-full">
                 <SettingButton icon="Global" title="display_language" description="english"/>
                 <SettingButton icon="Subtitle" title="audio_subtitles" description="english_uk"/>
-                <SettingButton swapButtonChecked={autoPlay} swapButtonOnCheckedChange={handleAutoPlayChange} swapButton icon="Clock" title="autoplay_next"/>
-                <SettingButton swapButtonChecked={repeatAutoPlay} swapButtonOnCheckedChange={handleRepeatPlayChange} swapButton icon="Repeat" title="autoplay_previews"/>
+                <SettingButton swapButtonChecked={autoPlay} swapButtonOnCheckedChange={handleAutoPlayChange} swapButton
+                               icon="Clock" title="autoplay_next"/>
+                <SettingButton swapButtonChecked={repeatAutoPlay} swapButtonOnCheckedChange={handleRepeatPlayChange}
+                               swapButton icon="Repeat" title="autoplay_previews"/>
             </div>
-            <StyledButton onClick={()=>router.push(Path.SignIn)} title="log_out" className="[&>div>span]:!font-lecturis-rounded"/>
+            <StyledButton onClick={() => router.push(Path.SignIn)} title="log_out"
+                          className="[&>div>span]:!font-lecturis-rounded"/>
         </div>
     )
 }

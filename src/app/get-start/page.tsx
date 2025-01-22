@@ -2,7 +2,7 @@
 
 import {Typography} from "@/components/elements/Typography";
 import styled from "@emotion/styled";
-import {Button , GoogleButton} from "@/components/elements/Button";
+import {GoogleButton} from "@/components/elements/Button";
 import {AvailableIcons, Icon} from "@/components/elements/Icon";
 import {Dropdown} from "@/components/elements/Dropdown";
 import {LanguagesList, Path} from "@/core/constants/enums";
@@ -12,8 +12,9 @@ import {useRouter} from "next/navigation";
 import {useTranslation} from "react-i18next";
 import AppleSignInButton from "@/components/elements/Button/AppleButton";
 import Link from "next/link";
-const ProjectName= styled.h1`
-    color: ${({theme})=> theme.font.white};
+
+const ProjectName = styled.h1`
+    color: ${({theme}) => theme.font.white};
     text-align: center;
     text-shadow: 4px 4px 0px #000;
     -webkit-text-stroke-width: 3px;
@@ -48,21 +49,25 @@ const StyledButton = styled(Link)`
 
 export default function GetStartPage() {
     const language = useGeolocation();
-    const { t, i18n } = useTranslation();
-    const [selectedOption, setSelectedOption] = useState<{ value: string; label: string; icon?: AvailableIcons } | null>(null);
-    const router=useRouter()
+    const {t, i18n} = useTranslation();
+    const [selectedOption, setSelectedOption] = useState<{
+        value: string;
+        label: string;
+        icon?: AvailableIcons
+    } | null>(null);
+    const router = useRouter()
     i18n.on('languageChanged', (lng) => {
         console.log(`Global language changed to: ${lng}`);
     });
-   /* useEffect(() => {
-        if (language==='en'){
-            setSelectedOption({value: 'en', label: 'English', icon: 'UsFlag'})
-        } if (language==='az'){
-            setSelectedOption({value: 'az', label: 'Turkish', icon: 'AzarbaijanFlag'})
-        }if (language==='ru'){
-            setSelectedOption({value: 'ru', label: 'Russian', icon: 'RussianFlag'})
-        }
-    }, [language]);*/
+    /* useEffect(() => {
+         if (language==='en'){
+             setSelectedOption({value: 'en', label: 'English', icon: 'UsFlag'})
+         } if (language==='az'){
+             setSelectedOption({value: 'az', label: 'Turkish', icon: 'AzarbaijanFlag'})
+         }if (language==='ru'){
+             setSelectedOption({value: 'ru', label: 'Russian', icon: 'RussianFlag'})
+         }
+     }, [language]);*/
 
     useEffect(() => {
         const currentLanguage = i18n.language || 'en';
@@ -91,17 +96,19 @@ export default function GetStartPage() {
     };
 
 
-    return(
+    return (
         <div className="flex-col flex items-center">
             <div className="flex flex-col items-center justify-center pt-[160px]">
                 <ProjectName className="font-lecturis-rounded">
                     Cinewo
                 </ProjectName>
-                <Typography.Text className="font-lecturis-rounded leading-[40px] text-center" size="lt" color="white" weight="normal">{t('get_started')}</Typography.Text>
+                <Typography.Text className="font-lecturis-rounded leading-[40px] text-center" size="lt" color="white"
+                                 weight="normal">{t('get_started')}</Typography.Text>
             </div>
             <div className="flex flex-col gap-[14px] items-center justify-center w-full max-w-[350px]">
                 <div className="mt-[91px] w-full">
-                    <StyledButton className="font-urbanist" href={Path.AddPhone}>{t('continue_with_phone')}</StyledButton>
+                    <StyledButton className="font-urbanist"
+                                  href={Path.AddPhone}>{t('continue_with_phone')}</StyledButton>
                 </div>
                 <div className="flex items-center justify-center gap-[8px]">
                     <Icon name="ThreeDots" className="w-6 h-6"/>
@@ -115,11 +122,15 @@ export default function GetStartPage() {
                 </div>
             </div>
             <div className="mt-[51px]">
-                <Dropdown selectedOption={selectedOption} onSelect={handleSelect} icon options={LanguagesList} className="max-w-[146px]"/>
+                <Dropdown selectedOption={selectedOption} onSelect={handleSelect} icon options={LanguagesList}
+                          className="max-w-[146px]"/>
             </div>
-            <Typography.Paragraph className="mt-[18px] w-[240px] text-center !text-[14px] !font-lecturis-rounded leading-[20px]" color="black" weight="normal">
+            <Typography.Paragraph
+                className="mt-[18px] w-[240px] text-center !text-[14px] !font-lecturis-rounded leading-[20px]"
+                color="black" weight="normal">
                 {t('tap_continue')} {" "}
-                <span className="underline">{t('terms')}</span> {t('and')} <span className="underline">{t('privacy_policy')}</span>
+                <span className="underline">{t('terms')}</span> {t('and')} <span
+                className="underline">{t('privacy_policy')}</span>
             </Typography.Paragraph>
         </div>
     )

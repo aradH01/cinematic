@@ -5,13 +5,14 @@ import styled from "@emotion/styled";
 
 
 interface SeriesCardProps {
-    image:string | StaticImageData
-    title?:string
-    description?:string
-    duration?:string
+    image: string | StaticImageData
+    title?: string
+    description?: string
+    duration?: string
 }
+
 const Wrapper = styled.div`
-        background-color: ${({theme})=>theme.components.black500};
+        background-color: ${({theme}) => theme.components.black500};
         padding: 12px;
         border-radius: 24px;
     display: flex;
@@ -20,8 +21,8 @@ const Wrapper = styled.div`
     justify-content: center;
     gap: 12px;
 `
-export const SeriesCard = ({title,image,description ,duration}:SeriesCardProps) =>{
-    return(
+export const SeriesCard = ({title, image, description, duration}: SeriesCardProps) => {
+    return (
         <Wrapper>
             <div className="flex items-center gap-[12px]">
                 <div>

@@ -10,7 +10,7 @@ interface DeleteModalProps {
     open: boolean;
     onClose: () => void;
     onDelete: (id: number) => void
-    id:number
+    id: number
 }
 
 const Overlay = styled.div`
@@ -29,10 +29,10 @@ const Overlay = styled.div`
 const ModalContainer = styled.div`
   width: 330px;
   height: 220px;
-  background-color: ${({ theme }) => theme.components.black400};
+  background-color: ${({theme}) => theme.components.black400};
   border-radius: 28px;
     backdrop-filter: blur(50px);
-    border: 1px solid ${({ theme }) => theme.components.black500};
+    border: 1px solid ${({theme}) => theme.components.black500};
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -53,8 +53,8 @@ const ModalContainer = styled.div`
   }
 `;
 
-const StyledButton= styled.button`
-    background-color: ${({ theme }) => theme.components.black400};
+const StyledButton = styled.button`
+    background-color: ${({theme}) => theme.components.black400};
     padding: 12px 20px;
     font-size: 16px;
     font-weight: 500;
@@ -66,8 +66,8 @@ const StyledButton= styled.button`
     
 `
 
-export const DeleteModal= ({ open, onClose  , onDelete , id}:DeleteModalProps) => {
-    const { t } = useTranslation();
+export const DeleteModal = ({open, onClose, onDelete, id}: DeleteModalProps) => {
+    const {t} = useTranslation();
     if (!open) return null;
     const handleModalClick = (e: React.MouseEvent) => {
         e.stopPropagation();
@@ -76,14 +76,18 @@ export const DeleteModal= ({ open, onClose  , onDelete , id}:DeleteModalProps) =
     return (
         <Overlay onClick={onClose}>
             <ModalContainer onClick={handleModalClick}>
-                <Icon name="RedDelete" className="w-8 h-8" />
-               <div className="flex flex-col items-center">
-                   <Typography.Text color="white" weight="bold" size="md" className="font-urbanist leading-[28px]">{t('delete_movie')}</Typography.Text>
-                   <Typography.Paragraph color="white700" weight="normal" size="sm" className="text-center font-urbanist leading-[28px]">{t('confirm_delete')}</Typography.Paragraph>
-               </div>
+                <Icon name="RedDelete" className="w-8 h-8"/>
+                <div className="flex flex-col items-center">
+                    <Typography.Text color="white" weight="bold" size="md"
+                                     className="font-urbanist leading-[28px]">{t('delete_movie')}</Typography.Text>
+                    <Typography.Paragraph color="white700" weight="normal" size="sm"
+                                          className="text-center font-urbanist leading-[28px]">{t('confirm_delete')}</Typography.Paragraph>
+                </div>
                 <div className="flex w-full items-center justify-center gap-[1px]">
-                    <StyledButton className="font-urbanist text-white rounded-tl-[16px] rounded-bl-[16px]" onClick={onClose}>{t('cancel')}</StyledButton>
-                    <StyledButton className="font-urbanist text-red300 rounded-br-[16px] rounded-tr-[16px]" onClick={() => onDelete(id)}>{t('delete')}</StyledButton>
+                    <StyledButton className="font-urbanist text-white rounded-tl-[16px] rounded-bl-[16px]"
+                                  onClick={onClose}>{t('cancel')}</StyledButton>
+                    <StyledButton className="font-urbanist text-red300 rounded-br-[16px] rounded-tr-[16px]"
+                                  onClick={() => onDelete(id)}>{t('delete')}</StyledButton>
                 </div>
             </ModalContainer>
         </Overlay>

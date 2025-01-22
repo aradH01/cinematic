@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
-import { useState, useEffect, useRef } from "react";
+import {css} from "@emotion/react";
+import {useEffect, useRef, useState} from "react";
 
 const SliderWrapper = css`
     display: flex;
@@ -21,18 +21,18 @@ const SlidesContainer = (offset: number) => css`
     will-change: transform;
 `;
 
-const Slide = (isActive: boolean, isOverlap: boolean ,index:number , activeIn: number ,studioMode?:boolean ,  ) => css`
+const Slide = (isActive: boolean, isOverlap: boolean, index: number, activeIn: number, studioMode?: boolean,) => css`
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
     transition: width 0.3s ease-in-out, height 0.3s ease-in-out, margin 0.3s ease-in-out;
-    width: ${(studioMode && isActive) ? "112px" :   isActive  ? "140px" : "88px"};
-    height: ${(studioMode&&isActive) ? "112px" : isActive ? '140px' : "88px"};
+    width: ${(studioMode && isActive) ? "112px" : isActive ? "140px" : "88px"};
+    height: ${(studioMode && isActive) ? "112px" : isActive ? '140px' : "88px"};
     overflow: hidden;
     position: relative;
-    z-index: ${isActive ? "10" :(index < activeIn && !studioMode) ? "1" :(index > activeIn && studioMode) ? `${activeIn - index}` : '1'};
-    margin-left: ${(studioMode&& isOverlap) ? "-16px" : isOverlap ? '-24px' : "0"};
+    z-index: ${isActive ? "10" : (index < activeIn && !studioMode) ? "1" : (index > activeIn && studioMode) ? `${activeIn - index}` : '1'};
+    margin-left: ${(studioMode && isOverlap) ? "-16px" : isOverlap ? '-24px' : "0"};
 `;
 
 const AvatarImage = css`
@@ -66,12 +66,12 @@ const ArrowRight = css`
 
 interface SliderProps {
     onActiveSlideChange?: (url: string) => void;
-    data:  { id: number, image: string }[];
-    studioMode?:boolean
-    className?:string
+    data: { id: number, image: string }[];
+    studioMode?: boolean
+    className?: string
 }
 
-export const AvatarSlider = ({ onActiveSlideChange , data , studioMode , className }: SliderProps) => {
+export const AvatarSlider = ({onActiveSlideChange, data, studioMode, className}: SliderProps) => {
 
 
     const [activeIndex, setActiveIndex] = useState(Math.floor(data.length / 2));
@@ -139,11 +139,11 @@ export const AvatarSlider = ({ onActiveSlideChange , data , studioMode , classNa
                         !(index > activeIndex + 2) &&
                         !(index < activeIndex - 1) &&
                         index !== activeIndex;
-                    const itemIndex=index
-                    const activeIn=activeIndex
+                    const itemIndex = index
+                    const activeIn = activeIndex
                     return (
-                        <div key={item.id} css={Slide(isActive, isOverlap ,itemIndex , activeIn ,studioMode )}>
-                            <img src={item.image} alt={`Avatar ${item.id}`} css={AvatarImage} />
+                        <div key={item.id} css={Slide(isActive, isOverlap, itemIndex, activeIn, studioMode)}>
+                            <img src={item.image} alt={`Avatar ${item.id}`} css={AvatarImage}/>
                         </div>
                     );
                 })}

@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 import React, {forwardRef, useState} from "react";
 import {AvailableIcons, Icon} from '@/components/elements/Icon';
 import {Typography} from "../Typography";
-import {Simulate} from "react-dom/test-utils";
 import {useTranslation} from "react-i18next";
 
 
@@ -108,13 +107,13 @@ const ClearIcon = styled.div`
     }
 `;
 export const PhoneInput = forwardRef<HTMLInputElement, PhoneInputProps>(({
-                                                                   className,
-                                                                   placeHolder,
-                                                                   type,
-                                                                   icon,
-                                                                   error,
-                                                                   ...rest
-                                                               }, ref) => {
+                                                                             className,
+                                                                             placeHolder,
+                                                                             type,
+                                                                             icon,
+                                                                             error,
+                                                                             ...rest
+                                                                         }, ref) => {
         const [value, setValue] = useState("");
         const [focus, setFocus] = useState(false);
 
@@ -131,7 +130,7 @@ export const PhoneInput = forwardRef<HTMLInputElement, PhoneInputProps>(({
                 .parentElement?.querySelector("input") as HTMLInputElement;
             inputElement?.focus();
         };
-    const { t } = useTranslation();
+        const {t} = useTranslation();
 
         return (
             <Wrapper className={className}>

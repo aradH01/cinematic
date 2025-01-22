@@ -42,25 +42,25 @@ const CheckboxWrapper = styled.div`
         object-fit: cover;
         border-radius: 8px;
         transition: transform 0.3s ease;
-        filter: ${({ isChecked }: { isChecked: boolean }) =>
-                isChecked ? "brightness(0.5)" : "none"};
+        filter: ${({isChecked}: { isChecked: boolean }) =>
+    isChecked ? "brightness(0.5)" : "none"};
     }
 
     
 `;
-const IconWrapper=styled.div`
+const IconWrapper = styled.div`
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    opacity: ${({ isChecked }: { isChecked: boolean }) =>
-            isChecked ? 1 : 0};
+    opacity: ${({isChecked}: { isChecked: boolean }) =>
+    isChecked ? 1 : 0};
     transition: opacity 0.3s ease;
     z-index: 1;
     width: 32px;
     height: 32px;
     border-radius: 100%;
-    background-color: ${({theme})=>theme.components.red300};
+    background-color: ${({theme}) => theme.components.red300};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -71,10 +71,10 @@ const IconWrapper=styled.div`
     }
 `
 export const ShowsImageCheckbox = ({
-                                                                image,
-                                                                isChecked,
-                                                                onChange,
-                                                            } : ShowsImageCheckboxProps) => {
+                                       image,
+                                       isChecked,
+                                       onChange,
+                                   }: ShowsImageCheckboxProps) => {
     return (
         <CheckboxWrapper isChecked={isChecked}>
             <input

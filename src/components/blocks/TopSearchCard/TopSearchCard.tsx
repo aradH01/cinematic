@@ -1,5 +1,5 @@
-import { Typography } from "@/components/elements/Typography";
-import { Icon } from "@/components/elements/Icon";
+import {Typography} from "@/components/elements/Typography";
+import {Icon} from "@/components/elements/Icon";
 import React from "react";
 
 interface TopSearchCardProps {
@@ -7,7 +7,7 @@ interface TopSearchCardProps {
     onClick?: () => void;
 }
 
-export const TopSearchCard = ({ title, onClick }: TopSearchCardProps) => {
+export const TopSearchCard = ({title, onClick}: TopSearchCardProps) => {
     return (
         <button
             onClick={onClick}
@@ -16,7 +16,7 @@ export const TopSearchCard = ({ title, onClick }: TopSearchCardProps) => {
             <Typography.Text color="white" size="sm" weight="normal" className="font-urbanist leading-6">
                 {title}
             </Typography.Text>
-            <Icon name="RightUpArrow" className="w-6 h-6" />
+            <Icon name="RightUpArrow" className="w-6 h-6"/>
         </button>
     );
 };

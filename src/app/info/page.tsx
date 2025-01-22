@@ -13,11 +13,11 @@ import {ShareModal} from "@/components/blocks/ShareModal";
 import {useTranslation} from "react-i18next";
 import {addClass} from "@/core/utils/classNames";
 
-export default function InfoPage(){
+export default function InfoPage() {
     const [showShareModal, setShowShareModal] = useState(false)
     const [liked, setLiked] = useState(false)
-    const { t } = useTranslation();
-    return(
+    const {t} = useTranslation();
+    return (
         <div>
             <div className="px-[16px]">
                 <div className="mb-[12px]">
@@ -48,8 +48,10 @@ export default function InfoPage(){
                 </div>
                 <div>
                     <div className="flex items-center justify-between mt-6">
-                        <button onClick={()=>setLiked(prevState => !prevState)} className="bg-gray900 w-[72px] h-[72px] rounded-full flex items-center justify-center">
-                            <Icon name="Heart" className={addClass(liked ? 'stroke-red-700' : '' , "w-6 h-6 transition-all")}/>
+                        <button onClick={() => setLiked(prevState => !prevState)}
+                                className="bg-gray900 w-[72px] h-[72px] rounded-full flex items-center justify-center">
+                            <Icon name="Heart"
+                                  className={addClass(liked ? 'stroke-red-700' : '', "w-6 h-6 transition-all")}/>
                         </button>
                         <button className="bg-gray900 w-[72px] h-[72px] rounded-full flex items-center justify-center">
                             <Icon name="Notification" className="w-6 h-6"/>
@@ -71,7 +73,8 @@ export default function InfoPage(){
                     }
                 </div>
             </div>
-            <ShareModal link="Test link for copy" image={Image} onClose={()=>setShowShareModal(false)} open={showShareModal} title="Spider-man"/>
+            <ShareModal link="Test link for copy" image={Image} onClose={() => setShowShareModal(false)}
+                        open={showShareModal} title="Spider-man"/>
         </div>
     )
 }

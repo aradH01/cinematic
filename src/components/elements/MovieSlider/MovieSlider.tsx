@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
-import { useState, useEffect, useRef } from "react";
+import {css} from "@emotion/react";
+import {useEffect, useRef, useState} from "react";
 import {addClass} from "@/core/utils/classNames";
 import Image from "next/image";
 
@@ -23,21 +23,20 @@ const SlidesContainer = (offset: number) => css`
     will-change: transform;
 `;
 
-const Slide = (isActive: boolean, isOverlap: boolean , index:number , activeIn: number ) => css`
+const Slide = (isActive: boolean, isOverlap: boolean, index: number, activeIn: number) => css`
     transition: width 0.3s ease-in-out, height 0.3s ease-in-out, margin 0.3s ease-in-out;
     position: relative;
-    z-index: ${isActive ? "10" :index > activeIn ? "1" :index < activeIn ? `-${activeIn - index}` : '1'};
+    z-index: ${isActive ? "10" : index > activeIn ? "1" : index < activeIn ? `-${activeIn - index}` : '1'};
     margin-left: ${isOverlap ? '-24px' : "0"};
 `;
-const ImageWrapper = (index:number ,activeIn: number , isActive: boolean ) => css`
+const ImageWrapper = (index: number, activeIn: number, isActive: boolean) => css`
     transition: width 0.3s ease-in-out, height 0.3s ease-in-out, margin 0.3s ease-in-out;
-    width: ${isActive ? "118px" : index===activeIn -2  ? "94px" :
-            index===activeIn -1  ? "106px" :index===activeIn +2 ? "94px" :index===activeIn +1 ? "106px" : "94px"} !important;
+    width: ${isActive ? "118px" : index === activeIn - 2 ? "94px" :
+    index === activeIn - 1 ? "106px" : index === activeIn + 2 ? "94px" : index === activeIn + 1 ? "106px" : "94px"} !important;
     
-    height: ${isActive ? "177px" : (index===activeIn -2)  ? "142px" :
-            index===activeIn -1  ? "159px" :index===activeIn +2 ? "142px" : index===activeIn +1 ? "159px" : '142px'} !important;
+    height: ${isActive ? "177px" : (index === activeIn - 2) ? "142px" :
+    index === activeIn - 1 ? "159px" : index === activeIn + 2 ? "142px" : index === activeIn + 1 ? "159px" : '142px'} !important;
 `;
-
 
 
 const Arrow = css`
@@ -65,12 +64,12 @@ const ArrowRight = css`
 
 interface SliderProps {
     onActiveSlideChange?: (url: string) => void;
-    data:  { id: number, image: string }[];
-    studioMode?:boolean
-    className?:string
+    data: { id: number, image: string }[];
+    studioMode?: boolean
+    className?: string
 }
 
-export const MovieSlider = ({ onActiveSlideChange , data  , className }: SliderProps) => {
+export const MovieSlider = ({onActiveSlideChange, data, className}: SliderProps) => {
 
 
     const [activeIndex, setActiveIndex] = useState(Math.floor(data.length / 2));
@@ -135,13 +134,13 @@ export const MovieSlider = ({ onActiveSlideChange , data  , className }: SliderP
                 {data.map((item, index) => {
                     const isActive = index === activeIndex;
                     const isOverlap = true
-                    const itemIndex=index
-                    const activeIn=activeIndex
+                    const itemIndex = index
+                    const activeIn = activeIndex
                     return (
-                        <div key={item.id} css={Slide(isActive, isOverlap ,activeIn, itemIndex )}>
+                        <div key={item.id} css={Slide(isActive, isOverlap, activeIn, itemIndex)}>
                             <div className="relative rounded-[16px]">
-                                <div css={ImageWrapper(itemIndex , activeIn ,  isActive)}
-                                    className={addClass(className, "max-w-[99.9%] max-h-[99.9%] relative rounded-[16px]")}>
+                                <div css={ImageWrapper(itemIndex, activeIn, isActive)}
+                                     className={addClass(className, "max-w-[99.9%] max-h-[99.9%] relative rounded-[16px]")}>
                                     <Image fill src={item.image} alt="Movie Card" className="object-cover rounded-2xl"/>
                                 </div>
                                 <div

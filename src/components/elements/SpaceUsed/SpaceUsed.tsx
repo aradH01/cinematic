@@ -18,7 +18,7 @@ const ProgressRing = styled.svg`
 const PercentageText = styled.div<{ isRed: boolean }>`
     font-size: 24px;
     font-weight: 600;
-    color: ${({ isRed }) => (isRed ? "#FF4D4F" : "#fff")};
+    color: ${({isRed}) => (isRed ? "#FF4D4F" : "#fff")};
     text-align: left;
     line-height: 32px;
     
@@ -37,7 +37,7 @@ export const SpaceUsed: React.FC<SpaceUsedProps> = ({
                                                     }) => {
     const percentage = Math.min((used / total) * 100, 100);
     const isRed = percentage >= warningThreshold;
-    const { t } = useTranslation();
+    const {t} = useTranslation();
     const radius = 20;
     const circumference = 2 * Math.PI * radius;
 
@@ -67,12 +67,13 @@ export const SpaceUsed: React.FC<SpaceUsedProps> = ({
                     strokeLinecap="round"
                 />
             </ProgressRing>
-           <div className="flex items-stert flex-col">
-               <Typography.Text color="white500" className="leading-[24px] font-urbanist" weight="medium" size="sm">{t('space_used')}</Typography.Text>
-               <PercentageText isRed={isRed} className="font-urbanist">
-                   {Math.round(percentage)}% {t('of')} {total} Gb
-               </PercentageText>
-           </div>
+            <div className="flex items-stert flex-col">
+                <Typography.Text color="white500" className="leading-[24px] font-urbanist" weight="medium"
+                                 size="sm">{t('space_used')}</Typography.Text>
+                <PercentageText isRed={isRed} className="font-urbanist">
+                    {Math.round(percentage)}% {t('of')} {total} Gb
+                </PercentageText>
+            </div>
         </CircleContainer>
     );
 };
