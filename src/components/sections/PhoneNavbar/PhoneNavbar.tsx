@@ -3,6 +3,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { useRouter , usePathname } from 'next/navigation'
 import {AvailableIcons, Icon} from "@/components/elements/Icon";
+import Link from "next/link";
 
 const NavbarWrapper = styled.nav`
     width: 100%;
@@ -19,7 +20,7 @@ const NavbarWrapper = styled.nav`
     backdrop-filter: blur(10px);
 `;
 
-const IconWrapper = styled.div<{ isActive: boolean }>`
+const IconWrapper = styled(Link)<{ isActive: boolean }>`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,10 +56,9 @@ export const PhoneNavbar = () => {
     return (
         <NavbarWrapper>
             {icons.map(({ name, path, icon }) => (
-                <IconWrapper
+                <IconWrapper href={path}
                     key={name}
                     isActive={fullPath?.startsWith(path)}
-                    onClick={() => router.push(path)}
                 >
                     <Icon className="navbar-icon" name={icon}/>
                 </IconWrapper>

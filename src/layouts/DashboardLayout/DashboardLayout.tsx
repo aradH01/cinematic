@@ -14,7 +14,7 @@ const MainLayout = ({children}: PropsWithChildren) => {
 
   return (
     <>
-      <div className="">
+      <div className="max-w-[600px] mx-auto">
         {children}
        {/* <Toast/>*/}
       </div>

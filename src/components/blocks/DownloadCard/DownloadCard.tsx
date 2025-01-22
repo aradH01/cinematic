@@ -7,10 +7,11 @@ import {MovieImage} from "@/components/blocks/MovieImages";
 import {Typography} from "@/components/elements/Typography";
 import {StaticImageData} from "next/image";
 import {DeleteModal} from "@/components/blocks/DeleteModal";
+import Link from "next/link";
 
 const wrapperStyle = css`
     position: relative;
-    width: 343px; 
+    width: 99%; 
     height: 126px; 
     overflow: hidden;
 `;
@@ -19,7 +20,7 @@ const CardStyle = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    width: 343px;
+    width: 99%;
     height: 100%;
     background-color: ${({ theme }) => theme.components.black500};
     border-radius: 24px;
@@ -59,7 +60,7 @@ const InnerWrapper = styled.div`
         border-radius: 24px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 12px;
 `
 interface DownloadCardProps{
@@ -80,6 +81,7 @@ export const DownloadCard = ({id, onDelete , image , title , description}: Downl
         setDragging(true);
         const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
         setStartX(clientX);
+        document.body.classList.add('no-select');
     };
 
     const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
@@ -95,7 +97,7 @@ export const DownloadCard = ({id, onDelete , image , title , description}: Downl
 
     const handleDragEnd = () => {
         setDragging(false);
-
+        document.body.classList.remove('no-select');
         if (translateX <= -30) {
             setTranslateX(-76);
             setIsSwiped(true);
@@ -116,51 +118,53 @@ export const DownloadCard = ({id, onDelete , image , title , description}: Downl
         }
     };
     return (
-        <div>
-            <div css={wrapperStyle}>
-                {isSwiped && <div css={overlayStyle} onClick={handleReset}/>}
-                <CardStyle
-                    css={[
-                        {
-                            transform: `translateX(${translateX}px)`,
-                        },
-                    ]}
-                    onMouseDown={handleDragStart}
-                    onMouseMove={handleDragMove}
-                    onMouseUp={handleDragEnd}
-                    onMouseLeave={handleDragEnd}
-                    onTouchStart={handleDragStart}
-                    onTouchMove={handleDragMove}
-                    onTouchEnd={handleDragEnd}
-                    onClick={handleCardClick}
-                >
-
-                    <InnerWrapper>
-                        <div>
-                            <MovieImage image={image}/>
-                        </div>
-                        <div className="flex flex-col items-start">
-                            <Typography.Text color="white" weight="medium"
-                                             className="!text-[20px] leading-[32px]">{title}</Typography.Text>
-                            <Typography.Paragraph color="gray400" weight="normal"
-                                                  className="!text-[14px] line-clamp-2 leading-[20px]">{description}</Typography.Paragraph>
-                        </div>
-                    </InnerWrapper>
-
-                </CardStyle>
-                {isSwiped && (
-                    <DeleteIconStyle
-                        onClick={() => setDeleteModalOpen(true)}
-                        aria-label="Delete Card"
+        <Link href="/downloads/23">
+            <div className="min-w-[343px] w-full flex justify-center">
+                <div css={wrapperStyle}>
+                    {isSwiped && <div css={overlayStyle} onClick={handleReset}/>}
+                    <CardStyle
+                        css={[
+                            {
+                                transform: `translateX(${translateX}px)`,
+                            },
+                        ]}
+                        onMouseDown={handleDragStart}
+                        onMouseMove={handleDragMove}
+                        onMouseUp={handleDragEnd}
+                        onMouseLeave={handleDragEnd}
+                        onTouchStart={handleDragStart}
+                        onTouchMove={handleDragMove}
+                        onTouchEnd={handleDragEnd}
+                        onClick={handleCardClick}
                     >
-                        <Icon name="RedDelete" className="w-[28px] h-[28px]"/>
-                    </DeleteIconStyle>
-                )}
+
+                        <InnerWrapper>
+                            <div>
+                                <MovieImage image={image}/>
+                            </div>
+                            <div className="flex flex-col items-start">
+                                <Typography.Text color="white" weight="medium"
+                                                 className="!text-[20px] leading-[32px]">{title}</Typography.Text>
+                                <Typography.Paragraph color="gray400" weight="normal"
+                                                      className="!text-[14px] line-clamp-2 leading-[20px]">{description}</Typography.Paragraph>
+                            </div>
+                        </InnerWrapper>
+
+                    </CardStyle>
+                    {isSwiped && (
+                        <DeleteIconStyle
+                            onClick={() => setDeleteModalOpen(true)}
+                            aria-label="Delete Card"
+                        >
+                            <Icon name="RedDelete" className="w-[28px] h-[28px]"/>
+                        </DeleteIconStyle>
+                    )}
+                </div>
+                <DeleteModal id={id} onDelete={() => onDelete(id)} open={deleteModalOpen} onClose={() => {
+                    setDeleteModalOpen(false)
+                    handleCardClick()
+                }}/>
             </div>
-            <DeleteModal id={id} onDelete={()=>onDelete(id)} open={deleteModalOpen} onClose={()=>{
-                setDeleteModalOpen(false)
-                handleCardClick()
-            }}/>
-        </div>
+        </Link>
     );
 };

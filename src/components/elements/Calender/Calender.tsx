@@ -32,6 +32,12 @@ const DayNumber = styled.div<{ isToday: boolean }>`
     font-weight: 600;
     line-height: 28px;
     text-align: center;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
 `;
 
 const Calendar: React.FC<CalendarProps> = ({ year, month, currentDate }) => {

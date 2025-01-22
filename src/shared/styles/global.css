@@ -42,8 +42,19 @@ border-radius: 10px;
   background:#FF4D4F;
 }
 
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
 
-
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
 /* fonts */
 
 @font-face {

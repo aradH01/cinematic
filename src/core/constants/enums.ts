@@ -9,6 +9,12 @@ export enum Path {
   Settings = '/setting',
   ManageProfile= '/manage-profile',
   EditProfile = '/edit-profile',
+  Home = '/home',
+  Calender = '/calender',
+  Info = "/info",
+  Comments = "/info/rating",
+  AddComment = "/info/add-comment",
+  Downloads = "/info/downloads",
 }
 
 export const LanguagesList = [

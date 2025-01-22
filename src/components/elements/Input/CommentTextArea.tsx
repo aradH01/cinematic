@@ -9,7 +9,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 400px;
+    
     margin: 16px 0;
 `;
 
@@ -22,6 +22,7 @@ const StyledTextarea = styled.textarea<{ hasError?: boolean }>`
     border-radius: 24px;
     resize: none;
     font-size: 16px;
+    color: ${({  theme}) => theme.font.white};
     font-weight: 400;
     line-height: 24px;
     box-shadow: none;
@@ -67,12 +68,12 @@ export const CommentTextArea = () => {
     };
 
     return (
-        <Container>
+        <Container className="no-scrollbar">
             <StyledTextarea
                 value={text}
                 onChange={(e) => setText(e.target.value.slice(0, maxChars))}
                 placeholder="Write your review..."
-                className="font-urbanist"
+                className="font-urbanist no-scrollbar"
             />
             <Counter>{`${maxChars - text.length}/${maxChars}`}</Counter>
             <ClearIcon

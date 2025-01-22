@@ -9,6 +9,8 @@ import {Icon} from "@/components/elements/Icon";
 import {MovieSlider} from "@/components/elements/MovieSlider";
 import {useTranslation} from "react-i18next";
 
+
+
 export default function HomePage(){
 
     const { t } = useTranslation();
@@ -43,7 +45,7 @@ export default function HomePage(){
             </div>
             <Typography.Title level="h1" size="xlg" weight="medium" color="white" className="leading-[40px] px-[12px]">{t('good_morning')} Mia 👋</Typography.Title>
 
-            <div className=" pl-[12px] flex gap-8 items-center max-w-[99%] overflow-x-auto">
+            <div className=" pl-[12px] flex gap-8 items-center sm:max-w-[600px] max-w-[375px] overflow-x-auto no-scrollbar">
                 <CategoriesButton className="mt-4" categories={categories} onClick={() => {
                 }}/>
             </div>
@@ -62,7 +64,7 @@ export default function HomePage(){
                     </div>
                     <Icon name="IconBox" className="w-[28px] h-[28px]"/>
                 </div>
-                <div className="flex flex-col max-w-[500px] mx-auto items-center gap-[12px]">
+                <div className="flex flex-col max-w-[600px] w-full items-stretch gap-[12px]">
                     {
                         MoviesCards.map((card, index) => (
                             <MovieCard key={index} image={card.image} title={card.title}
@@ -82,7 +84,7 @@ export default function HomePage(){
                     </div>
                     <Icon name="IconBox" className="w-[28px] h-[28px]"/>
                 </div>
-                <div className="flex flex-col max-w-[500px] mx-auto items-center gap-[12px]">
+                <div className="flex flex-col max-w-[600px] w-full items-stretch gap-[12px]">
                     {
                         MoviesCards.map((card, index) => (
                             <MovieCard key={index} image={card.image} title={card.title}
@@ -103,7 +105,7 @@ export default function HomePage(){
                     </div>
                     <Icon name="IconBox" className="w-[28px] h-[28px]"/>
                 </div>
-                <div className="flex flex-col max-w-[500px] mx-auto items-center gap-[12px]">
+                <div className="flex flex-col max-w-[600px] w-full items-stretch gap-[12px]">
                     {
                         MoviesCards.map((card, index) => (
                             <MovieCard key={index} image={card.image} title={card.title}

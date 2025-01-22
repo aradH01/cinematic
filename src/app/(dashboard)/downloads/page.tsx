@@ -30,7 +30,7 @@ export default function DownloadsPage(){
                     <SpaceUsed used={18} total={60} warningThreshold={80}/>
                 </div>
             </div>
-            <div className="mt-[28px] mx-auto flex flex-col items-center gap-[12px]">
+            <div className="mt-[28px] flex flex-col w-full gap-[12px]">
                 {cards.map((card) => (
                     <DownloadCard image={card.image} title={card.title} description={card.description} key={card.id} id={card.id} onDelete={handleDelete}/>
                 ))}

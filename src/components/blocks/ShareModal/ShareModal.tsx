@@ -24,12 +24,14 @@ const Container = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.01);
     z-index: 999;
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    padding: 24px;
+    padding: 16px;
+    max-width: 600px !important;
+    margin: 0 auto;
 `
 const Modal = styled.div`
     position: fixed;
@@ -38,11 +40,14 @@ const Modal = styled.div`
     right: 0;
     background-color: ${({theme}) => theme.components.gray900};
     border-radius: 32px 32px 0 0;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
+   
     height: 60%;
     max-height: 60%;
     overflow: hidden;
-    padding: 24px;
+    padding: 16px;
+    max-width: 600px !important;
+    margin: 0 auto;
     z-index: 999;
     animation: slideUp 0.5s ease-out forwards;
 

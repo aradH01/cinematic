@@ -3,7 +3,7 @@ import {BackHeader} from "@/components/sections/BackHeader";
 import React from "react";
 import {Typography} from "@/components/elements/Typography";
 import {Icon} from "@/components/elements/Icon";
-import {CastsAvatar, Factors} from "@/core/constants/enums";
+import {CastsAvatar, Factors, Path} from "@/core/constants/enums";
 import {MovieDetailCard} from "@/components/blocks/MovieDetailCard";
 import {FactorAvatar} from "@/components/elements/FactorAvatar";
 import {useTranslation} from "react-i18next";
@@ -13,7 +13,7 @@ export default function DetailPage() {
     return (
         <div className="px-[16px]">
             <div className="mb-[12px]">
-                <BackHeader href="/info"/>
+                <BackHeader isLinked={Path.Comments} href={Path.Info} icon="Comments"/>
             </div>
             <Typography.Title level="h1" color="white" weight="normal"
                               className="!text-[40px] font-urbanist leading-[48px] text-ellipsis">{t('info')}</Typography.Title>

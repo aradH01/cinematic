@@ -7,19 +7,21 @@ import Image from "@/public/images/show4.jpg"
 import {MovieImage} from "@/components/blocks/MovieImages";
 import {Icon} from "@/components/elements/Icon";
 import {Button, DownloadButton} from "@/components/elements/Button";
-import {MoviesCards} from "@/core/constants/enums";
+import {MoviesCards, Path} from "@/core/constants/enums";
 import Link from "next/link";
 import {ShareModal} from "@/components/blocks/ShareModal";
 import {useTranslation} from "react-i18next";
+import {addClass} from "@/core/utils/classNames";
 
 export default function InfoPage(){
-    const [showShareModal, setShowShareModal] = useState(true)
+    const [showShareModal, setShowShareModal] = useState(false)
+    const [liked, setLiked] = useState(false)
     const { t } = useTranslation();
     return(
         <div>
             <div className="px-[16px]">
                 <div className="mb-[12px]">
-                    <BackHeader onClick={() => setShowShareModal(true)}/>
+                    <BackHeader href={Path.Home} onClick={() => setShowShareModal(true)}/>
                 </div>
                 <Typography.Title level="h1" color="white" weight="normal"
                                   className="!text-[40px] font-urbanist leading-[48px] text-ellipsis">Spider-man</Typography.Title>
@@ -46,8 +48,8 @@ export default function InfoPage(){
                 </div>
                 <div>
                     <div className="flex items-center justify-between mt-6">
-                        <button className="bg-gray900 w-[72px] h-[72px] rounded-full flex items-center justify-center">
-                            <Icon name="Heart" className="w-6 h-6"/>
+                        <button onClick={()=>setLiked(prevState => !prevState)} className="bg-gray900 w-[72px] h-[72px] rounded-full flex items-center justify-center">
+                            <Icon name="Heart" className={addClass(liked ? 'stroke-red-700' : '' , "w-6 h-6 transition-all")}/>
                         </button>
                         <button className="bg-gray900 w-[72px] h-[72px] rounded-full flex items-center justify-center">
                             <Icon name="Notification" className="w-6 h-6"/>
@@ -60,7 +62,7 @@ export default function InfoPage(){
                     </div>
                 </div>
                 <Button opacity title="more_like" icon="DownArrow" className="mx-auto mt-[20px] mb-4"/>
-                <div className="flex flex-col items-center gap-[12px]">
+                <div className="flex flex-col items-stretch gap-[12px]">
                     {
                         MoviesCards.map((card, index) => (
                             <MovieCard key={index} image={card.image} title={card.title}

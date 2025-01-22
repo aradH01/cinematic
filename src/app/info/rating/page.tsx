@@ -4,7 +4,7 @@ import React from "react";
 import {Typography} from "@/components/elements/Typography";
 import {Icon} from "@/components/elements/Icon";
 import {CommentCard} from "@/components/blocks/CommentCard";
-import {Comments} from "@/core/constants/enums";
+import {Comments, Path} from "@/core/constants/enums";
 import styled from "@emotion/styled";
 import {useTranslation} from "react-i18next";
 
@@ -14,7 +14,7 @@ const AICommentWrapper = styled.div`
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
-    max-width: 500px;
+    max-width: 600px;
     border-radius: 24px;
     border: 2px solid ${({theme}) => theme.components.red300};
     background-color: ${({theme}) => theme.components.black400};
@@ -26,11 +26,11 @@ export default function RatingPage() {
     return (
         <div className="px-[16px]">
             <div className="mb-[12px]">
-                <BackHeader/>
+                <BackHeader href="/info/23" isLinked={Path.AddComment} icon="AddComment"/>
             </div>
             <Typography.Title level="h1" className="!text-[40px] font-urbanist leading-[48px]" weight="normal"
                               color="white">{t('rating')}</Typography.Title>
-            <div className="flex items-center justify-between mt-[22px] mb-[20px] pr-8 max-w-[500px] mx-auto">
+            <div className="flex items-center justify-between mt-[22px] mb-[20px] pr-8 max-w-[600px] mx-auto">
                 <div className="flex items-center gap-2">
                     <Icon name="LeftWheat" className="w-6 h-12"/>
                     <div className="flex flex-col items-center">
@@ -55,7 +55,7 @@ export default function RatingPage() {
                 </div>
             </div>
 
-            <div className="flex flex-col gap-[14px] items-center">
+            <div className="flex flex-col gap-[14px] items-stretch">
                 <AICommentWrapper>
                     <Typography.Paragraph color="white" size="md" weight="bold"
                                           className="leading-[28px] font-urbanist">{t('review_summary')}</Typography.Paragraph>

@@ -11,6 +11,7 @@ import {useGeolocation} from "@/shared/hooks/useGeolocation";
 import {useRouter} from "next/navigation";
 import {useTranslation} from "react-i18next";
 import AppleSignInButton from "@/components/elements/Button/AppleButton";
+import Link from "next/link";
 const ProjectName= styled.h1`
     color: ${({theme})=> theme.font.white};
     text-align: center;
@@ -22,18 +23,26 @@ const ProjectName= styled.h1`
     font-weight: 700;
     line-height: normal;
 `
-const StyledButton = styled(Button)`
+const StyledButton = styled(Link)`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 700ms ease all;
+    padding: 4px 12px;
     background: transparent;
+    height: 56px;
     border-radius: 999px;
-    border: 2px solid ${({theme})=> theme.font.white};
+    border: 2px solid ${({theme}) => theme.font.white};
     backdrop-filter: blur(15px);
     width: 100%;
-    span{
-        font-family: Urbanist;
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 28px; 
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px;
+    color: ${({theme}) => theme.font.white};
+
+    &:hover {
+        box-shadow: 0px 0px 15px 1px rgba(217, 217, 217, 0.75) inset;
     }
 `
 
@@ -92,9 +101,7 @@ export default function GetStartPage() {
             </div>
             <div className="flex flex-col gap-[14px] items-center justify-center w-full max-w-[350px]">
                 <div className="mt-[91px] w-full">
-                    <StyledButton onClick={()=>{
-                        router.push(Path.OTPCode)
-                    }} height="56px" title="continue_with_phone"/>
+                    <StyledButton className="font-urbanist" href={Path.AddPhone}>{t('continue_with_phone')}</StyledButton>
                 </div>
                 <div className="flex items-center justify-center gap-[8px]">
                     <Icon name="ThreeDots" className="w-6 h-6"/>
@@ -111,8 +118,8 @@ export default function GetStartPage() {
                 <Dropdown selectedOption={selectedOption} onSelect={handleSelect} icon options={LanguagesList} className="max-w-[146px]"/>
             </div>
             <Typography.Paragraph className="mt-[18px] w-[240px] text-center !text-[14px] !font-lecturis-rounded leading-[20px]" color="black" weight="normal">
-                By tapping Continue, you agree to our {" "}
-                <span className="underline">Terms</span> and <span className="underline">Privacy Policy</span>
+                {t('tap_continue')} {" "}
+                <span className="underline">{t('terms')}</span> {t('and')} <span className="underline">{t('privacy_policy')}</span>
             </Typography.Paragraph>
         </div>
     )

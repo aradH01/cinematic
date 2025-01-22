@@ -162,8 +162,8 @@ export default function SearchPage(){
                 </div>
             }
             {
-                selectedOption==='episodes' &&
-                <div className="px-4 flex flex-col items-center gap-[12px] mt-2">
+                (selectedOption==='episodes' || selectedOption==='series')  &&
+                <div className="px-4 flex flex-col items-stretch gap-[12px] mt-2">
                     {
                         MoviesCards.slice(0,1).map((card, index) => (
                             <MovieCard key={index} image={card.image} title={card.title}

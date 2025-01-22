@@ -16,7 +16,7 @@ const Wrapper = styled.div`
     flex-direction: column;
     gap: 12px;
     border-radius: 24px;
-    max-width: 500px;
+    max-width: 600px;
     border: 1.5px solid ${({theme})=>theme.components.black500};
     background-color: ${({theme})=>theme.components.black400};
 `

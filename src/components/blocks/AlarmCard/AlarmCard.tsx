@@ -17,7 +17,6 @@ const Wrapper = styled.div`
     align-items: flex-start;
     justify-content: center;
     gap: 12px;
-    max-width: 307px;
 `
 const AlarmBox = styled.div`
     background-color: ${({theme})=>theme.components.black500};
@@ -43,7 +42,7 @@ const IconWrapper = styled.div`
 export const AlarmCard = ({description,image,title , time} : AlarmCardProps)=>{
     return(
 
-            <div className="flex items-center gap-[8px]">
+            <div className="flex items-center w-full gap-[8px]">
                 <AlarmBox>
                     <Typography.Text color="white" weight="semiBold" size="sm" className="leading-6 font-urbanist text-center">{time}</Typography.Text>
                     <Typography.Text color="white" weight="normal" size="sm" className="leading-6 font-urbanist text-center">{time}</Typography.Text>

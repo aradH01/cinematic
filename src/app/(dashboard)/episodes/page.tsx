@@ -2,7 +2,7 @@
 import {PhoneHomePageHeader} from "@/components/sections/PhoneHomePageHeader";
 import React, {useState} from "react";
 import {CategoriesButton} from "@/components/elements/CategoriesButton";
-import {EpisodeCard} from "../../../components/blocks/EpisodeCard";
+import {EpisodeCard} from "@/components/blocks/EpisodeCard";
 import Image from "@/public/images/show1.jpg"
 import {Typography} from "@/components/elements/Typography";
 import {AvatarSlider} from "@/components/elements/AvatarSlider";
@@ -28,7 +28,7 @@ export default function EpisodePage(){
             <div className="mb-[12px] px-[12px]">
                 <PhoneHomePageHeader/>
             </div>
-            <div className="flex gap-8 items-center max-w-[99%] overflow-x-auto px-[12px]">
+            <div className=" pl-[12px] flex gap-8 items-center sm:max-w-[600px] max-w-[375px] overflow-x-auto no-scrollbar">
                 <CategoriesButton className="mt-4" categories={categories} onClick={() => {
                 }}/>
             </div>

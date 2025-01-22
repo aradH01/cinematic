@@ -55,7 +55,7 @@ export default function StudioPage(){
                     ))
                 }
             </ImageWrapper>
-            <div className="flex flex-col items-center mt-[12px] gap-[12px]">
+            <div className="flex flex-col items-stretch mt-[12px] gap-[12px]">
                 {
                     MoviesCards.map((card, index) => (
                         <MovieCard key={index} image={card.image} title={card.title}

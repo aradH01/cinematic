@@ -9,6 +9,7 @@ import {Button, SettingButton} from "@/components/elements/Button";
 import styled from "@emotion/styled";
 import {Path} from "@/core/constants/enums";
 import {useRouter} from "next/navigation";
+import Link from "next/link";
 
 const StyledButton=styled(Button)`
     background: transparent;
@@ -30,10 +31,10 @@ export default function EditProfilePage() {
     return (
         <div className="pt-[60px] px-[12px]">
             <div className="mb-[32px] flex items-center justify-between">
-                <div
+                <Link href={Path.ManageProfile}
                     className="border-border100  border-solid border w-[48px] h-[48px] p-[10px] flex items-center justify-center rounded-full bg-transparent">
                     <Icon name="SignInBackArrow" className="w-[28px] h-[28px]"/>
-                </div>
+                </Link>
                 <div
                     className="border-border100  border-solid border w-[48px] h-[48px] p-[10px] flex items-center justify-center rounded-full bg-transparent">
                     <Icon name="Delete" className="w-[28px] h-[28px]"/>
