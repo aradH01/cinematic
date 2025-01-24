@@ -20,7 +20,7 @@ const Wrapper = styled.div`
     width: 84px;
     height: 100px;
     border-radius: 8px;
-    background-color: ${({theme}) => theme.components.black500};
+    background-color: ${({theme}) => theme.components.black900};
    
 `
 

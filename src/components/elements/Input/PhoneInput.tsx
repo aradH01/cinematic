@@ -34,7 +34,7 @@ const StyledInput = styled.input<{ hasIcon: boolean }>`
     text-align: center;
     height: 56px;
     padding: 12px 16px 12px ${({hasIcon}) => (hasIcon ? "20px" : "16px")};
-    background-color: ${({theme}) => theme.components.black500};
+    background-color: ${({theme}) => theme.components.black900};
     transition: 600ms ease all;
     display: block;
     color: ${({theme}) => theme.components.white500};

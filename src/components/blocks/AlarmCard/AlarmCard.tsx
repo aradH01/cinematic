@@ -12,7 +12,7 @@ interface AlarmCardProps {
 }
 
 const Wrapper = styled.div`
-    background-color: ${({theme}) => theme.components.black500};
+    background-color: ${({theme}) => theme.components.black900};
     padding: 12px;
     border-radius: 24px;
     display: flex;
@@ -21,7 +21,7 @@ const Wrapper = styled.div`
     gap: 12px;
 `
 const AlarmBox = styled.div`
-    background-color: ${({theme}) => theme.components.black500};
+    background-color: ${({theme}) => theme.components.black900};
     padding: 4px;
     border-radius: 32px;
     display: flex;

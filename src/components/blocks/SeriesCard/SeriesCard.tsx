@@ -12,7 +12,7 @@ interface SeriesCardProps {
 }
 
 const Wrapper = styled.div`
-        background-color: ${({theme}) => theme.components.black500};
+        background-color: ${({theme}) => theme.components.black900};
         padding: 12px;
         border-radius: 24px;
     display: flex;

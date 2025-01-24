@@ -19,7 +19,7 @@ const Wrapper = styled.div`
     gap: 12px;
     border-radius: 24px;
     max-width: 600px;
-    border: 1.5px solid ${({theme}) => theme.components.black500};
+    border: 1.5px solid ${({theme}) => theme.components.black900};
     background-color: ${({theme}) => theme.components.black400};
 `
 export const CommentCard = ({comment, date, avatar, rating, name}: CommentCardProps) => {

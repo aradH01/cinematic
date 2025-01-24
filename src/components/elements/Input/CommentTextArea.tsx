@@ -17,7 +17,7 @@ const StyledTextarea = styled.textarea<{ hasError?: boolean }>`
     width: 100%;
     height: 236px;
     padding: 16px 16px 35px 16px;
-    border: 1px solid ${({theme}) => theme.components.black500};
+    border: 1px solid ${({theme}) => theme.components.black900};
     background-color: ${({theme}) => theme.components.black400};
     border-radius: 24px;
     resize: none;

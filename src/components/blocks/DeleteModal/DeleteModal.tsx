@@ -32,7 +32,7 @@ const ModalContainer = styled.div`
   background-color: ${({theme}) => theme.components.black400};
   border-radius: 28px;
     backdrop-filter: blur(50px);
-    border: 1px solid ${({theme}) => theme.components.black500};
+    border: 1px solid ${({theme}) => theme.components.black900};
   padding: 16px;
   display: flex;
   flex-direction: column;

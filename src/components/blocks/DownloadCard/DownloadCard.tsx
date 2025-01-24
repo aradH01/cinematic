@@ -22,7 +22,7 @@ const CardStyle = styled.div`
     left: 0;
     width: 99%;
     height: 100%;
-    background-color: ${({theme}) => theme.components.black500};
+    background-color: ${({theme}) => theme.components.black900};
     border-radius: 24px;
     transition: transform 0.3s ease-in-out;
     will-change: transform;
@@ -55,7 +55,7 @@ const overlayStyle = css`
     z-index: 1;
 `;
 const InnerWrapper = styled.div`
-    background-color: ${({theme}) => theme.components.black500};
+    background-color: ${({theme}) => theme.components.black900};
     padding: 12px;
     border-radius: 24px;
     display: flex;

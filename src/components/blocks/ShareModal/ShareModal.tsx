@@ -76,7 +76,7 @@ const OtherSocials = styled.div`
     width: 84px;
     height: 100px;
     border-radius: 8px 20px 20px 8px;
-    background-color: ${({theme}) => theme.components.black500};
+    background-color: ${({theme}) => theme.components.black900};
 
 `
 export const ShareModal = ({open, onClose, title, image, link}: ShareModalProps) => {

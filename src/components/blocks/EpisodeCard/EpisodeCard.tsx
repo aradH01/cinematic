@@ -16,7 +16,7 @@ interface EpisodeCardProps {
 
 const Wrapper = styled.div`
 padding: 12px;
-    background-color: ${({theme}) => theme.components.black500};
+    background-color: ${({theme}) => theme.components.black900};
     border-radius: 24px;
     display: flex;
     align-items: center;

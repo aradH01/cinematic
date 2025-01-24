@@ -15,6 +15,15 @@ const VideoElement = styled.video`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    &:fullscreen {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    &::webkit-fullscreen {
+        width: 100vw;
+        height: 100vh;
+    }
 `;
 
 const CenterIcon = styled.button<{ visible: boolean }>`
@@ -45,7 +54,7 @@ const GestureOverlay = styled.div`
 const VerticalProgressBar = styled.div<{ value: number; type: 'brightness' | 'volume' }>`
     position: absolute;
     top: 20%;
-    ${({type}) => (type === 'brightness' ? 'right: 10px;' : 'left: 10px;')}
+    ${({type}) => (type === 'brightness' ? 'left: 10px;' : 'right: 10px;')}
     width: 36px;
     border:1px solid ${({theme}) => theme.components.border200};
     height: 179px;
@@ -54,7 +63,7 @@ const VerticalProgressBar = styled.div<{ value: number; type: 'brightness' | 'vo
     backdrop-filter: blur(50px);
     overflow: hidden;
     padding: 4px;
-    &::after {
+    .progress-bar {
         content: '';
         display: block;
         width: 100%;
@@ -64,6 +73,7 @@ const VerticalProgressBar = styled.div<{ value: number; type: 'brightness' | 'vo
         border-radius: 20px;
     }
 `;
+
 const ControlBar = styled.div<{ visible: boolean }>`
     position: absolute;
     bottom: 10px;
@@ -107,7 +117,7 @@ const ProgressBarContainer = styled.div<{ visible: boolean }>`
 const ProgressBarFill = styled.div`
     height: 100%;
     background: white;
-    width: 0%;
+    width: 0;
     border-radius: 3px;
     pointer-events: none;
 `;
@@ -130,6 +140,7 @@ const TimeDisplay = styled.div<{ visible: boolean }>`
     transition: opacity 250ms ease;
     z-index: 10;
 `;
+
 const formatTime = (time: number): string => {
     const hours = Math.floor(time / 3600);
     const minutes = Math.floor((time % 3600) / 60);
@@ -155,21 +166,47 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({src, poster}) => {
     const [volume, setVolume] = useState(1);
     const [touchArea, setTouchArea] = useState<'left' | 'right' | null>(null);
     const [showProgressBar, setShowProgressBar] = useState(false);
+    const mouseStart = useRef<{ x: number; y: number } | null>(null);
+    const [isMouseDragging, setIsMouseDragging] = useState(false);
 
     const touchStart = useRef<{ x: number; y: number } | null>(null);
-
+    const handlePause = () => {
+        if (document.fullscreenElement) {
+            document.exitFullscreen().catch((err) => {
+                console.warn("Failed to exit fullscreen:", err);
+            });
+        }
+        setIsPlaying(false);
+    };
     const handlePlayPause = () => {
         if (videoRef.current) {
             if (isPlaying) {
                 videoRef.current.pause();
+                handlePause(); // Exit fullscreen when paused
             } else {
-                videoRef.current.play().catch((error) => {
-                    console.error('Playback error:', error);
+                videoRef.current.play().then(() => {
+                    const videoContainer = videoRef.current?.parentElement as HTMLElement;
+                    if (videoContainer.requestFullscreen) {
+                        videoContainer.requestFullscreen().catch((err) => {
+                            console.warn("Failed to enter fullscreen:", err);
+                        });
+                    }
+
+                    const orientation = screen.orientation as ScreenOrientation & { lock?: (orientation: string) => Promise<void> };
+                    if (orientation.lock) {
+                        orientation.lock("landscape").catch((err) => {
+                            console.warn("Failed to lock orientation:", err);
+                        });
+                    }
+                }).catch((error) => {
+                    console.error("Playback error:", error);
                 });
             }
             setIsPlaying(!isPlaying);
         }
     };
+
+
     const handleTouchStart = (e: React.TouchEvent) => {
         const touchX = e.touches[0].clientX;
         const area = touchX < window.innerWidth / 2 ? 'left' : 'right';
@@ -179,18 +216,33 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({src, poster}) => {
         setShowProgressBar(true);
     };
 
+    const handleMouseDown = (e: React.MouseEvent) => {
+        const mouseX = e.clientX;
+        const area = mouseX < window.innerWidth / 2 ? 'left' : 'right';
+        setTouchArea(area);
+
+        mouseStart.current = { x: mouseX, y: e.clientY };
+        setIsMouseDragging(true);
+        setShowProgressBar(true);
+    };
+    const handleMouseUp = () => {
+        setTouchArea(null);
+        setIsMouseDragging(false);
+        setShowProgressBar(false);
+        mouseStart.current = null;
+    };
 
     const handleTouchMove = (e: React.TouchEvent) => {
         if (!touchStart.current || !touchArea) return;
 
         const deltaY = e.touches[0].clientY - touchStart.current.y;
 
-        if (touchArea === 'right') {
+        if (touchArea === 'left') {
 
-            const newBrightness = Math.min(Math.max(brightness + deltaY / 300, 0), 2);
+            const newBrightness = Math.max(0.5, Math.min(brightness + deltaY / 300, 2));
             setBrightness(newBrightness);
             document.documentElement.style.filter = `brightness(${newBrightness})`;
-        } else if (touchArea === 'left') {
+        } else if (touchArea === 'right') {
 
             const newVolume = Math.min(Math.max(volume + deltaY / 300, 0), 1);
             setVolume(newVolume);
@@ -222,11 +274,35 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({src, poster}) => {
         }, 3000);
     };
 
-    const handleMouseMove = () => {
+    const handleMouseMove = (e: React.MouseEvent) => {
         setShowControls(true);
-        resetHideControlsTimeout();
-    };
+        if (!mouseStart.current || !touchArea || !isMouseDragging) return;
 
+        const deltaY = e.clientY - mouseStart.current.y;
+
+        if (touchArea === 'left') {
+            const newBrightness = Math.max(0.5, Math.min(brightness + deltaY / 300, 2));
+            setBrightness(newBrightness);
+            document.documentElement.style.filter = `brightness(${newBrightness})`;
+        } else if (touchArea === 'right') {
+            const newVolume = Math.min(Math.max(volume - deltaY / 300, 0), 1);
+            setVolume(newVolume);
+            if (videoRef.current) {
+                videoRef.current.volume = newVolume;
+            }
+        }
+        resetHideControlsTimeout();
+
+    };
+    useEffect(() => {
+        const handleGlobalMouseUp = () => {
+            if (isMouseDragging) handleMouseUp();
+        };
+        window.addEventListener('mouseup', handleGlobalMouseUp);
+        return () => {
+            window.removeEventListener('mouseup', handleGlobalMouseUp);
+        };
+    }, [isMouseDragging])
     const updateProgressBar = () => {
         if (videoRef.current && progressFillRef.current) {
             setCurrentTime(videoRef.current.currentTime);
@@ -282,13 +358,37 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({src, poster}) => {
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}
+                onMouseDown={handleMouseDown}
+                onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUp}
             />
             {showProgressBar && touchArea === 'right' && (
-                <VerticalProgressBar type="brightness" value={brightness / 2}/>
-            )}
+            <VerticalProgressBar type="volume" value={volume}>
+                {
+                    volume ===0 &&
+                    <Icon name="VolumeMute" className="fill-white w-[20px] h-[20px] absolute top-[4px] right-1/2 translate-x-1/2"/>
+                }
+                <div className="relative progress-bar">
+                    {volume < 0.5 ? (
+                        <Icon name="VolumeDown" className="w-[20px] h-[20px] absolute bottom-[4px] right-1/2 translate-x-1/2"/>
+                    ) : (
+                        <Icon name="VolumeUp" className="w-[20px] h-[20px] absolute bottom-[4px] right-1/2 translate-x-1/2"/>
+                    )}
+                </div>
+            </VerticalProgressBar>
+        )}
             {showProgressBar && touchArea === 'left' && (
-                <VerticalProgressBar type="volume" value={volume}/>
+                <VerticalProgressBar type="brightness" value={brightness / 2}>
+                    <div className="relative progress-bar">
+                        {brightness < 1 ? (
+                            <Icon name="BrightnessDown" className="w-[20px] h-[20px] absolute bottom-[4px] right-1/2 translate-x-1/2"/>
+                        ) : (
+                            <Icon name="BrightnessUp" className="w-[20px] h-[20px] absolute bottom-[4px] right-1/2 translate-x-1/2"/>
+                        )}
+                    </div>
+                </VerticalProgressBar>
             )}
+
             <CenterIcon visible={showControls} onClick={handlePlayPause}>
                 {isPlaying ? (
                     <svg

@@ -30,7 +30,7 @@ export interface SettingButtonProps {
 
 export const StyledSettingButton = styled.button<StyledButtonType>`
     border-radius: 500px;
-    background: ${({theme}) => theme.components.black500};
+    background: ${({theme}) => theme.components.black900};
     display: flex;
     align-items: center;
     justify-content: space-between;
