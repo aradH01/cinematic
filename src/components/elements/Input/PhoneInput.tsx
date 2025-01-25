@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 import React, {forwardRef, useState} from "react";
 import {AvailableIcons, Icon} from '@/components/elements/Icon';
 import {Typography} from "../Typography";
-import {Simulate} from "react-dom/test-utils";
 import {useTranslation} from "react-i18next";
 
 
@@ -35,7 +34,7 @@ const StyledInput = styled.input<{ hasIcon: boolean }>`
     text-align: center;
     height: 56px;
     padding: 12px 16px 12px ${({hasIcon}) => (hasIcon ? "20px" : "16px")};
-    background-color: ${({theme}) => theme.components.black500};
+    background-color: ${({theme}) => theme.components.black900};
     transition: 600ms ease all;
     display: block;
     color: ${({theme}) => theme.components.white500};
@@ -108,13 +107,13 @@ const ClearIcon = styled.div`
     }
 `;
 export const PhoneInput = forwardRef<HTMLInputElement, PhoneInputProps>(({
-                                                                   className,
-                                                                   placeHolder,
-                                                                   type,
-                                                                   icon,
-                                                                   error,
-                                                                   ...rest
-                                                               }, ref) => {
+                                                                             className,
+                                                                             placeHolder,
+                                                                             type,
+                                                                             icon,
+                                                                             error,
+                                                                             ...rest
+                                                                         }, ref) => {
         const [value, setValue] = useState("");
         const [focus, setFocus] = useState(false);
 
@@ -131,7 +130,7 @@ export const PhoneInput = forwardRef<HTMLInputElement, PhoneInputProps>(({
                 .parentElement?.querySelector("input") as HTMLInputElement;
             inputElement?.focus();
         };
-    const { t } = useTranslation();
+        const {t} = useTranslation();
 
         return (
             <Wrapper className={className}>

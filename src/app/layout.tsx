@@ -1,19 +1,18 @@
 import '@mantine/core/styles.css';
 import '@/shared/styles/global.css';
-import '@mantine/core/styles.css';
 import '@/shared/styles/globals';
-import type { Metadata } from 'next';
+import type {Metadata} from 'next';
 import MainLayout from '@/layouts/DashboardLayout/DashboardLayout';
 import React from "react";
 import {AppProvider} from "@/components/providers/AppProvider";
 import '@mantine/carousel/styles.css';
-import Head from "next/head";
+
 export const metadata: Metadata = {
     title: '',
     description: '',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({children}: { children: React.ReactNode }) {
 
 
     return (
@@ -29,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <AppProvider>
                 {children}
             </AppProvider>
-                </MainLayout>
+        </MainLayout>
         </body>
         </html>
     );

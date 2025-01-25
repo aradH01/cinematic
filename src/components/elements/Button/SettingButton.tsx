@@ -17,7 +17,7 @@ export interface SettingButtonProps {
     height?: string,
     icon?: AvailableIcons,
     outline?: boolean,
-    link?:string
+    link?: string
     iconClass?: string,
     redIcon?: boolean,
     onClick?: MouseEventHandler<HTMLButtonElement>
@@ -30,7 +30,7 @@ export interface SettingButtonProps {
 
 export const StyledSettingButton = styled.button<StyledButtonType>`
     border-radius: 500px;
-    background: ${({theme}) => theme.components.black500};
+    background: ${({theme}) => theme.components.black900};
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -89,7 +89,7 @@ export const SettingButton: React.FC<SettingButtonProps> = ({
                                                                 className,
                                                                 title,
                                                                 type,
-    link,
+                                                                link,
                                                                 outline,
                                                                 redIcon,
                                                                 description,
@@ -102,7 +102,7 @@ export const SettingButton: React.FC<SettingButtonProps> = ({
                                                             }) => {
 
     const [isCopied, setIsCopied] = useState(false);
-    const { t } = useTranslation();
+    const {t} = useTranslation();
     const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
         if (link) {
 
@@ -151,7 +151,8 @@ export const SettingButton: React.FC<SettingButtonProps> = ({
             </div>
             {
                 swapButton ?
-                    <SwapButton checked={swapButtonChecked} disabled={swapButtonDisabled} onCheckedChange={swapButtonOnCheckedChange}/>
+                    <SwapButton checked={swapButtonChecked} disabled={swapButtonDisabled}
+                                onCheckedChange={swapButtonOnCheckedChange}/>
                     :
                     <Icon name="RightUpArrow" className="w-6 h-6"/>
             }

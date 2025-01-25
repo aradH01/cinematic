@@ -4,7 +4,6 @@ import {Button} from "@/components/elements/Button/Button";
 import {toast} from "@/core/utils/toast";
 
 
-
 const AppleSignInButton = () => {
     useEffect(() => {
         if (typeof window !== 'undefined' && window.AppleID) {
@@ -25,10 +24,10 @@ const AppleSignInButton = () => {
             if (typeof window !== 'undefined' && window.AppleID?.auth) {
                 const authResponse = await window.AppleID.auth.signIn();
             } else {
-                toast.error({message:'AppleID SDK is not initialized or loaded.'});
+                toast.error({message: 'AppleID SDK is not initialized or loaded.'});
             }
         } catch (error) {
-            toast.error({message:'Error during Apple Sign-In:'});
+            toast.error({message: 'Error during Apple Sign-In:'});
         }
     };
     return (

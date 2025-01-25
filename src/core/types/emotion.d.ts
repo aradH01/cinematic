@@ -1,8 +1,9 @@
 // emotion.d.ts
 import '@emotion/react';
-import { AppTheme } from '@/shared/styles/themes';
+import {AppTheme} from '@/shared/styles/themes';
 
 
 declare module '@emotion/react' {
-    export interface Theme extends AppTheme {}
+    export interface Theme extends AppTheme {
+    }
 }

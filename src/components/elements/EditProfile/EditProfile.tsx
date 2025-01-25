@@ -8,11 +8,12 @@ import {Path} from "@/core/constants/enums";
 
 interface EditProfileProps {
     image: string | StaticImageData
-    name:string
-    active?:boolean
+    name: string
+    active?: boolean
 }
-const IconWrapper= styled.div`
-    background-color: ${({theme})=>theme.components.white500};
+
+const IconWrapper = styled.div`
+    background-color: ${({theme}) => theme.components.white500};
     border-radius: 100%;
     padding: 8px;
     width: 40px;
@@ -25,9 +26,9 @@ const IconWrapper= styled.div`
     right: 0;
     bottom: 0;
 `
-export const EditProfile=({image,name , active}: EditProfileProps)=>{
+export const EditProfile = ({image, name, active}: EditProfileProps) => {
 
-    return(
+    return (
         <div>
             <div className="flex flex-col items-center gap-[12px]">
                 <div className="relative">

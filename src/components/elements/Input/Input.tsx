@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 import React, {forwardRef, useState} from "react";
 import {AvailableIcons, Icon} from '@/components/elements/Icon';
 import {Typography} from "../Typography";
-import {Simulate} from "react-dom/test-utils";
 
 
 export interface InputProps {
@@ -124,15 +123,15 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({
             setValue(e.target.value);
             if (rest.onChange) rest.onChange(e);
         };
-    const handleClear = (e: React.MouseEvent<HTMLDivElement>) => {
-        e.preventDefault();
-        setValue("");
+        const handleClear = (e: React.MouseEvent<HTMLDivElement>) => {
+            e.preventDefault();
+            setValue("");
 
 
-        const inputElement = e.currentTarget
-            .parentElement?.querySelector("input") as HTMLInputElement;
-        inputElement?.focus();
-    };
+            const inputElement = e.currentTarget
+                .parentElement?.querySelector("input") as HTMLInputElement;
+            inputElement?.focus();
+        };
 
         return (
             <Wrapper className={className}>

@@ -14,15 +14,15 @@ interface RadioButtonProps {
     className?: string;
 }
 
-export const LabelRadioButton: React.FC<RadioButtonProps> = ({ options, checked, onChange, className }) => {
-    const { t } = useTranslation();
+export const LabelRadioButton: React.FC<RadioButtonProps> = ({options, checked, onChange, className}) => {
+    const {t} = useTranslation();
 
     return (
-        <div className={addClass( "flex space-x-4")}>
+        <div className={addClass("flex space-x-4")}>
             {options.map((option) => (
                 <label
                     key={option.value}
-                    className={addClass(className , `cursor-pointer px-[12px] border border-solid border-transparent py-[4px] rounded-[12px] transition-all
+                    className={addClass(className, `cursor-pointer px-[12px] border border-solid border-transparent py-[4px] rounded-[12px] transition-all
             ${
                         checked === option.value
                             ? "bg-white text-center border border-solid borer-border100 transition-all !font-lecturis-rounded font-normal text-[16px] text-black900 "

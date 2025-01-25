@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import styled from '@emotion/styled';
-import { useState, useEffect, useRef } from 'react';
-import { AvailableIcons, Icon } from "@/components/elements/Icon";
-import { Typography } from "@/components/elements/Typography";
+import {useEffect, useRef, useState} from 'react';
+import {AvailableIcons, Icon} from "@/components/elements/Icon";
+import {Typography} from "@/components/elements/Typography";
 
 const DropdownWrapper = styled.div`
     position: relative;
@@ -12,14 +12,14 @@ const DropdownWrapper = styled.div`
 const DropdownButton = styled.button`
     width: 100%;
     height: 38px;
-    border: 1px solid ${({ theme }) => theme.components.inputBackground};
+    border: 1px solid ${({theme}) => theme.components.inputBackground};
     border-radius: 31px;
     background: transparent;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 1rem;
-    color: ${({ theme }) => theme.font.black400};
+    color: ${({theme}) => theme.font.black400};
     cursor: pointer;
     font-family: Urbanist, sans-serif;
 `;
@@ -32,7 +32,7 @@ const DropdownList = styled.ul`
     margin: 0;
     padding: 0;
     background: transparent;
-    border: 1px solid ${({ theme }) => theme.components.inputBackground};
+    border: 1px solid ${({theme}) => theme.components.inputBackground};
     border-radius: 12px;
     list-style: none;
     z-index: 1000;
@@ -56,7 +56,7 @@ const DropdownItem = styled.li`
 const ArrowIcon = styled(Icon)`
     width: 16px;
     height: 16px;
-    transform: ${({ isOpen }: { isOpen: boolean }) => (isOpen ? 'rotate(180deg)' : 'rotate(0deg)')};
+    transform: ${({isOpen}: { isOpen: boolean }) => (isOpen ? 'rotate(180deg)' : 'rotate(0deg)')};
     transition: transform 0.3s ease;
 `;
 
@@ -68,7 +68,7 @@ interface DropdownProps {
     onSelect: (option: { value: string; label: string; icon?: AvailableIcons }) => void;
 }
 
-export const Dropdown = ({ options, icon, className, selectedOption, onSelect }: DropdownProps) => {
+export const Dropdown = ({options, icon, className, selectedOption, onSelect}: DropdownProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement | null>(null);
 
@@ -99,18 +99,19 @@ export const Dropdown = ({ options, icon, className, selectedOption, onSelect }:
         <DropdownWrapper className={className} ref={dropdownRef}>
             <DropdownButton onClick={() => setIsOpen(!isOpen)}>
                 <span className="flex items-center gap-2">
-                    <Icon name={selectedOption?.icon || 'Empty'} className="w-[22px] h-[22px]" />
-                    <Typography.Text className="!text-[14px] font-urbanist font-semibold leading-[20px]" color="black400">
+                    <Icon name={selectedOption?.icon || 'Empty'} className="w-[22px] h-[22px]"/>
+                    <Typography.Text className="!text-[14px] font-urbanist font-semibold leading-[20px]"
+                                     color="black400">
                         {selectedOption?.label}
                     </Typography.Text>
                 </span>
-                <ArrowIcon isOpen={isOpen} name="DropdownArrow" />
+                <ArrowIcon isOpen={isOpen} name="DropdownArrow"/>
             </DropdownButton>
             {isOpen && (
                 <DropdownList>
                     {options.map((option) => (
                         <DropdownItem key={option.value} onClick={() => handleOptionSelect(option)}>
-                            {icon && <Icon name={option.icon || "Empty"} className="w-[22px] h-[22px]" />}
+                            {icon && <Icon name={option.icon || "Empty"} className="w-[22px] h-[22px]"/>}
                             <Typography.Text
                                 className="!text-[14px] font-urbanist font-semibold leading-[20px]"
                                 color="black400"

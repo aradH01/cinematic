@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import React, { useRef, useState } from "react";
-import { Icon } from "@/components/elements/Icon";
+import React, {useRef, useState} from "react";
+import {Icon} from "@/components/elements/Icon";
 
 const Wrapper = styled.div`
     display: flex;
@@ -21,10 +21,10 @@ const StyledTextarea = styled.textarea`
     border: none;
     border-radius: 24px;
     outline: none;
-    background-color: ${({ theme }) => theme.components.inputBackground};
+    background-color: ${({theme}) => theme.components.inputBackground};
     font-size: 16px;
     line-height: 24px;
-    color: ${({ theme }) => theme.font.black};
+    color: ${({theme}) => theme.font.black};
     min-height: 40px;
     max-height: 120px; 
     overflow-y: auto; 
@@ -36,10 +36,10 @@ const StyledTextarea = styled.textarea`
 `;
 
 const SendButton = styled.button`
-  background-color: ${({ theme }) => theme.components.fillButton};
+  background-color: ${({theme}) => theme.components.fillButton};
   color: white;
     border-width: 1px 0 0 0;
-    ${({ theme }) =>theme.name==='dark' && `
+    ${({theme}) => theme.name === 'dark' && `
     border-width: 1px;
       border-color: rgba(0, 0, 0, 0.20) !important;
       border-style: solid;
@@ -59,7 +59,7 @@ const SendButton = styled.button`
   }
 
   &:disabled {
-    background-color: ${({ theme }) => theme.components.nonActive};
+    background-color: ${({theme}) => theme.components.nonActive};
     cursor: not-allowed;
       box-shadow: none;
   }

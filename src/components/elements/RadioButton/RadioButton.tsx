@@ -25,8 +25,8 @@ const StyledRadio = styled.span<{ checked: boolean }>`
     display: inline-block;
     width: 24px;
     height: 24px;
-    border:2px solid ${({ checked, theme }) =>
-            checked ? 'none' : theme.components.inputBackground};
+    border:2px solid ${({checked, theme}) =>
+    checked ? 'none' : theme.components.inputBackground};
     border-radius: 50%;
     position: relative;
     transition: background 0.3s ease, border-color 0.3s ease;
@@ -39,20 +39,20 @@ const StyledRadio = styled.span<{ checked: boolean }>`
         transform: translate(-50%, -50%);
         width: 12px;
         height: 12px;
-        background-color: ${({ checked, theme }) =>
-                checked ? theme.components.blue100 : 'transparent'};
+        background-color: ${({checked, theme}) =>
+    checked ? theme.components.blue100 : 'transparent'};
         border-radius: 50%;
         transition: background-color 0.3s ease;
     }
 
-    background-color: ${({ checked, theme }) =>
-            checked ? theme.components.green300 : 'transparent'};
+    background-color: ${({checked, theme}) =>
+    checked ? theme.components.green300 : 'transparent'};
 `;
 
 const Label = styled.span`
     margin-left: 8px;
     font-size: 16px;
-    color: ${({ theme }) => theme.font.black};
+    color: ${({theme}) => theme.font.black};
 `;
 
 export const RadioButton: React.FC<RadioButtonProps> = ({
@@ -71,7 +71,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
                 checked={checked}
                 onChange={onChange}
             />
-            <StyledRadio checked={checked} />
+            <StyledRadio checked={checked}/>
             <Label>{label}</Label>
         </Wrapper>
     );

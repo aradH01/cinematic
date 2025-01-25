@@ -9,9 +9,9 @@ interface PhoneNumberInputProps {
     onChange: (value: string | undefined) => void;
 }
 
-const StyledPhoneNumberInput= styled(PhoneInput)`
+const StyledPhoneNumberInput = styled(PhoneInput)`
     input{
-        background: ${({theme}) => theme.components.black500};
+        background: ${({theme}) => theme.components.black900};
         width: 309px;
         height: 56px;
         border-radius: 999px;
@@ -25,7 +25,7 @@ const StyledPhoneNumberInput= styled(PhoneInput)`
     }
     .PhoneInputCountry{
         display: flex;
-        background: ${({theme}) => theme.components.black500};
+        background: ${({theme}) => theme.components.black900};
         justify-content: center;
         align-items: center;
         border-radius: 100%;
@@ -41,7 +41,7 @@ const StyledPhoneNumberInput= styled(PhoneInput)`
 `
 
 
-export const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({ value, onChange }) => {
+export const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({value, onChange}) => {
     return (
         <div
             css={{

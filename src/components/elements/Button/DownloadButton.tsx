@@ -1,14 +1,14 @@
 'use client';
 
-import React, { useState } from "react";
-import { Icon } from "@/components/elements/Icon";
+import React, {useState} from "react";
+import {Icon} from "@/components/elements/Icon";
 
 interface DownloadButtonProps {
     link: string;
     name: string;
 }
 
-export function DownloadButton({ link, name }: DownloadButtonProps) {
+export function DownloadButton({link, name}: DownloadButtonProps) {
     const [isDownloading, setIsDownloading] = useState(false);
     const [progress, setProgress] = useState(0);
 
@@ -28,7 +28,7 @@ export function DownloadButton({ link, name }: DownloadButtonProps) {
 
 
                 while (true) {
-                    const { done, value } = await reader!.read();
+                    const {done, value} = await reader!.read();
                     if (done) break;
                     chunks.push(value);
                     received += value.length;
@@ -36,7 +36,7 @@ export function DownloadButton({ link, name }: DownloadButtonProps) {
                 }
 
 
-                const blob = new Blob(chunks, { type: response.headers.get("Content-Type") || "application/octet-stream" });
+                const blob = new Blob(chunks, {type: response.headers.get("Content-Type") || "application/octet-stream"});
                 const downloadLink = document.createElement("a");
                 downloadLink.href = URL.createObjectURL(blob);
                 downloadLink.download = name;
@@ -57,7 +57,7 @@ export function DownloadButton({ link, name }: DownloadButtonProps) {
                 onClick={handleDownload}
                 className={`bg-gray900 w-[72px] h-[72px] rounded-full flex items-center justify-center transition-all duration-300`}
             >
-                <Icon name="Downloads" className="w-6 h-6 [&>g]:opacity-100" />
+                <Icon name="Downloads" className="w-6 h-6 [&>g]:opacity-100"/>
             </button>
 
             <div

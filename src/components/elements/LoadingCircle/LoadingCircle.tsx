@@ -2,8 +2,8 @@
 import React from 'react';
 import {keyframes} from '@emotion/react';
 import styled from '@emotion/styled';
-import { TypographySize } from '@/shared/styles/globals';
-import { Icon } from '@/components/elements/Icon';
+import {TypographySize} from '@/shared/styles/globals';
+import {Icon} from '@/components/elements/Icon';
 
 
 export interface ILoadingCircle {

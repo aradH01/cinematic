@@ -8,19 +8,23 @@ import {StarRating} from "@/components/elements/StarRating";
 import {CommentTextArea} from "@/components/elements/Input";
 import {toast} from "@/core/utils/toast";
 import {useTranslation} from "react-i18next";
+import {Path} from "@/core/constants/enums";
+import {useRouter} from "next/navigation";
 
 export default function AddCommentPage() {
-    const { t } = useTranslation();
+    const {t} = useTranslation();
+    const {push} = useRouter();
     const handleReviewSubmit = (rating: number) => {
         console.log(`User selected a rating of: ${rating}`);
     };
-    const handleNext=()=>{
-        toast.success({message:"comment sended"})
+    const handleNext = () => {
+        push(Path.Comments)
+        toast.success({message: "comment sended"})
     }
-    return(
+    return (
         <div className="px-[16px]">
             <div className="mb-[12px]">
-                <BackHeader/>
+                <BackHeader href={Path.Comments}/>
             </div>
             <Typography.Title level="h1" className="!text-[40px] font-lecturis-rounded leading-[48px]" weight="normal"
                               color="white">{t('write_review')}</Typography.Title>
@@ -53,7 +57,7 @@ export default function AddCommentPage() {
                 <Typography.Text color="white" weight="normal" size="sm"
                                  className="leading-[24px] font-urbanist">{t('tap_star')}</Typography.Text>
             </div>
-            <div>
+            <div className="w-full">
                 <CommentTextArea/>
             </div>
             <button onClick={handleNext}

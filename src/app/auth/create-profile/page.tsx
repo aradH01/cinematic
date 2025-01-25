@@ -7,19 +7,24 @@ import {useRouter} from "next/navigation";
 import {AvatarSliderMockData, Path} from "@/core/constants/enums";
 import {Icon} from "@/components/elements/Icon";
 import {useTranslation} from "react-i18next";
+import Link from "next/link";
 
 
 export default function CreateProfilePage() {
     const router = useRouter();
-    const { t } = useTranslation();
+    const {t} = useTranslation();
     const handleActiveChange = (url: string) => {
     };
 
-    const handleNext=()=>{
+    const handleNext = () => {
         router.push(Path.Interests);
     }
-    return(
+    return (
         <div>
+            <Link href={Path.OTPCode}
+                  className="ml-[12px] border-border100 mb-[24px] border-solid border w-[48px] h-[48px] p-[10px] flex items-center justify-center rounded-full bg-transparent">
+                <Icon name="SignInBackArrow" className="w-[28px] h-[28px]"/>
+            </Link>
             <div className="flex flex-col items-center mb-[40px]">
                 <Typography.Title size="lt" className="leading-[40px] !font-lecturis-rounded text-center" color="white"
                                   weight="bold" level="h1">
@@ -40,7 +45,7 @@ export default function CreateProfilePage() {
             </div>
             <button onClick={handleNext}
                     className="fixed bottom-[3rem] left-1/2 transform -translate-x-1/2 mx-auto border-border100 shadow-signInNext  border-solid border p-[20px] w-[72px] h-[72px] flex items-center justify-center rounded-full bg-white800">
-                <Icon name="SignInNextArrow" className="w-[24x] h-[24px]"/>
+                <Icon name="SignInNextArrow" className="w-[24px] h-[24px]"/>
             </button>
         </div>
     )

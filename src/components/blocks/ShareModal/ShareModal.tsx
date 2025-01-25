@@ -3,7 +3,6 @@ import {StaticImageData} from 'next/image';
 import {SettingButton, SocialShareButton} from "@/components/elements/Button";
 import {Typography} from '@/components/elements/Typography';
 import {MovieImage} from '../MovieImages';
-import {TSocialShare} from "@/core/utils/socialShare";
 import styled from "@emotion/styled";
 import React from "react";
 import {Icon} from "@/components/elements/Icon";
@@ -24,12 +23,14 @@ const Container = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.01);
     z-index: 999;
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    padding: 24px;
+    padding: 16px;
+    max-width: 600px !important;
+    margin: 0 auto;
 `
 const Modal = styled.div`
     position: fixed;
@@ -38,11 +39,14 @@ const Modal = styled.div`
     right: 0;
     background-color: ${({theme}) => theme.components.gray900};
     border-radius: 32px 32px 0 0;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
+
     height: 60%;
     max-height: 60%;
     overflow: hidden;
-    padding: 24px;
+    padding: 16px;
+    max-width: 600px !important;
+    margin: 0 auto;
     z-index: 999;
     animation: slideUp 0.5s ease-out forwards;
 
@@ -57,26 +61,27 @@ const Modal = styled.div`
 `
 const SocialsWrapper = styled.div`
     & > :nth-child(1) {
-       div{
-           border-radius: 20px 8px 8px 20px!important;
-       }
+        div {
+            border-radius: 20px 8px 8px 20px !important;
+        }
     }
+
     margin: 0 auto;
 `
 const OtherSocials = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 1rem;
     width: 84px;
     height: 100px;
     border-radius: 8px 20px 20px 8px;
-    background-color: ${({theme}) => theme.components.black500};
-   
+    background-color: ${({theme}) => theme.components.black900};
+
 `
 export const ShareModal = ({open, onClose, title, image, link}: ShareModalProps) => {
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
     const links = [
         {id: 1, image: '/images/facebook.jpg', name: "Facebook"},
         {id: 2, image: '/images/tiktok.jpg', name: "Tiktok"},
@@ -89,7 +94,7 @@ export const ShareModal = ({open, onClose, title, image, link}: ShareModalProps)
     };
     return (
         <Container onClick={onClose}>
-            <Modal onClick={handleModalClick }>
+            <Modal onClick={handleModalClick}>
                 <div className="flex flex-col md:items-center items-start gap-4">
                     <div className="flex items-center gap-4">
                         <MovieImage image={image}/>

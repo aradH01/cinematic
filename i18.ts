@@ -3,6 +3,14 @@ import { initReactI18next } from 'react-i18next';
 
 const LANGUAGE_KEY = 'i18nextLng';
 
+const getInitialLanguage = () => {
+    if (typeof window !== "undefined") {
+        return localStorage.getItem(LANGUAGE_KEY) || 'en';
+    }
+    return 'en';
+};
+
+
 i18n.use(initReactI18next).init({
     resources: {
         en: {
@@ -22,6 +30,10 @@ i18n.use(initReactI18next).init({
                 "better_recommendations": "Get better video recommendations",
                 "genres": "Genres",
                 "shows": "Shows",
+                "tap_continue": "By tapping Continue, you agree to our",
+                "terms": "Terms",
+                "and": "and",
+                "privacy_policy": "Privacy Policy",
                 "more_like": "More Like This",
                 "share_to": "Share to",
                 "settings": "Settings",
@@ -98,6 +110,10 @@ i18n.use(initReactI18next).init({
                 "better_recommendations": "Daha iyi video önerileri alın",
                 "genres": "Türler",
                 "shows": "Gösteriler",
+                "tap_continue": "Devam Et'e dokunarak kabul etmiş olursunuz",
+                "terms": "Şartlar",
+                "and": "ve",
+                "privacy_policy": "Gizlilik Politikası",
                 "more_like": "Bunun Gibi Daha Fazlası",
                 "share_to": "Paylaş",
                 "settings": "Ayarlar",
@@ -174,6 +190,10 @@ i18n.use(initReactI18next).init({
                 "better_recommendations": "Получите лучшие рекомендации по видео",
                 "genres": "Жанры",
                 "shows": "Шоу",
+                "tap_continue": "Нажимая «Продолжить», вы соглашаетесь с нашими",
+                "terms": "Условия",
+                "and": "и",
+                "privacy_policy": "Политика конфиденциальности",
                 "more_like": "Похожие на это",
                 "share_to": "Поделиться",
                 "settings": "Настройки",
@@ -234,7 +254,7 @@ i18n.use(initReactI18next).init({
             },
         },
     },
-    lng: localStorage.getItem(LANGUAGE_KEY) || 'en',
+    lng: getInitialLanguage(),
     fallbackLng: 'en',
     interpolation: {
         escapeValue: false,
@@ -242,7 +262,10 @@ i18n.use(initReactI18next).init({
 });
 
 i18n.on('languageChanged', (lng) => {
-    localStorage.setItem(LANGUAGE_KEY, lng);
+
+    if (typeof window !== "undefined") {
+        localStorage.setItem(LANGUAGE_KEY, lng);
+    }
 });
 
 export default i18n;
