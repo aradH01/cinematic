@@ -707,6 +707,30 @@ const BrightnessUp = (props: React.SVGProps<SVGSVGElement>) => (
         ></path>
     </svg>
 );
+const VideoBackSecond = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" {...props}>
+        <path
+            d="M18.668 5.99984L16.0013 2.6665C23.3651 2.6665 29.3346 8.63604 29.3346 15.9998C29.3346 23.3636 23.3651 29.3332 16.0013 29.3332C8.63751 29.3332 2.66797 23.3636 2.66797 15.9998C2.66797 10.5323 5.95889 5.83344 10.668 3.77595"
+            stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path
+            d="M22.0013 11.3335H18.4818C18.1949 11.3335 17.9401 11.5171 17.8494 11.7893L16.9605 14.456C16.8166 14.8877 17.1379 15.3335 17.5929 15.3335H19.3346C20.8074 15.3335 22.0013 16.5274 22.0013 18.0002C22.0013 19.4729 20.8074 20.6668 19.3346 20.6668H16.668"
+            stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M10 14.0002L13.3333 11.3335V20.6668" stroke="white" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"/>
+    </svg>
+);
+const VideoFrontSecond = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" {...props}>
+        <path
+            d="M13.332 5.99984L15.9987 2.6665C8.6349 2.6665 2.66536 8.63604 2.66536 15.9998C2.66536 23.3636 8.6349 29.3332 15.9987 29.3332C23.3625 29.3332 29.332 23.3636 29.332 15.9998C29.332 10.5323 26.0411 5.83344 21.332 3.77595"
+            stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path
+            d="M22.0013 11.3335H18.4818C18.1949 11.3335 17.9401 11.5171 17.8494 11.7893L16.9605 14.456C16.8166 14.8877 17.1379 15.3335 17.5929 15.3335H19.3346C20.8074 15.3335 22.0013 16.5274 22.0013 18.0002C22.0013 19.4729 20.8074 20.6668 19.3346 20.6668H16.668"
+            stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M10 14.0002L13.3333 11.3335V20.6668" stroke="white" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"/>
+    </svg>
+);
 
 
 const Empty = (props: React.SVGProps<SVGSVGElement>) => null;
@@ -716,6 +740,8 @@ export const Icons = {
     RightUpArrow,
     Comments,
     Heart,
+    VideoFrontSecond,
+    VideoBackSecond,
     Lock,
     RedDelete,
     ScreenCast,

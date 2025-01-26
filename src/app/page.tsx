@@ -2,12 +2,13 @@
 
 import React from "react";
 import styled from "@emotion/styled";
-import CustomVideoPlayer from "@/components/elements/VideoPlayer/VideoPlayer";
+import {VideoPlayer} from "@/components/elements/VideoPlayer";
+
 
 const Wrapper = styled.div`
-        background-color: ${({theme}) => theme.components.black900};
-        padding: 12px;
-        border-radius: 24px;
+    background-color: ${({theme}) => theme.components.black900};
+    padding: 12px;
+    border-radius: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,8 +32,7 @@ export default function HomePage() {
                 }
             </div>*/
         <div>
-            <h1>Custom Video Player</h1>
-            <CustomVideoPlayer
+            <VideoPlayer
                 poster="/images/show4.jpg" src="/videos/downloaded_fiile.mp4"
             />
         </div>

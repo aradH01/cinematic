@@ -2,15 +2,26 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styled from '@emotion/styled';
 import {Icon} from '@/components/elements/Icon';
+import {SubtitleModal} from "@/components/blocks/SubtitleModal";
+import {ShareModal} from "@/components/blocks/ShareModal";
+import Image from "@/public/images/show4.jpg";
+import {CommentModal} from "@/components/blocks/CommentModal";
+import { VideoSpeedModal } from '@/components/blocks/VideoSpeedModal';
 
-const VideoContainer = styled.div`
+interface VideoPlayerProps {
+    src: string;
+    poster: string;
+}
+
+const VideoContainer = styled.div<{ isPlaying: boolean }>`
     position: relative;
+    max-width: ${({ isPlaying }) => (isPlaying ? '600px' : '100%')};
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background: black;
     cursor: pointer;
+    transition: max-width 0.3s ease;
 `;
-
 const VideoElement = styled.video`
     width: 100%;
     height: 100%;
@@ -25,23 +36,29 @@ const VideoElement = styled.video`
         height: 100vh;
     }
 `;
-
-const CenterIcon = styled.button<{ visible: boolean }>`
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+const CenterIcon = styled.button<{ visible?: boolean }>`
+    
     background: ${({theme}) => theme.font.white};
     border: none;
     border-radius: 50%;
     width: 64px;
     height: 64px;
-    display: ${({visible}) => (visible ? 'flex' : 'none')};
+    display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     z-index: 2;
 `;
+const PlayWrapper = styled.div<{ visible?: boolean }>`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 48px;
+`
 const GestureOverlay = styled.div`
     position: absolute;
     width: 100%;
@@ -49,7 +66,7 @@ const GestureOverlay = styled.div`
     top: 0;
     left: 0;
     z-index: 1;
-    touch-action: none; /* Disable default touch gestures */
+    touch-action: none; 
 `;
 const VerticalProgressBar = styled.div<{ value: number; type: 'brightness' | 'volume' }>`
     position: absolute;
@@ -73,7 +90,6 @@ const VerticalProgressBar = styled.div<{ value: number; type: 'brightness' | 'vo
         border-radius: 20px;
     }
 `;
-
 const ControlBar = styled.div<{ visible: boolean }>`
     position: absolute;
     bottom: 10px;
@@ -99,7 +115,6 @@ const ControlBar = styled.div<{ visible: boolean }>`
         }
     }
 `;
-
 const ProgressBarContainer = styled.div<{ visible: boolean }>`
     position: absolute;
     bottom: 60px;
@@ -113,7 +128,6 @@ const ProgressBarContainer = styled.div<{ visible: boolean }>`
     opacity: ${({visible}) => (visible ? '1' : '0')};
     transition: opacity 250ms ease;
 `;
-
 const ProgressBarFill = styled.div`
     height: 100%;
     background: white;
@@ -121,12 +135,6 @@ const ProgressBarFill = styled.div`
     border-radius: 3px;
     pointer-events: none;
 `;
-
-interface VideoPlayerProps {
-    src: string;
-    poster: string;
-}
-
 const TimeDisplay = styled.div<{ visible: boolean }>`
     position: absolute;
     bottom: 75px;
@@ -140,7 +148,6 @@ const TimeDisplay = styled.div<{ visible: boolean }>`
     transition: opacity 250ms ease;
     z-index: 10;
 `;
-
 const formatTime = (time: number): string => {
     const hours = Math.floor(time / 3600);
     const minutes = Math.floor((time % 3600) / 60);
@@ -153,7 +160,9 @@ const formatTime = (time: number): string => {
         .filter(Boolean)
         .join(':');
 };
-const VideoPlayer: React.FC<VideoPlayerProps> = ({src, poster}) => {
+
+export const VideoPlayer: React.FC<VideoPlayerProps> = ({src, poster}) => {
+
     const videoRef = useRef<HTMLVideoElement>(null);
     const progressBarRef = useRef<HTMLDivElement>(null);
     const progressFillRef = useRef<HTMLDivElement>(null);
@@ -168,8 +177,79 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({src, poster}) => {
     const [showProgressBar, setShowProgressBar] = useState(false);
     const mouseStart = useRef<{ x: number; y: number } | null>(null);
     const [isMouseDragging, setIsMouseDragging] = useState(false);
-
     const touchStart = useRef<{ x: number; y: number } | null>(null);
+    const [selectedOption, setSelectedOption] = useState<string | null>('Auto (Recommended)');
+    const [subtitleModal, setSubtitleModal] = useState(false)
+    const [subtitles, setSubtitles] = useState<string>("");
+    const [showShareModal, setShowShareModal] = useState(false)
+    const [showCommentsModal, setShowCommentsModal] = useState(false)
+    const [showSpeedModal, setShowSpeedModal] = useState(false)
+    const [selectedSpeed, setSelectedSpeed] = useState('')
+    const subtitleOptions = [
+        { value: "Auto (Recommended)", src: "" },
+        { value: "Off", src: "" },
+        { value: "English", src: "/subtitles/english.vtt" },
+        { value: "Arabic", src: "/subtitles/arabic.vtt" },
+    ];
+    const speedOptions = [
+        { value: "1x" },
+        { value: "1.5x"},
+        { value: "2x" },
+    ];
+
+    useEffect(() => {
+        return () => {
+
+            document.documentElement.style.filter = 'brightness(1)';
+        };
+    }, []);
+    useEffect(() => {
+        const handleGlobalMouseUp = () => {
+            if (isMouseDragging) handleMouseUp();
+        };
+        window.addEventListener('mouseup', handleGlobalMouseUp);
+        return () => {
+            window.removeEventListener('mouseup', handleGlobalMouseUp);
+        };
+    }, [isMouseDragging])
+    useEffect(() => {
+        resetHideControlsTimeout();
+        if (videoRef.current) {
+            const onLoadedMetadata = () => {
+                setDuration(videoRef.current!.duration);
+            };
+            videoRef.current.addEventListener('loadedmetadata', onLoadedMetadata);
+            videoRef.current.addEventListener('timeupdate', updateProgressBar);
+
+            return () => {
+                videoRef.current?.removeEventListener(
+                    'loadedmetadata',
+                    onLoadedMetadata
+                );
+                videoRef.current?.removeEventListener('timeupdate', updateProgressBar);
+            };
+        }
+    }, []);
+    useEffect(() => {
+        const videoElement = videoRef.current;
+        if (videoElement) {
+            const track = videoElement.textTracks[0];
+            track.mode = "showing";
+
+            track.oncuechange = () => {
+                const cue = track.activeCues?.[0];
+                if (cue && "text" in cue) {
+                    setSubtitles((cue as VTTCue).text);
+                } else {
+                    setSubtitles("");
+                }
+            };
+        }
+        return () => {
+            setSubtitles("");
+        };
+    }, []);
+
     const handlePause = () => {
         if (document.fullscreenElement) {
             document.exitFullscreen().catch((err) => {
@@ -182,31 +262,13 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({src, poster}) => {
         if (videoRef.current) {
             if (isPlaying) {
                 videoRef.current.pause();
-                handlePause(); // Exit fullscreen when paused
             } else {
-                videoRef.current.play().then(() => {
-                    const videoContainer = videoRef.current?.parentElement as HTMLElement;
-                    if (videoContainer.requestFullscreen) {
-                        videoContainer.requestFullscreen().catch((err) => {
-                            console.warn("Failed to enter fullscreen:", err);
-                        });
-                    }
-
-                    const orientation = screen.orientation as ScreenOrientation & { lock?: (orientation: string) => Promise<void> };
-                    if (orientation.lock) {
-                        orientation.lock("landscape").catch((err) => {
-                            console.warn("Failed to lock orientation:", err);
-                        });
-                    }
-                }).catch((error) => {
-                    console.error("Playback error:", error);
-                });
+                videoRef.current.play();
             }
             setIsPlaying(!isPlaying);
+            resetHideControlsTimeout();
         }
     };
-
-
     const handleTouchStart = (e: React.TouchEvent) => {
         const touchX = e.touches[0].clientX;
         const area = touchX < window.innerWidth / 2 ? 'left' : 'right';
@@ -215,7 +277,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({src, poster}) => {
         touchStart.current = {x: touchX, y: e.touches[0].clientY};
         setShowProgressBar(true);
     };
-
     const handleMouseDown = (e: React.MouseEvent) => {
         const mouseX = e.clientX;
         const area = mouseX < window.innerWidth / 2 ? 'left' : 'right';
@@ -231,7 +292,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({src, poster}) => {
         setShowProgressBar(false);
         mouseStart.current = null;
     };
-
     const handleTouchMove = (e: React.TouchEvent) => {
         if (!touchStart.current || !touchArea) return;
 
@@ -250,30 +310,21 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({src, poster}) => {
                 videoRef.current.volume = newVolume;
             }
         }
+        resetHideControlsTimeout();
     };
-
-
     const handleTouchEnd = () => {
         setTouchArea(null);
         setShowProgressBar(false);
         touchStart.current = null;
     };
-
-    useEffect(() => {
-        return () => {
-
-            document.documentElement.style.filter = 'brightness(1)';
-        };
-    }, []);
     const resetHideControlsTimeout = () => {
         if (hideControlsTimeout.current) {
             clearTimeout(hideControlsTimeout.current);
         }
         hideControlsTimeout.current = setTimeout(() => {
             setShowControls(false);
-        }, 3000);
+        }, 2000);
     };
-
     const handleMouseMove = (e: React.MouseEvent) => {
         setShowControls(true);
         if (!mouseStart.current || !touchArea || !isMouseDragging) return;
@@ -294,15 +345,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({src, poster}) => {
         resetHideControlsTimeout();
 
     };
-    useEffect(() => {
-        const handleGlobalMouseUp = () => {
-            if (isMouseDragging) handleMouseUp();
-        };
-        window.addEventListener('mouseup', handleGlobalMouseUp);
-        return () => {
-            window.removeEventListener('mouseup', handleGlobalMouseUp);
-        };
-    }, [isMouseDragging])
     const updateProgressBar = () => {
         if (videoRef.current && progressFillRef.current) {
             setCurrentTime(videoRef.current.currentTime);
@@ -311,7 +353,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({src, poster}) => {
             progressFillRef.current.style.width = `${percentage}%`;
         }
     };
-
     const handleProgressBarClick = (e: React.MouseEvent) => {
         if (videoRef.current && progressBarRef.current) {
             const rect = progressBarRef.current.getBoundingClientRect();
@@ -320,28 +361,36 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({src, poster}) => {
             videoRef.current.currentTime = percentage * videoRef.current.duration;
         }
     };
+    const handleTypeChange = (value: string) => {
+        setSelectedOption(value);
 
-    useEffect(() => {
-        resetHideControlsTimeout();
         if (videoRef.current) {
-            const onLoadedMetadata = () => {
-                setDuration(videoRef.current!.duration);
-            };
-            videoRef.current.addEventListener('loadedmetadata', onLoadedMetadata);
-            videoRef.current.addEventListener('timeupdate', updateProgressBar);
-
-            return () => {
-                videoRef.current?.removeEventListener(
-                    'loadedmetadata',
-                    onLoadedMetadata
-                );
-                videoRef.current?.removeEventListener('timeupdate', updateProgressBar);
-            };
+            const tracks = videoRef.current.textTracks;
+            for (let i = 0; i < tracks.length; i++) {
+                tracks[i].mode = tracks[i].label === value ? "showing" : "disabled";
+            }
         }
-    }, []);
+    };
+    const handleSpeedChange = (value: string) => {
+        setSelectedSpeed(value); // Update the selected speed
+        if (videoRef.current) {
+            videoRef.current.playbackRate = parseFloat(value.replace("x", "")); // Apply the playback speed
+        }
+    };
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.playbackRate = parseFloat(selectedSpeed.replace("x", "")) || 1;
+        }
+    }, [selectedSpeed]);
 
+    const handleSkip = (seconds:number) => {
+        if (videoRef.current) {
+            videoRef.current.currentTime += seconds;
+        }
+    };
     return (
         <VideoContainer
+            isPlaying={isPlaying}
             onMouseMove={handleMouseMove}
 
         >
@@ -353,7 +402,22 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({src, poster}) => {
                 playsInline
                 controls={false}
                 muted={false}
-            />
+            >
+
+                {subtitleOptions
+                    .filter((option) => option.src)
+                    .map((option, index) => (
+                            <track className=""  key={index}
+                                   label={option.value}
+                                   src={option.src}
+                                   kind="subtitles"
+                                   srcLang={option.value.toLowerCase()}
+                                   default={option.value === "Auto (Recommended)"}
+                            />
+                    ))}
+
+
+            </VideoElement>
             <GestureOverlay
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
@@ -388,22 +452,26 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({src, poster}) => {
                     </div>
                 </VerticalProgressBar>
             )}
+            <PlayWrapper visible={showControls} className="w-[224px] h-[80px]">
+                <Icon name="VideoBackSecond" className="w-8 h-8"   onClick={() => handleSkip(-15)}/>
+                <CenterIcon onClick={handlePlayPause} >
+                    {isPlaying ? (
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={2}
+                            stroke="#000"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M10 9v6m4-6v6"/>
+                        </svg>
+                    ) : (
+                        <Icon name="PlayIconV2" className="w-[20px] h-[20px]"/>
+                    )}
+                </CenterIcon>
+                <Icon name="VideoFrontSecond" className="w-8 h-8" onClick={() => handleSkip(15)}/>
+            </PlayWrapper>
 
-            <CenterIcon visible={showControls} onClick={handlePlayPause}>
-                {isPlaying ? (
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={2}
-                        stroke="#000"
-                    >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 9v6m4-6v6"/>
-                    </svg>
-                ) : (
-                    <Icon name="PlayIconV2" className="w-[20px] h-[20px]"/>
-                )}
-            </CenterIcon>
 
             <TimeDisplay visible={showControls}>
                 <span className="text-white font-urbanist">{formatTime(currentTime)}</span>
@@ -419,24 +487,33 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({src, poster}) => {
             </ProgressBarContainer>
 
             <ControlBar visible={showControls}>
-                <button>
+                <button onClick={()=> {
+                    setShowSpeedModal(prevState => !prevState)
+                }}>
                     <Icon name="VideoSpeed" className="w-[28px] h-[28px]"/>
                 </button>
                 <button>
                     <Icon name="Lock" className="w-[28px] h-[28px]"/>
                 </button>
-                <button>
+                <button onClick={()=>{
+                    setSubtitleModal(prevState => !prevState)
+                }}>
                     <Icon name="Subtitle" className="w-[28px] h-[28px]"/>
                 </button>
-                <button>
+                <button onClick={()=>{setShowCommentsModal(prevState => !prevState)}}>
                     <Icon name="Message" className="w-[28px] h-[28px]"/>
                 </button>
-                <button>
+                <button onClick={()=>{setShowShareModal(prevState => !prevState)}}>
                     <Icon name="Share" className="w-[28px] h-[28px]"/>
                 </button>
             </ControlBar>
+            <SubtitleModal open={subtitleModal} onClose={()=>setSubtitleModal(false)} options={subtitleOptions} checked={selectedOption} onChange={handleTypeChange}/>
+            <ShareModal link="Test link for copy" image={Image} onClose={() => setShowShareModal(false)}
+                        open={showShareModal} title="Spider-man"/>
+            <CommentModal link="Test link for copy" image={Image} onClose={() => setShowCommentsModal(false)}
+                        open={showCommentsModal} title="Spider-man"/>
+            <VideoSpeedModal open={showSpeedModal} onClose={()=>setShowSpeedModal(false)} options={speedOptions} checked={selectedSpeed} onChange={handleSpeedChange}/>
         </VideoContainer>
     );
 };
 
-export default VideoPlayer;
