@@ -97,7 +97,7 @@ const ControlBar = styled.div<{ visible: boolean }>`
     padding: 10px 16px;
     display: flex;
     opacity: ${({visible}) => (visible ? '100' : '0')};
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     background-color: transparent;
     z-index: 5;
@@ -117,7 +117,7 @@ const ControlBar = styled.div<{ visible: boolean }>`
 `;
 const ProgressBarContainer = styled.div<{ visible: boolean }>`
     position: absolute;
-    bottom: 60px;
+    bottom: 75px;
     left: 5%;
     width: 90%;
     z-index: 5;
@@ -137,7 +137,7 @@ const ProgressBarFill = styled.div`
 `;
 const TimeDisplay = styled.div<{ visible: boolean }>`
     position: absolute;
-    bottom: 75px;
+    bottom: 95px;
     left: 5%;
     width: 90%;
     display: flex;
@@ -487,32 +487,40 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({src, poster}) => {
             </ProgressBarContainer>
 
             <ControlBar visible={showControls}>
-                <button onClick={()=> {
-                    setShowSpeedModal(prevState => !prevState)
-                }}>
-                    <Icon name="VideoSpeed" className="w-[28px] h-[28px]"/>
-                </button>
-                <button>
-                    <Icon name="Lock" className="w-[28px] h-[28px]"/>
-                </button>
-                <button onClick={()=>{
-                    setSubtitleModal(prevState => !prevState)
-                }}>
-                    <Icon name="Subtitle" className="w-[28px] h-[28px]"/>
-                </button>
-                <button onClick={()=>{setShowCommentsModal(prevState => !prevState)}}>
-                    <Icon name="Message" className="w-[28px] h-[28px]"/>
-                </button>
-                <button onClick={()=>{setShowShareModal(prevState => !prevState)}}>
-                    <Icon name="Share" className="w-[28px] h-[28px]"/>
-                </button>
+                <div className="flex items-center justify-between w-[90%] ">
+                    <button className="w-[28px] h-[28px]" onClick={() => {
+                        setShowSpeedModal(prevState => !prevState)
+                    }}>
+                        <Icon name="VideoSpeed" className="!w-[28px] !h-[28px]"/>
+                    </button>
+                    <button className="w-[28px] h-[28px]">
+                        <Icon name="Lock" className="!w-[28px] !h-[28px]"/>
+                    </button>
+                    <button className="w-[28px] h-[28px]" onClick={() => {
+                        setSubtitleModal(prevState => !prevState)
+                    }}>
+                        <Icon name="Subtitle" className="!w-[28px] !h-[28px]"/>
+                    </button>
+                    <button className="w-[28px] h-[28px]" onClick={() => {
+                        setShowCommentsModal(prevState => !prevState)
+                    }}>
+                        <Icon name="Message" className="!w-[28px] !h-[28px]"/>
+                    </button>
+                    <button className="w-[28px] h-[28px]" onClick={() => {
+                        setShowShareModal(prevState => !prevState)
+                    }}>
+                        <Icon name="Share" className="!w-[28px] !h-[28px]"/>
+                    </button>
+                </div>
             </ControlBar>
-            <SubtitleModal open={subtitleModal} onClose={()=>setSubtitleModal(false)} options={subtitleOptions} checked={selectedOption} onChange={handleTypeChange}/>
+            <SubtitleModal open={subtitleModal} onClose={() => setSubtitleModal(false)} options={subtitleOptions}
+                           checked={selectedOption} onChange={handleTypeChange}/>
             <ShareModal link="Test link for copy" image={Image} onClose={() => setShowShareModal(false)}
                         open={showShareModal} title="Spider-man"/>
             <CommentModal link="Test link for copy" image={Image} onClose={() => setShowCommentsModal(false)}
-                        open={showCommentsModal} title="Spider-man"/>
-            <VideoSpeedModal open={showSpeedModal} onClose={()=>setShowSpeedModal(false)} options={speedOptions} checked={selectedSpeed} onChange={handleSpeedChange}/>
+                          open={showCommentsModal} title="Spider-man"/>
+            <VideoSpeedModal open={showSpeedModal} onClose={() => setShowSpeedModal(false)} options={speedOptions}
+                             checked={selectedSpeed} onChange={handleSpeedChange}/>
         </VideoContainer>
     );
 };
