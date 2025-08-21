@@ -1,5 +1,7 @@
 {
-  "welcome": "Welcome",
-  "hello": "Hello",
-  "test" : "nemona"
+  "get_started": "Get started",
+  "continue_with_phone": "Continue with Phone",
+  "or": "OR",
+  "check_your_email": "Check your email",
+  "verify_email": "We need you to verify your email address."
 }

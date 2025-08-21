@@ -1,8 +1,8 @@
 'use client'
 
-import { css, SerializedStyles } from '@emotion/react';
-import { ls } from '@/core/utils/localStorage';
-import { settings } from '@/shared/styles/Settings';
+import {css, SerializedStyles} from '@emotion/react';
+import {ls} from '@/core/utils/localStorage';
+import {settings} from '@/shared/styles/Settings';
 
 export type Size = 'sm' | 'md' | 'lg' | 'xlg' | 'xxlg';
 export type ColorEffect = 'solid' | 'linear';
@@ -13,9 +13,11 @@ export const colorOptions = [
 ] as const;
 export type Color = (typeof colorOptions)[number];
 export const typographySizeOptions = {
+    xsm: '14px',
     sm: '16px',
     md: '18px',
     lg: '24px',
+    lt: '32px',
     xlg: '28px',
     xxlg: '48px',
     xxxlg: '82px',
@@ -47,6 +49,7 @@ export const GlobalStyles = css`
     padding: 0;
     margin: 0;
     font-family: ${settings.fontFamily};
+      height: 100vh;
   }
 `;
 
@@ -59,14 +62,15 @@ export const getIsDark = (): boolean => {
         : window.matchMedia('(prefers-color-scheme: dark)').matches;
 };
 export const getSize = (
-  size?: Size,
-  width?: string,
-  borderRadius?: string
+    size?: Size,
+    width?: string,
+    borderRadius?: string,
+    height?: string
 ): SerializedStyles => {
     if (size === 'sm') {
         return css`
       width: ${width ? width : 'auto'};
-      height: ${settings.elementHeight_sm};
+      height: ${height ? height : settings.elementHeight_sm};
       font-size: ${typographySizeOptions.sm};
       border-radius: ${borderRadius};
     `;

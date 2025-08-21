@@ -1,5 +1,8 @@
 {
-  "welcome": "Xoş gəlmisiniz",
-  "hello": "Salam",
-  "test" : "test"
+  "get_started": "Başlayın",
+  "continue_with_phone": "Telefonla Devam Et",
+  "or": "veya",
+  "check_your_email": "E-postanızı kontrol edin",
+  "verify_email": "E-posta adresinizi doğrulamanız gerekiyor."
+},
 }
