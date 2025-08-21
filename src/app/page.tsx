@@ -3,6 +3,8 @@
 import React from "react";
 import styled from "@emotion/styled";
 import {VideoPlayer} from "@/components/elements/VideoPlayer";
+import {MoviesCards} from "@/core/constants/enums";
+import {Typography} from "@/components/elements/Typography";
 
 
 const Wrapper = styled.div`
@@ -16,7 +18,7 @@ const Wrapper = styled.div`
 `
 export default function HomePage() {
     return (
-        /*    <div className=" p-16  flex flex-col gap-8 max-w-[600px]">
+          <div className=" p-16  flex flex-col gap-8 max-w-[600px]">
                 {
                     MoviesCards.map((card ,  index) => (
                         <Wrapper key={index}>
@@ -30,12 +32,8 @@ export default function HomePage() {
                         </Wrapper>
                     ))
                 }
-            </div>*/
-        <div>
-            <VideoPlayer
-                poster="/images/show4.jpg" src="/videos/downloaded_fiile.mp4"
-            />
-        </div>
+            </div>
+       
     );
 }
 
